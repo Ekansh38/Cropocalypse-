@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3wgca6eatko6"]
+
+[ext_resource type="Texture2D" uid="uid://f6xopv7w10oo" path="res://Assets/mango.png" id="1_fhecq"]
+[ext_resource type="Script" uid="uid://do8tx4ax2xpy2" path="res://Scripts/plant_drop.gd" id="1_l8nav"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhecq"]
+size = Vector2(78, 78)
+
+[node name="PlantDrop" type="Area2D"]
+script = ExtResource("1_l8nav")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_fhecq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_fhecq")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

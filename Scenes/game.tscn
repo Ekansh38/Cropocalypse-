@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=3 uid="uid://vgn3dqi6c31"]
+
+[ext_resource type="Script" uid="uid://7vk5l1qhqne5" path="res://Scripts/game.gd" id="1_1l0tm"]
+[ext_resource type="Texture2D" uid="uid://kraths82k1mb" path="res://Assets/grass.jpg" id="1_i6g32"]
+[ext_resource type="Texture2D" uid="uid://rtoi6o0y341l" path="res://Assets/soil.jpeg" id="2_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://chgtjd83j5y7" path="res://Scenes/player.tscn" id="3_v158k"]
+[ext_resource type="PackedScene" uid="uid://s36wirfnmtlc" path="res://Scenes/world_border.tscn" id="4_h4fw4"]
+[ext_resource type="Script" uid="uid://cg7pw0t77snb8" path="res://Scripts/plant_spawner.gd" id="5_ldgsr"]
+[ext_resource type="PackedScene" uid="uid://bx4iymtkeaw8m" path="res://Scenes/plant.tscn" id="6_o5yvi"]
+[ext_resource type="PackedScene" uid="uid://biljgomemmnhc" path="res://Scenes/ui.tscn" id="8_v158k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jktm"]
+size = Vector2(975, 684.5)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_1l0tm")
+
+[node name="Grass" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(34, -59)
+texture = ExtResource("1_i6g32")
+region_enabled = true
+region_rect = Rect2(-3380.38, -2867.1, 9165.24, 7756.45)
+metadata/_edit_lock_ = true
+
+[node name="Soil" type="Sprite2D" parent="."]
+position = Vector2(1183.94, 377)
+scale = Vector2(4.32944, 2.94778)
+texture = ExtResource("2_1l0tm")
+
+[node name="Player" parent="." instance=ExtResource("3_v158k")]
+position = Vector2(408, 322)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="WorldBorder5" type="Node2D" parent="."]
+
+[node name="WorldBorder" parent="WorldBorder5" instance=ExtResource("4_h4fw4")]
+position = Vector2(-735, 292)
+scale = Vector2(0.5, 10)
+
+[node name="WorldBorder2" parent="WorldBorder5" instance=ExtResource("4_h4fw4")]
+position = Vector2(2032, 312)
+scale = Vector2(0.5, 10)
+
+[node name="WorldBorder3" parent="WorldBorder5" instance=ExtResource("4_h4fw4")]
+position = Vector2(648, 1378)
+rotation = 1.5708
+scale = Vector2(0.5, 13)
+
+[node name="WorldBorder4" parent="WorldBorder5" instance=ExtResource("4_h4fw4")]
+position = Vector2(608, -779)
+rotation = 1.5708
+scale = Vector2(0.5, 13)
+
+[node name="PlantSpawner" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("5_ldgsr")
+plant_scene = ExtResource("6_o5yvi")
+spawn_interval = 8.0
+spawn_interval_variance = 4.0
+max_plants = 30
+min_distance_between_plants = 100.0
+spawn_bounds_top_left = Vector2(701, 44)
+spawn_bounds_bottom_right = Vector2(1668, 701)
+
+[node name="SpawnArea" type="Area2D" parent="PlantSpawner"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlantSpawner/SpawnArea"]
+position = Vector2(1187.5, 380.75)
+shape = SubResource("RectangleShape2D_7jktm")
+
+[node name="SpawnBounds" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="SpawnBounds"]
+position = Vector2(701, 44)
+
+[node name="Node2D2" type="Node2D" parent="SpawnBounds"]
+position = Vector2(1668, 701)
+
+[node name="UI" parent="." instance=ExtResource("8_v158k")]
+
+[connection signal="shoot_fired" from="Player" to="." method="_on_player_shoot_fired"]
