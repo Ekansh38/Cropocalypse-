@@ -47,7 +47,6 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	rotate_guns_to_mouse()
-	update_active_gun()
 
 	if Input.is_action_just_pressed("shoot") and can_shoot:
 		emit_shoot_signal()
@@ -56,30 +55,30 @@ func _process(delta: float) -> void:
 		can_shoot = true
 
 func rotate_guns_to_mouse() -> void:
-	var mouse_pos = get_global_mouse_position()
+	var mouse_pos = get_viewport().get_mouse_position()
+	var screen_center_x = get_viewport_rect().size.x / 2
 
 	var left_gun = $Sprite2D/LeftGun
 	var right_gun = $Sprite2D/RightGun
 
-	var left_dir = (mouse_pos - left_gun.global_position).angle()
-	var right_dir = (mouse_pos - right_gun.global_position).angle()
-
-	left_gun.rotation = left_dir + deg_to_rad(180)
-	right_gun.rotation = right_dir
-
-func update_active_gun():
-	var left = $Sprite2D/LeftGun
-	var right = $Sprite2D/RightGun
-	left.visible = last_move_key == "left"
-	right.visible = last_move_key == "right"
+	if mouse_pos.x < screen_center_x:
+		left_gun.visible = true
+		right_gun.visible = false
+		var dir = (get_global_mouse_position() - left_gun.global_position).angle()
+		left_gun.rotation = dir + deg_to_rad(180)
+	else:
+		left_gun.visible = false
+		right_gun.visible = true
+		var dir = (get_global_mouse_position() - right_gun.global_position).angle()
+		right_gun.rotation = dir
 
 func emit_shoot_signal():
-	var gun
-	if (last_move_key == "left"): 
-		gun = $Sprite2D/LeftGun 
-	else: 
-		gun = $Sprite2D/RightGun
-	var marker = gun.get_node("Marker2D")
+	var using_left = $Sprite2D/LeftGun.visible
+	var marker
+	if using_left:
+		marker = $Sprite2D/LeftGun/Marker2D
+	else:
+		marker = $Sprite2D/RightGun/Marker2D
 	var shoot_pos = marker.global_position
 	var mouse_pos = get_global_mouse_position()
 	var shoot_dir = (mouse_pos - shoot_pos).normalized()
