@@ -1,24 +1,65 @@
-[gd_scene load_steps=10 format=3 uid="uid://vgn3dqi6c31"]
+[gd_scene load_steps=27 format=3 uid="uid://vgn3dqi6c31"]
 
 [ext_resource type="Script" uid="uid://7vk5l1qhqne5" path="res://Scripts/game.gd" id="1_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://dt8ocs65hig4d" path="res://Assets/plantgjmap.png" id="2_v158k"]
 [ext_resource type="PackedScene" uid="uid://chgtjd83j5y7" path="res://Scenes/player.tscn" id="3_v158k"]
 [ext_resource type="PackedScene" uid="uid://s36wirfnmtlc" path="res://Scenes/world_border.tscn" id="4_h4fw4"]
+[ext_resource type="Texture2D" uid="uid://byuxmyqq3jhff" path="res://Assets/dissected/1a.png" id="4_rfjv2"]
+[ext_resource type="Texture2D" uid="uid://pvc6mebt813n" path="res://Assets/dissected/1b.png" id="5_1phco"]
 [ext_resource type="Script" uid="uid://cg7pw0t77snb8" path="res://Scripts/plant_spawner.gd" id="5_ldgsr"]
+[ext_resource type="Texture2D" uid="uid://bdgwcj1lspvxa" path="res://Assets/dissected/2b.png" id="6_nb51f"]
 [ext_resource type="PackedScene" uid="uid://bx4iymtkeaw8m" path="res://Scenes/plant.tscn" id="6_o5yvi"]
 [ext_resource type="PackedScene" uid="uid://chidqrqdcwv07" path="res://Scenes/chili_plant.tscn" id="7_h4fw4"]
+[ext_resource type="Texture2D" uid="uid://n438cvvlb05b" path="res://Assets/dissected/2a.png" id="7_nnt18"]
+[ext_resource type="Script" uid="uid://r0oeg7cq4f4g" path="res://Scenes/camera_2d.gd" id="7_vm72l"]
+[ext_resource type="Texture2D" uid="uid://dip7cfj1yhybg" path="res://Assets/dissected/3a.png" id="8_ewbju"]
 [ext_resource type="PackedScene" uid="uid://cxxiysmvxwhe" path="res://Inventory/inv_ui.tscn" id="8_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://biljgomemmnhc" path="res://Scenes/ui.tscn" id="8_v158k"]
+[ext_resource type="Texture2D" uid="uid://b4f1p2f1iymj4" path="res://Assets/dissected/3b.png" id="9_85qyi"]
+[ext_resource type="Texture2D" uid="uid://cl8a7r5frm64b" path="res://Assets/dissected/4b.png" id="10_85qyi"]
+[ext_resource type="Texture2D" uid="uid://cvgbef2pvmqjt" path="res://Assets/dissected/4a.png" id="10_iivbl"]
+[ext_resource type="Texture2D" uid="uid://bc7v6onuet1nj" path="res://Assets/dissected/5a.png" id="12_exi56"]
+[ext_resource type="Texture2D" uid="uid://cn3x4ttfnaljq" path="res://Assets/dissected/5b.png" id="13_7t8sx"]
+[ext_resource type="PackedScene" uid="uid://c6jxusofcfy7c" path="res://Scenes/rice_plant.tscn" id="14_ewbju"]
+[ext_resource type="Texture2D" uid="uid://bkmf8sjhlcm6i" path="res://Assets/dissected/6a.png" id="14_mg4q0"]
+[ext_resource type="Texture2D" uid="uid://dtj1gpohq6sa7" path="res://Assets/dissected/6b.png" id="15_vm72l"]
+[ext_resource type="Script" uid="uid://dc2eq0fpnganu" path="res://Scenes/day_night.gd" id="16_nnt18"]
+[ext_resource type="PackedScene" uid="uid://dpurbaaypl0uw" path="res://Scenes/lantern.tscn" id="25_22asu"]
+
+[sub_resource type="Environment" id="Environment_nb51f"]
+background_mode = 3
+glow_intensity = 8.0
+glow_blend_mode = 1
+glow_hdr_threshold = 0.55
+glow_hdr_scale = 0.0
+adjustment_enabled = true
+adjustment_brightness = 0.9
+adjustment_contrast = 1.1
+adjustment_saturation = 1.5
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_1l0tm")
+metadata/_edit_lock_ = true
 
 [node name="Grass" type="Sprite2D" parent="."]
+z_index = -1
 texture_repeat = 2
 position = Vector2(34, -59)
 texture = ExtResource("2_v158k")
 region_rect = Rect2(-3380.38, -2867.1, 9165.24, 7756.45)
 metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-1331, -150)
+texture = ExtResource("10_iivbl")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-1331, -150)
+texture = ExtResource("12_exi56")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(-1331, -150)
+texture = ExtResource("14_mg4q0")
 
 [node name="Player" parent="." instance=ExtResource("3_v158k")]
 position = Vector2(-854, -198)
@@ -31,7 +72,56 @@ limit_right = 1954
 limit_bottom = 1283
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+script = ExtResource("7_vm72l")
 metadata/_edit_lock_ = true
+
+[node name="Tree1" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree1"]
+position = Vector2(-1331, -150)
+texture = ExtResource("4_rfjv2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Tree1"]
+position = Vector2(-1331, -150)
+texture = ExtResource("5_1phco")
+
+[node name="Tree2" type="Node2D" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Tree2"]
+position = Vector2(-1331, -150)
+texture = ExtResource("7_nnt18")
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree2"]
+position = Vector2(-1331, -150)
+texture = ExtResource("6_nb51f")
+
+[node name="Tree3" type="Node2D" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Tree3"]
+position = Vector2(-1331, -150)
+texture = ExtResource("8_ewbju")
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree3"]
+position = Vector2(-1331, -150)
+texture = ExtResource("9_85qyi")
+
+[node name="Tree4" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree4"]
+position = Vector2(-1331, -150)
+texture = ExtResource("10_85qyi")
+
+[node name="Tree5" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree5"]
+position = Vector2(-1331, -150)
+texture = ExtResource("13_7t8sx")
+
+[node name="Tree6" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree6"]
+position = Vector2(-1331, -150)
+texture = ExtResource("15_vm72l")
 
 [node name="WorldBorder5" type="Node2D" parent="."]
 position = Vector2(-1027, -509)
@@ -39,6 +129,18 @@ position = Vector2(-1027, -509)
 [node name="WorldBorder" parent="WorldBorder5" instance=ExtResource("4_h4fw4")]
 position = Vector2(-735, 292)
 scale = Vector2(0.5, 15)
+
+[node name="WorldBorder6" parent="WorldBorder5" instance=ExtResource("4_h4fw4")]
+position = Vector2(-589, -285)
+scale = Vector2(1, 3)
+
+[node name="WorldBorder7" parent="WorldBorder5" instance=ExtResource("4_h4fw4")]
+position = Vector2(-295, -187)
+scale = Vector2(0.5, 1.5)
+
+[node name="WorldBorder8" parent="WorldBorder5" instance=ExtResource("4_h4fw4")]
+position = Vector2(-413, -277)
+scale = Vector2(0.3, 1)
 
 [node name="WorldBorder2" parent="WorldBorder5" instance=ExtResource("4_h4fw4")]
 position = Vector2(2922, 418)
@@ -48,6 +150,11 @@ scale = Vector2(0.5, 15)
 position = Vector2(1059, 1648)
 rotation = 1.5708
 scale = Vector2(0.5, 20)
+
+[node name="WorldBorder5" parent="WorldBorder5" instance=ExtResource("4_h4fw4")]
+position = Vector2(-601, 1488)
+rotation = 1.74882
+scale = Vector2(0.5, 9)
 
 [node name="WorldBorder4" parent="WorldBorder5" instance=ExtResource("4_h4fw4")]
 position = Vector2(1232, -779)
@@ -59,8 +166,8 @@ y_sort_enabled = true
 script = ExtResource("5_ldgsr")
 plant_scene = ExtResource("6_o5yvi")
 chili_scene = ExtResource("7_h4fw4")
+rice_scene = ExtResource("14_ewbju")
 spawn_interval_variance = 3.0
-max_plants = 50
 min_distance_between_plants = 100.0
 spawn_bounds_top_left = Vector2(274, -1001)
 spawn_bounds_bottom_right = Vector2(1626, 871)
@@ -75,7 +182,8 @@ position = Vector2(-986, -1285)
 [node name="Node2D2" type="Node2D" parent="SpawnBounds"]
 position = Vector2(1954, 739)
 
-[node name="UI" parent="." instance=ExtResource("8_v158k")]
+[node name="UI" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("8_v158k")]
+inventory = NodePath("../CanvasLayer/InvUI")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -91,5 +199,34 @@ offset_right = -104.0
 offset_bottom = -57.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nb51f")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(1, 1, 0.945098, 1)
+script = ExtResource("16_nnt18")
+
+[node name="MangoDropPoints" type="Node2D" parent="."]
+
+[node name="Pair1" type="Node2D" parent="MangoDropPoints"]
+
+[node name="Start" type="Marker2D" parent="MangoDropPoints/Pair1"]
+position = Vector2(-1144, -24)
+
+[node name="Drop" type="Marker2D" parent="MangoDropPoints/Pair1"]
+position = Vector2(-837, 127)
+
+[node name="Pair2" type="Node2D" parent="MangoDropPoints"]
+
+[node name="Start" type="Marker2D" parent="MangoDropPoints/Pair2"]
+position = Vector2(-1276, 141)
+
+[node name="Drop" type="Marker2D" parent="MangoDropPoints/Pair2"]
+position = Vector2(-1470, 90)
+
+[node name="Lantern" parent="." instance=ExtResource("25_22asu")]
+position = Vector2(-409, 286)
+metadata/_edit_lock_ = true
 
 [connection signal="shoot_fired" from="Player" to="." method="_on_player_shoot_fired"]

@@ -1,18 +1,37 @@
-[gd_scene load_steps=8 format=3 uid="uid://bx4iymtkeaw8m"]
+[gd_scene load_steps=14 format=3 uid="uid://bx4iymtkeaw8m"]
 
 [ext_resource type="Script" uid="uid://cy1wc84cfcu88" path="res://Scripts/plant.gd" id="1_t03al"]
 [ext_resource type="Texture2D" uid="uid://d4lqdpbe8jnum" path="res://Assets/plant.png" id="2_mbetm"]
 [ext_resource type="Script" uid="uid://beek4ysilfnko" path="res://Scripts/attack_area.gd" id="3_8frh5"]
 [ext_resource type="AudioStream" uid="uid://cllpv50e2cv58" path="res://Assets/PlantSLAP.wav" id="4_wt21e"]
+[ext_resource type="Texture2D" uid="uid://dqevtxu4227jd" path="res://Assets/kenney_particle-pack (1)/PNG (Transparent)/star_07.png" id="5_fl1so"]
+[ext_resource type="Texture2D" uid="uid://susm0btw48ue" path="res://Assets/light.png" id="5_ujn7j"]
+[ext_resource type="Texture2D" uid="uid://dp57m8pwlm2mb" path="res://Assets/kenney_particle-pack (1)/PNG (Transparent)/fire_01.png" id="6_b4bfk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wt21e"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbetm"]
-size = Vector2(67, 156)
+size = Vector2(33, 19)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6gypx"]
 radius = 627.003
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8frh5"]
-radius = 120.104
+radius = 92.0217
+
+[sub_resource type="Gradient" id="Gradient_b4bfk"]
+offsets = PackedFloat32Array(0, 0.841216, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_fl1so"]
+offsets = PackedFloat32Array(0, 0.831081, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0)
 
 [node name="Plant" type="CharacterBody2D" groups=["Plant"]]
 script = ExtResource("1_t03al")
@@ -21,6 +40,24 @@ script = ExtResource("1_t03al")
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_mbetm")
 metadata/_edit_lock_ = true
+
+[node name="Medium" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_mbetm")
+metadata/_edit_lock_ = true
+
+[node name="Large" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_mbetm")
+metadata/_edit_lock_ = true
+
+[node name="Mature" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_wt21e")
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 21)
@@ -55,5 +92,43 @@ metadata/_edit_lock_ = true
 
 [node name="SlapPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_wt21e")
+
+[node name="GrowingParticles" type="CPUParticles2D" parent="."]
+texture = ExtResource("5_fl1so")
+emission_shape = 1
+emission_sphere_radius = 100.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 30)
+initial_velocity_min = 10.2
+initial_velocity_max = 51.02
+scale_amount_min = 0.02
+scale_amount_max = 0.04
+color_ramp = SubResource("Gradient_b4bfk")
+
+[node name="HitParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+texture = ExtResource("6_b4bfk")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.59
+emission_shape = 1
+emission_sphere_radius = 50.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 30)
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.05
+scale_amount_max = 0.12
+color_ramp = SubResource("Gradient_fl1so")
+
+[node name="GrowingLight" type="PointLight2D" parent="."]
+energy = 0.3
+texture = ExtResource("5_ujn7j")
+texture_scale = 0.4
 
 [connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]

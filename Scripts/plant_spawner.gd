@@ -2,7 +2,7 @@ extends Node2D
 
 @export var plant_scene: PackedScene
 @export var chili_scene: PackedScene
-#@export var cabbage_scene: PackedScene
+@export var rice_scene: PackedScene
 #@export var corn_scene: PackedScene
 
 @export var spawn_interval: float = 5.0
@@ -19,9 +19,9 @@ var plant_scenes: Array[PackedScene] = []
 func _ready():
 	# Add all plant scenes to the list
 	plant_scenes = [
-		plant_scene,
-		chili_scene,
-		#cabbage_scene,
+		#plant_scene,
+		#chili_scene,
+		rice_scene,
 		#corn_scene
 	]
 	spawn_plant_timer()

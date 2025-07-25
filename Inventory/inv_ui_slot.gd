@@ -58,3 +58,14 @@ func _on_drop_button_pressed() -> void:
 		$HoverDisplay.visible = false
 		$HoverDisplay/VBoxContainer/DetailsLabel.text = ""
 		inv.remove(current_slot.item)
+
+
+func _on_eat_button_pressed() -> void:
+	if current_slot and current_slot.item:
+		Globals.player_hunger += current_slot.item.added_hunger
+		Globals.player_thirst += current_slot.item.added_thirst
+		current_slot.item = null
+		item_visual.visible = false
+		$HoverDisplay.visible = false
+		$HoverDisplay/VBoxContainer/DetailsLabel.text = ""
+		inv.remove(current_slot.item)

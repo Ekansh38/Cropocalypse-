@@ -79,5 +79,6 @@ offset_bottom = 79.0
 mouse_filter = 1
 
 [connection signal="pressed" from="HoverDisplay/VBoxContainer/DropButton" to="." method="_on_drop_button_pressed"]
+[connection signal="pressed" from="HoverDisplay/VBoxContainer/EatButton" to="." method="_on_eat_button_pressed"]
 [connection signal="mouse_entered" from="HoverArea" to="." method="_on_hover_area_mouse_entered"]
 [connection signal="mouse_exited" from="HoverArea" to="." method="_on_hover_area_mouse_exited"]

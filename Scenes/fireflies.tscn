@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgd7eqspnalwv"]
+
+[ext_resource type="Texture2D" uid="uid://c22jlakermrht" path="res://Assets/kenney_particle-pack (1)/PNG (Transparent)/circle_05.png" id="1_oarqo"]
+[ext_resource type="Texture2D" uid="uid://susm0btw48ue" path="res://Assets/light.png" id="2_o7ske"]
+
+[sub_resource type="Gradient" id="Gradient_qal4n"]
+offsets = PackedFloat32Array(0, 0.783784, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Fireflies" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 20
+texture = ExtResource("1_oarqo")
+lifetime = 10.0
+randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 2.3
+spread = 15.0
+gravity = Vector2(0, 1)
+initial_velocity_min = 25.0
+initial_velocity_max = 60.0
+scale_amount_min = 0.04
+scale_amount_max = 0.08
+color_ramp = SubResource("Gradient_qal4n")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(256, -3)
+scale = Vector2(2.17969, 1)
+color = Color(1, 0.619608, 0.243137, 1)
+texture = ExtResource("2_o7ske")
+texture_scale = 0.5

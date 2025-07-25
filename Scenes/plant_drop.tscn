@@ -1,15 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3wgca6eatko6"]
+[gd_scene load_steps=4 format=3 uid="uid://d3wgca6eatko6"]
 
 [ext_resource type="Texture2D" uid="uid://f6xopv7w10oo" path="res://Assets/mango.png" id="1_fhecq"]
 [ext_resource type="Script" uid="uid://do8tx4ax2xpy2" path="res://Scripts/plant_drop.gd" id="1_l8nav"]
-[ext_resource type="Resource" uid="uid://dwhus1mn2745t" path="res://Inventory/items/mango.tres" id="2_sped1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhecq"]
-size = Vector2(78, 78)
+size = Vector2(124, 68)
 
 [node name="PlantDrop" type="Area2D"]
 script = ExtResource("1_l8nav")
-mango = ExtResource("2_sped1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://clvnkpwfsxooa"]
+
+[ext_resource type="Script" uid="uid://dxfvm7kg0xker" path="res://Inventory/inventory_item.gd" id="1_nch27"]
+[ext_resource type="Texture2D" uid="uid://c338uuxeh6mn6" path="res://Assets/ricedead.png" id="2_nch27"]
+
+[resource]
+script = ExtResource("1_nch27")
+name = "Rice"
+texture = ExtResource("2_nch27")
+details = "+10 Hunger"
+added_hunger = 10
+added_thirst = 0
+metadata/_custom_type_script = "uid://dxfvm7kg0xker"

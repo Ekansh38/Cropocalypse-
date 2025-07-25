@@ -8,4 +8,6 @@ script = ExtResource("1_xw70l")
 name = "Mango"
 texture = ExtResource("2_xw70l")
 details = "+5 Hunger +10 Thirst"
+added_hunger = 5
+added_thirst = 10
 metadata/_custom_type_script = "uid://dxfvm7kg0xker"
