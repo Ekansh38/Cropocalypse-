@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://biljgomemmnhc"]
+[gd_scene load_steps=6 format=3 uid="uid://biljgomemmnhc"]
 
 [ext_resource type="Script" uid="uid://uup87w8r0a8g" path="res://Scripts/ui.gd" id="1_jxero"]
 [ext_resource type="Texture2D" uid="uid://5cesqaf1eky8" path="res://Assets/inventoryicon.png" id="2_qdvrb"]
 [ext_resource type="Texture2D" uid="uid://d1n6qoxw4pmqu" path="res://Assets/recipeicon.png" id="3_nf4gj"]
+[ext_resource type="Shader" uid="uid://ew6w8qlo33ps" path="res://Scenes/vignette.gdshader" id="4_2246s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q7pk6"]
+shader = ExtResource("4_2246s")
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.25
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
 [node name="UI" type="CanvasLayer"]
 process_mode = 3
@@ -59,6 +66,16 @@ offset_right = 709.0
 offset_bottom = 921.0
 scale = Vector2(0.15, 0.15)
 icon = ExtResource("3_nf4gj")
+
+[node name="Vignette" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_q7pk6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="mouse_entered" from="InventoryButton" to="." method="_on_inventory_button_mouse_entered"]
 [connection signal="mouse_exited" from="InventoryButton" to="." method="_on_inventory_button_mouse_exited"]

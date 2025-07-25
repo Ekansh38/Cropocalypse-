@@ -61,3 +61,6 @@ position = Vector2(0, 56)
 
 [node name="CollisionShape2D" parent="DetectRadius" index="0"]
 metadata/_edit_lock_ = true
+
+[node name="generallight" parent="." index="13"]
+energy = 0.08

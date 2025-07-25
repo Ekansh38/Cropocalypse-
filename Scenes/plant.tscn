@@ -20,7 +20,7 @@ animations = [{
 size = Vector2(33, 19)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6gypx"]
-radius = 627.003
+radius = 834.117
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8frh5"]
 radius = 92.0217
@@ -130,5 +130,10 @@ color_ramp = SubResource("Gradient_fl1so")
 energy = 0.3
 texture = ExtResource("5_ujn7j")
 texture_scale = 0.4
+
+[node name="generallight" type="PointLight2D" parent="."]
+energy = 0.05
+texture = ExtResource("5_ujn7j")
+texture_scale = 0.6
 
 [connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]

@@ -34,7 +34,7 @@ glow_hdr_threshold = 0.55
 glow_hdr_scale = 0.0
 adjustment_enabled = true
 adjustment_brightness = 0.9
-adjustment_contrast = 1.1
+adjustment_contrast = 1.13
 adjustment_saturation = 1.5
 
 [node name="Game" type="Node2D"]
@@ -182,9 +182,6 @@ position = Vector2(-986, -1285)
 [node name="Node2D2" type="Node2D" parent="SpawnBounds"]
 position = Vector2(1954, 739)
 
-[node name="UI" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("8_v158k")]
-inventory = NodePath("../CanvasLayer/InvUI")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InvUI" parent="CanvasLayer" instance=ExtResource("8_h4fw4")]
@@ -228,5 +225,8 @@ position = Vector2(-1470, 90)
 [node name="Lantern" parent="." instance=ExtResource("25_22asu")]
 position = Vector2(-409, 286)
 metadata/_edit_lock_ = true
+
+[node name="UI" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("8_v158k")]
+inventory = NodePath("../CanvasLayer/InvUI")
 
 [connection signal="shoot_fired" from="Player" to="." method="_on_player_shoot_fired"]
