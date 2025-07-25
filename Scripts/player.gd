@@ -43,7 +43,9 @@ func _physics_process(delta: float) -> void:
 		vel = Vector2.ZERO
 
 	velocity = vel
-	move_and_slide()
+	var collision = move_and_collide(vel * delta)
+	if collision:
+		vel = Vector2.ZERO
 
 func _process(delta: float) -> void:
 	rotate_guns_to_mouse()

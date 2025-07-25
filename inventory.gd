@@ -13,3 +13,10 @@ func insert(item: InvItem):
 		empty_slots[0].item = item
 	
 	update.emit()
+
+func remove(item: InvItem) -> void:
+	for slot in slots:
+		if slot.item == item:
+			slot.item = null
+			update.emit()
+			return

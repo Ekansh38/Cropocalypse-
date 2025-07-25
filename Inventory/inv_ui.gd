@@ -23,9 +23,11 @@ func _process(delta):
 			open()
 	
 func open():
+	get_tree().paused = true
 	visible = true
 	is_open = true
 	
 func close():
+	get_tree().paused = false
 	visible = false
 	is_open = false

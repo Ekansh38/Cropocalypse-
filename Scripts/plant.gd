@@ -6,6 +6,8 @@ var plant_drop: PackedScene = preload("res://Scenes/plant_drop.tscn")
 
 var state = PlantState.SEEDLING
 var grow_time = 7.0
+var grow_timer = 0.0
+
 var speed = 300
 var target: Node2D = null
 var health = 100
@@ -18,6 +20,9 @@ const WANDER_CHANGE_INTERVAL = 2.0
 func _ready():
 	$HealthBar.value = health
 	$HealthBar.visible = false
+	$GrowthBar.visible = true
+	$GrowthBar.max_value = grow_time
+	$GrowthBar.value = 0
 
 	$DetectRadius.body_entered.connect(_on_body_entered)
 	$DetectRadius.body_exited.connect(_on_body_exited)
@@ -25,14 +30,21 @@ func _ready():
 	$Sprite2D.scale = Vector2(0.1, 0.1)
 	$CollisionShape2D.scale = Vector2(0.5, 0.5)
 
-	await get_tree().create_timer(grow_time).timeout
-	grow_into_enemy()
+func _process(delta):
+	if state == PlantState.SEEDLING:
+		grow_timer += delta
+		$GrowthBar.value = grow_timer
+		if grow_timer >= grow_time:
+			grow_into_enemy()
 
 func grow_into_enemy():
+	$GrowthBar.visible = false
 	$HealthBar.visible = true
 	state = PlantState.HOSTILE
+
 	$Sprite2D.scale = Vector2(0.2, 0.2)
 	$CollisionShape2D.scale = Vector2(1, 1)
+
 	for body in $DetectRadius.get_overlapping_bodies():
 		if body.is_in_group("Player"):
 			target = body

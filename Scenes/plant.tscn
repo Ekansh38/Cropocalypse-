@@ -37,12 +37,21 @@ offset_top = -152.0
 offset_right = 126.0
 offset_bottom = -125.0
 value = 100.0
+metadata/_edit_lock_ = true
+
+[node name="GrowthBar" type="ProgressBar" parent="."]
+offset_left = -86.0
+offset_top = -91.0
+offset_right = 89.0
+offset_bottom = -64.0
+value = 100.0
 
 [node name="AttackArea" type="Area2D" parent="." groups=["plant_attack_area"]]
 script = ExtResource("3_8frh5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 shape = SubResource("CircleShape2D_8frh5")
+metadata/_edit_lock_ = true
 
 [node name="SlapPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_wt21e")
