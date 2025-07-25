@@ -8,6 +8,7 @@ size = Vector2(223, 225)
 [node name="WorldBorder" type="StaticBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_4jt1s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

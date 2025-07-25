@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7qkt8s7g0sa5"]
+
+[ext_resource type="Texture2D" uid="uid://f6xopv7w10oo" path="res://Assets/mango.png" id="1_ys0gr"]
+
+[node name="Item" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_ys0gr")

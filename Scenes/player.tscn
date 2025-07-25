@@ -1,20 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://chgtjd83j5y7"]
+[gd_scene load_steps=8 format=3 uid="uid://chgtjd83j5y7"]
 
 [ext_resource type="Texture2D" uid="uid://cwir2h3331b4m" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://20lm0festh54" path="res://Scripts/player.gd" id="1_onrkg"]
+[ext_resource type="Resource" uid="uid://c8k5f6a02kd8s" path="res://Inventory/player_inventory.tres" id="2_vgqql"]
 [ext_resource type="Script" uid="uid://cxmx5aoepo0em" path="res://Scenes/player_attack_area.gd" id="3_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://b3m6258tsphu4" path="res://Assets/gjsoldier.png" id="3_fkybt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
-size = Vector2(123, 121)
+size = Vector2(63, 155)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cvnsp"]
-radius = 139.004
+radius = 118.004
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_onrkg")
+inv = ExtResource("2_vgqql")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_4flbx")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_fkybt")
 
 [node name="Gun" type="Sprite2D" parent="Sprite2D"]
 position = Vector2(76.4277, 4.75)
@@ -27,7 +31,7 @@ position = Vector2(116.436, 1.42222)
 scale = Vector2(1.89104, 5.68889)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -0.5)
+position = Vector2(-0.5, 16.5)
 shape = SubResource("RectangleShape2D_onrkg")
 metadata/_edit_lock_ = true
 

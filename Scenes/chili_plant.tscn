@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://chidqrqdcwv07"]
+
+[ext_resource type="PackedScene" uid="uid://bx4iymtkeaw8m" path="res://Scenes/plant.tscn" id="1_oahed"]
+[ext_resource type="Texture2D" uid="uid://dgglmuplccjj2" path="res://Assets/gjchili.png" id="2_vew2x"]
+
+[node name="ChiliPlant" instance=ExtResource("1_oahed")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_vew2x")

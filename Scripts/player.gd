@@ -7,6 +7,7 @@ signal shoot_fired(global_position: Vector2, direction: Vector2)
 var can_shoot: bool = true
 var shoot_cooldown: float = 0.6
 
+@export var inv: Inv
 @export var friction := 8.0
 @export var SPEED := 5000.0
 @export var MAX_SPEED := 800.0
@@ -67,7 +68,7 @@ func emit_shoot_signal():
 	emit_signal("shoot_fired", shoot_pos, shoot_dir)
 
 func add_item(type):
-	pass
+	inv.insert(type)
 
 func take_damage():
 	Globals.player_health -= 5

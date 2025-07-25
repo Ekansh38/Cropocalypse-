@@ -1,6 +1,10 @@
 extends Node2D
 
 @export var plant_scene: PackedScene
+@export var chili_scene: PackedScene
+#@export var cabbage_scene: PackedScene
+#@export var corn_scene: PackedScene
+
 @export var spawn_interval: float = 5.0
 @export var spawn_interval_variance: float = 2.0
 @export var max_plants: int = 10
@@ -10,8 +14,16 @@ extends Node2D
 @export var spawn_bounds_bottom_right: Vector2
 
 var plants: Array[Node2D] = []
+var plant_scenes: Array[PackedScene] = []
 
 func _ready():
+	# Add all plant scenes to the list
+	plant_scenes = [
+		plant_scene,
+		chili_scene,
+		#cabbage_scene,
+		#corn_scene
+	]
 	spawn_plant_timer()
 
 func spawn_plant_timer():
@@ -33,6 +45,7 @@ func spawn_plant():
 		if plant.global_position.distance_to(pos) < min_distance_between_plants:
 			return
 
+	var plant_scene = plant_scenes.pick_random()
 	var plant = plant_scene.instantiate()
 	plant.global_position = pos
 	get_parent().add_child(plant)
