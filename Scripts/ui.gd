@@ -11,6 +11,7 @@ func _ready() -> void:
 	$HealthBar.value = Globals.player_health
 
 func update_stats():
+	$GrenadeAmount.text = str(Globals.grenades)
 	$HealthBar.value = Globals.player_health
 	$ThirstBar.value = Globals.player_thirst
 	$HungerBar.value = Globals.player_hunger

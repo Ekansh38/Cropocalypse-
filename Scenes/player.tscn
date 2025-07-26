@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://chgtjd83j5y7"]
+[gd_scene load_steps=23 format=3 uid="uid://chgtjd83j5y7"]
 
 [ext_resource type="Script" uid="uid://20lm0festh54" path="res://Scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Resource" uid="uid://c8k5f6a02kd8s" path="res://Inventory/player_inventory.tres" id="2_vgqql"]
@@ -8,6 +8,51 @@
 [ext_resource type="Texture2D" uid="uid://bel8ccgc1wmd" path="res://Assets/gjpistol.png" id="4_fkybt"]
 [ext_resource type="Texture2D" uid="uid://susm0btw48ue" path="res://Assets/light.png" id="7_3smsa"]
 [ext_resource type="AudioStream" uid="uid://bcuver20kfi7q" path="res://Assets/shotsfx.wav" id="8_8erm5"]
+[ext_resource type="Texture2D" uid="uid://bdtvyc8mqty8u" path="res://Assets/soldieranim/1.png" id="9_qqcod"]
+[ext_resource type="Texture2D" uid="uid://do5eous1d10ph" path="res://Assets/soldieranim/2.png" id="10_igrcy"]
+[ext_resource type="Texture2D" uid="uid://d2fe2b4gvb883" path="res://Assets/soldieranim/3.png" id="11_fs7ks"]
+[ext_resource type="Texture2D" uid="uid://em16l7siq77k" path="res://Assets/soldieranim/4.png" id="12_l6n3p"]
+[ext_resource type="Texture2D" uid="uid://pdelfum52cps" path="res://Assets/soldieranim/5.png" id="13_olqyp"]
+[ext_resource type="Texture2D" uid="uid://bhgvr745urhwi" path="res://Assets/soldieranim/6.png" id="14_wpjfl"]
+[ext_resource type="Texture2D" uid="uid://c61b04fq1tfqc" path="res://Assets/soldieranim/7.png" id="15_bi64h"]
+[ext_resource type="Texture2D" uid="uid://dkyu02iemfpx0" path="res://Assets/soldieranim/8.png" id="16_2ijsl"]
+[ext_resource type="Texture2D" uid="uid://bo6h7atxdvkow" path="res://Assets/soldieranim/9.png" id="17_p1odr"]
+[ext_resource type="AudioStream" uid="uid://t22ou82bwmsd" path="res://Assets/walkingsfx.wav" id="18_igrcy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0gysh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_qqcod")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_igrcy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_fs7ks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_l6n3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_olqyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_wpjfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_bi64h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_2ijsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_p1odr")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 12.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(63, 93)
@@ -31,7 +76,6 @@ texture = ExtResource("3_x3wgy")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_fkybt")
-metadata/_edit_lock_ = true
 
 [node name="LeftGun" type="Sprite2D" parent="Sprite2D"]
 position = Vector2(-186.667, 83.3333)
@@ -49,6 +93,31 @@ offset = Vector2(35, -45)
 flip_h = true
 
 [node name="Marker2D" type="Marker2D" parent="Sprite2D/RightGun"]
+position = Vector2(173.333, -1.19209e-06)
+scale = Vector2(1.89104, 5.68889)
+
+[node name="Player" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_0gysh")
+animation = &"walk"
+frame_progress = 0.975269
+
+[node name="LeftGun" type="Sprite2D" parent="Player"]
+position = Vector2(-186.667, 83.3333)
+texture = ExtResource("4_fkybt")
+offset = Vector2(-35, -45)
+
+[node name="Marker2D" type="Marker2D" parent="Player/LeftGun"]
+position = Vector2(-63.3333, -1.19209e-06)
+scale = Vector2(1.89104, 5.68889)
+
+[node name="RightGun" type="Sprite2D" parent="Player"]
+position = Vector2(176.667, 93.3333)
+texture = ExtResource("4_fkybt")
+offset = Vector2(35, -45)
+flip_h = true
+
+[node name="Marker2D" type="Marker2D" parent="Player/RightGun"]
 position = Vector2(173.333, -1.19209e-06)
 scale = Vector2(1.89104, 5.68889)
 
@@ -85,3 +154,7 @@ theme_override_font_sizes/font_size = 50
 
 [node name="ShotSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_8erm5")
+
+[node name="WalkingSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_igrcy")
+volume_db = -10.0

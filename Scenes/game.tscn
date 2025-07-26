@@ -283,4 +283,5 @@ cooking_ui = NodePath("../CookingUI")
 [node name="PerformanceMode" type="Node2D" parent="."]
 script = ExtResource("32_ese38")
 
+[connection signal="grenade_thrown" from="Player" to="." method="_on_player_grenade_thrown"]
 [connection signal="shoot_fired" from="Player" to="." method="_on_player_shoot_fired"]

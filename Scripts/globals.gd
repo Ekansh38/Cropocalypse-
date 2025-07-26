@@ -8,6 +8,14 @@ var is_hovering_on_ui = false
 
 var _kitchen_slots: Array[InvItem] = []
 
+var _grenades: int = 3
+var grenades: int:
+	get:
+		return _grenades
+	set(value):
+		_grenades = value
+		update_stats.emit()
+
 var kitchen_slots: Array[InvItem]:
 	get: return _kitchen_slots
 	set(value):

@@ -8,7 +8,7 @@ signal shoot_fired(global_position: Vector2, direction: Vector2)
 var can_shoot: bool = true
 var shoot_cooldown: float = 0.6
 var last_move_key: String = "right" # Default to right
-
+signal grenade_thrown(global_position: Vector2, direction: Vector2)
 @export var inv: Inv
 @export var friction := 8.0
 @export var SPEED := 5000.0
@@ -63,45 +63,100 @@ func _process(delta: float) -> void:
 
 	Globals.player_hunger = clamp(Globals.player_hunger, 0, 100)
 	Globals.player_thirst = clamp(Globals.player_thirst, 0, 100)
-
-
+	
+	if Input.is_action_just_pressed("grenade") and not Globals.is_hovering_on_ui:
+		emit_grenade_signal()
+		
 	if Input.is_action_just_pressed("shoot") and can_shoot and not Globals.is_hovering_on_ui:
 		emit_shoot_signal()
 		can_shoot = false
 		await get_tree().create_timer(shoot_cooldown).timeout
 		can_shoot = true
+		
+	
+	if dir != Vector2.ZERO:
+		if not $Player.is_playing() or $Player.animation != "walk":
+			$Player.visible = true
+			$Player.play("walk")
+			$WalkingSFX.play()
+			$Sprite2D.visible = false
+
+	else:
+		$WalkingSFX.stop()
+
+		$Player.stop()
+		$Player.visible = false
+		$Sprite2D.visible = true
+	
+	
+	if dir.x < 0:
+		$Player.flip_h = false
+	elif dir.x > 0:
+		$Player.flip_h = true
+		
+		
+func emit_grenade_signal():
+	if Globals.grenades > 0:
+		Globals.grenades -= 1
+		var using_left = $Player/LeftGun.visible
+		var marker
+		if using_left:
+			marker = $Player/LeftGun/Marker2D
+		else:
+			marker = $Player/RightGun/Marker2D
+		
+		var throw_pos = marker.global_position
+		var mouse_pos = get_global_mouse_position()
+		var throw_dir = (mouse_pos - throw_pos).normalized()
+		
+		emit_signal("grenade_thrown", throw_pos, throw_dir)
 
 func rotate_guns_to_mouse() -> void:
 	var mouse_pos = get_viewport().get_mouse_position()
 
 	var screen_center_x = get_viewport_rect().size.x / 2
-	var left_gun = $Sprite2D/LeftGun
-	var right_gun = $Sprite2D/RightGun
+	var left_gun = $Player/LeftGun
+	var right_gun = $Player/RightGun
 	
+	var other_left_gun = $Sprite2D/LeftGun
+	var other_right_gun = $Sprite2D/RightGun
 
 	if mouse_pos.x < screen_center_x:
 		$Sprite2D.flip_h = false
 
 		left_gun.visible = true
 		right_gun.visible = false
+		other_left_gun.visible = true
+		other_right_gun.visible = false
+
 		var dir = (get_global_mouse_position() - left_gun.global_position).angle()
 		left_gun.rotation = dir + deg_to_rad(180)
+		other_left_gun.rotation = dir + deg_to_rad(180)
+
 	else:
 		$Sprite2D.flip_h = true
 		left_gun.visible = false
 		right_gun.visible = true
+		other_left_gun.visible = false
+		other_right_gun.visible = true
+
 		var dir = (get_global_mouse_position() - right_gun.global_position).angle()
 		right_gun.rotation = dir
+		other_right_gun.rotation = dir
+
+		
+		
+
 
 func emit_shoot_signal():
 	$ShotSFX.pitch_scale = randf_range(0.9, 1.1)
 	$ShotSFX.play()
-	var using_left = $Sprite2D/LeftGun.visible
+	var using_left = $Player/LeftGun.visible
 	var marker
 	if using_left:
-		marker = $Sprite2D/LeftGun/Marker2D
+		marker = $Player/LeftGun/Marker2D
 	else:
-		marker = $Sprite2D/RightGun/Marker2D
+		marker = $Player/RightGun/Marker2D
 	var shoot_pos = marker.global_position
 	var mouse_pos = get_global_mouse_position()
 	var shoot_dir = (mouse_pos - shoot_pos).normalized()
