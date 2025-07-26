@@ -7,7 +7,7 @@
 script = ExtResource("1_27tpk")
 name = "Mango Mochi"
 texture = ExtResource("2_27tpk")
-details = "+20 Hunger"
-added_hunger = 20
-added_thirst = 0
+details = "+40 hunger + 30 thirst"
+added_hunger = 40
+added_thirst = 30
 metadata/_custom_type_script = "uid://dxfvm7kg0xker"

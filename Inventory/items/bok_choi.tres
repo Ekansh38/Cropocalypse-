@@ -7,7 +7,7 @@
 script = ExtResource("1_5xs4q")
 name = "Bok Choy"
 texture = ExtResource("2_5xs4q")
-details = "+7 Hunger +2 Thirst"
-added_hunger = 7
-added_thirst = 2
+details = "+10 hunger +5 thirst"
+added_hunger = 10
+added_thirst = 5
 metadata/_custom_type_script = "uid://dxfvm7kg0xker"

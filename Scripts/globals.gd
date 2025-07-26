@@ -8,6 +8,36 @@ var is_hovering_on_ui = false
 
 var _kitchen_slots: Array[InvItem] = []
 
+var damage_timer = null
+func _ready():
+	damage_timer = Timer.new()
+	damage_timer.wait_time = 0.5
+	damage_timer.autostart = true
+	damage_timer.one_shot = false
+	damage_timer.timeout.connect(_on_damage_tick)
+	add_child(damage_timer)
+
+func _on_damage_tick():
+	var took_damage = false
+
+	if player_hunger <= 0:
+		player_health -= 1.5
+		took_damage = true
+
+	if player_thirst <= 0:
+		player_health -= 1.5
+		took_damage = true
+
+	if not took_damage and player_hunger > 75 and player_thirst > 75:
+		if player_health < 100:
+			player_health += 0.5
+
+	if player_health <= 0:
+		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
+
+	update_stats.emit()
+
+
 var _grenades: int = 3
 var grenades: int:
 	get:
@@ -22,8 +52,10 @@ var kitchen_slots: Array[InvItem]:
 		_kitchen_slots = value
 		update_kitchen.emit()
 		
-		
+
 var is_cooking = false
+
+
 var recipes = {
 	"Mango Sticky Rice": {
 		"ingredients": ["Mango", "Rice"],
@@ -76,8 +108,6 @@ var player_hunger = 100:
 	get:
 		return player_hunger
 	set(value):
-		if player_hunger <= 0:
-			get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 		player_hunger = value
 		update_stats.emit()
 
@@ -85,8 +115,6 @@ var player_thirst = 100:
 	get:
 		return player_thirst
 	set(value):
-		if player_thirst <= 0:
-			get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 		player_thirst = value
 		update_stats.emit()
 

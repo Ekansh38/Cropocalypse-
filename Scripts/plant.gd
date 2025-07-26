@@ -18,7 +18,7 @@ var health = 100
 
 var wander_direction: Vector2 = Vector2.ZERO
 var wander_timer: float = 0.0
-const WANDER_SPEED = 90.0
+var WANDER_SPEED = 90.0
 const WANDER_CHANGE_INTERVAL = 2.0
 
 func _ready():
@@ -159,22 +159,21 @@ func _physics_process(delta):
 			final_velocity += wander_direction * WANDER_SPEED
 			is_moving = true
 
-			if mature_sprite.visible:
-				mature_sprite.play("walk_slow")
-				mature_sprite.flip_h = wander_direction.x < -0.1
-
-			if mature_sprite.visible:
-				if is_moving:
-					if target:
-						if mature_sprite.animation != "walk":
-							mature_sprite.play("walk")
-					else:
-						if mature_sprite.animation != "walk_slow":
-							mature_sprite.play("walk_slow")
+		if mature_sprite.visible:
+			if is_moving:
+				if target:
+					if mature_sprite.animation != "walk":
+						mature_sprite.play("walk")
 				else:
-					if mature_sprite.animation == "walk" or mature_sprite.animation == "walk_slow":
-						mature_sprite.stop()
-			
+					if mature_sprite.animation != "walk_slow":
+						mature_sprite.play("walk_slow")
+			else:
+				if mature_sprite.animation == "walk" or mature_sprite.animation == "walk_slow":
+					mature_sprite.stop()
+
+			mature_sprite.flip_h = final_velocity.x < -0.1
+		
+					
 	var collision = move_and_collide(final_velocity * delta)
 	
 	

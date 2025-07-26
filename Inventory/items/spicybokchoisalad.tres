@@ -7,7 +7,7 @@
 script = ExtResource("1_hl5mb")
 name = "Spicy Bok Choy Salad"
 texture = ExtResource("2_hl5mb")
-details = "+20 Hunger +5 Thirst"
-added_hunger = 20
-added_thirst = 5
+details = "+25 hunger + 10 thirst"
+added_hunger = 25
+added_thirst = 10
 metadata/_custom_type_script = "uid://dxfvm7kg0xker"

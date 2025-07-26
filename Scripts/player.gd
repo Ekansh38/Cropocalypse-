@@ -52,8 +52,8 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	rotate_guns_to_mouse()
 	
-	var hunger_drain = 0.5 * delta
-	var thirst_drain = 0.5 * delta
+	var hunger_drain = 0.4 * delta
+	var thirst_drain = 0.4 * delta
 
 	if dir != Vector2.ZERO:
 		hunger_drain *= 3.0
@@ -83,7 +83,7 @@ func _process(delta: float) -> void:
 			var mouse_pos = get_global_mouse_position()
 			var throw_dir = (mouse_pos - throw_pos).normalized()
 			emit_signal("grenade_thrown", throw_pos, throw_dir)		
-	if Input.is_action_just_pressed("shoot") and can_shoot and not Globals.is_hovering_on_ui:
+	if Input.is_action_just_pressed("shoot") and can_shoot and not Globals.is_hovering_on_ui and not Globals.is_cooking:
 		emit_shoot_signal()
 		can_shoot = false
 		await get_tree().create_timer(shoot_cooldown).timeout
@@ -186,7 +186,7 @@ func emit_shoot_signal():
 func add_item(type):
 	inv.insert(type)
 
-func take_damage(damage: int = 5):
+func take_damage(damage: int = 4):
 	$Camera2D.screen_shake(2)
 	Globals.player_health -= damage
 	print(Globals.player_health)

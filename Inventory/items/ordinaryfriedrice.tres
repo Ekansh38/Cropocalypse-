@@ -7,7 +7,7 @@
 script = ExtResource("1_ehltu")
 name = "Ordinary Fried Rice"
 texture = ExtResource("2_ehltu")
-details = "+40 Hunger"
-added_hunger = 40
-added_thirst = 0
+details = "+30 hunger +10 thirst"
+added_hunger = 30
+added_thirst = 10
 metadata/_custom_type_script = "uid://dxfvm7kg0xker"

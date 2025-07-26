@@ -23,12 +23,8 @@ func _process(delta: float) -> void:
 				$"../CanvasLayer/InvUI".close()
 				is_ui_open = true
 				Globals.is_cooking = true
-
 			else:
-
 				is_ui_open = false
-
-
 				$"../CookingUI".close()
 
 				

@@ -72,7 +72,7 @@ texture = ExtResource("14_mg4q0")
 [node name="ActiveEnemies" type="Node2D" parent="."]
 
 [node name="Kitchen" parent="." instance=ExtResource("30_mucmn")]
-position = Vector2(-711, -1080)
+position = Vector2(-534, -1081)
 
 [node name="PlantDrops" type="Node2D" parent="."]
 
@@ -83,6 +83,7 @@ onion_scene = ExtResource("8_ese38")
 chili_scene = ExtResource("7_h4fw4")
 rice_scene = ExtResource("14_ewbju")
 bok_choi_scene = ExtResource("22_cwurv")
+spawn_interval = 6.0
 spawn_interval_variance = 3.0
 max_plants = 5
 min_distance_between_plants = 100.0
@@ -223,10 +224,11 @@ environment = SubResource("Environment_nb51f")
 color = Color(1, 1, 0.945098, 1)
 script = ExtResource("16_nnt18")
 
-[node name="MangoDropPoints" type="Node2D" parent="."]
+[node name="MangoDropPoints" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("24_fkdbe")
 mango_scene = ExtResource("25_81klo")
 max_spawn_delay = 8.0
+camera = NodePath("../Player/Camera2D")
 
 [node name="Pair1" type="Node2D" parent="MangoDropPoints"]
 
@@ -257,11 +259,6 @@ position = Vector2(-1220, -1098)
 
 [node name="Start" type="Marker2D" parent="MangoDropPoints/Pair6"]
 position = Vector2(-1401, -1142)
-
-[node name="Pair7" type="Node2D" parent="MangoDropPoints"]
-
-[node name="Start" type="Marker2D" parent="MangoDropPoints/Pair7"]
-position = Vector2(-1366, -992)
 
 [node name="Pair8" type="Node2D" parent="MangoDropPoints"]
 

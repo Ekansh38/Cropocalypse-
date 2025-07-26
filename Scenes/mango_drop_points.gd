@@ -3,7 +3,7 @@ extends Node2D
 @export var mango_scene: PackedScene
 @export var min_spawn_delay := 3.0
 @export var max_spawn_delay := 7.0
-
+@export var camera: Camera2D
 @onready var active_mangos = $"../ActiveEnemies"
 
 var occupied_pairs := {}
@@ -20,7 +20,7 @@ func schedule_next_spawn():
 
 func spawn_random_mango():
 	if active_mangos.get_child_count() >= 3:
-		return # too many active mangos
+		return
 
 	var all_pairs = get_children()
 	var available_pairs = all_pairs.filter(func(pair):
@@ -34,6 +34,7 @@ func spawn_random_mango():
 	var start = chosen_pair.get_node("Start")
 
 	var mango = mango_scene.instantiate()
+	mango.camera = camera
 	mango.global_position = start.global_position
 
 	chosen_pair.add_child(mango)

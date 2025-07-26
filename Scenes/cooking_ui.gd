@@ -119,11 +119,11 @@ func _on_button_pressed() -> void:
 		player_inv.insert(mango_mochi)
 	elif dish == "Chili Mango Salad":
 		Globals.recipes["Chili Mango Salad"]["unlocked"] = true
-		var chili_mango_salad: InvItem = preload("res://Inventory/items/mangomochi.tres")
+		var chili_mango_salad: InvItem = preload("res://Inventory/items/chili_mango_salad.tres")
 		player_inv.insert(chili_mango_salad)
 	elif dish == "Chili Garlic Noodles":
 		Globals.recipes["Chili Garlic Noodles"]["unlocked"] = true
-		var chili_garlic_noodles: InvItem = preload("res://Inventory/items/mangomochi.tres")
+		var chili_garlic_noodles: InvItem = preload("res://Inventory/items/chili_garlic_noodles.tres")
 		player_inv.insert(chili_garlic_noodles)
 
 	$OtherThings/Button.disabled = true

@@ -7,7 +7,7 @@
 script = ExtResource("1_64m51")
 name = "Onion"
 texture = ExtResource("2_64m51")
-details = "+3 Hunger +2 Thirst"
-added_hunger = 3
-added_thirst = 2
+details = "+5 Hunger +5 Thirst"
+added_hunger = 5
+added_thirst = 5
 metadata/_custom_type_script = "uid://dxfvm7kg0xker"

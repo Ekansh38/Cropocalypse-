@@ -1,6 +1,9 @@
 extends Plant
 
 func _ready():
+	speed = 500
+	WANDER_SPEED = 300.0
+
 	$Mature.visible = false
 	$GrowingParticles.visible = true
 	$GrowingLight.visible = true
