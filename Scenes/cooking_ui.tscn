@@ -7,7 +7,9 @@
 [ext_resource type="Resource" uid="uid://c8k5f6a02kd8s" path="res://Inventory/player_inventory.tres" id="5_48die"]
 
 [node name="CookingUI" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_id7lv")
+player_inv = ExtResource("5_48die")
 
 [node name="CookingInvUI" parent="." instance=ExtResource("2_vh6f4")]
 offset_left = 412.0
@@ -28,6 +30,7 @@ offset_left = 213.0
 offset_top = 78.0
 offset_right = 1042.0
 offset_bottom = 418.0
+mouse_filter = 2
 
 [node name="KitchenInvUISlot" parent="OtherThings" instance=ExtResource("3_7cbl3")]
 layout_mode = 0
@@ -82,3 +85,5 @@ offset_right = 705.0
 offset_bottom = 388.0
 theme_override_font_sizes/font_size = 50
 text = "Cook"
+
+[connection signal="pressed" from="OtherThings/Button" to="." method="_on_button_pressed"]

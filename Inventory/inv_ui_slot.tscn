@@ -31,12 +31,13 @@ scale = Vector2(0.1, 0.1)
 
 [node name="HoverDisplay" type="Control" parent="."]
 process_mode = 3
+z_index = 10
 anchors_preset = 0
 
 [node name="Background" type="ColorRect" parent="HoverDisplay"]
 layout_mode = 0
 offset_left = -54.0
-offset_top = -147.0
+offset_top = -186.0
 offset_right = 130.0
 offset_bottom = -4.0
 mouse_filter = 2
@@ -46,9 +47,9 @@ color = Color(0, 0, 0, 1)
 process_mode = 3
 layout_mode = 0
 offset_left = -44.0
-offset_top = -144.0
+offset_top = -180.0
 offset_right = 120.0
-offset_bottom = -3.0
+offset_bottom = -7.0
 alignment = 1
 
 [node name="DropButton" type="Button" parent="HoverDisplay/VBoxContainer"]

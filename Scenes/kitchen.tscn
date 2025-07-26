@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2k6maew0cise"]
+[gd_scene load_steps=6 format=3 uid="uid://b2k6maew0cise"]
 
 [ext_resource type="Texture2D" uid="uid://dbmdjrawaoxy4" path="res://Assets/kitchen.png" id="1_7u47w"]
 [ext_resource type="Script" uid="uid://btmf0f4uyfcm8" path="res://Scenes/kitchen.gd" id="1_23qos"]
+[ext_resource type="Texture2D" uid="uid://susm0btw48ue" path="res://Assets/light.png" id="3_lvc4q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7u47w"]
 size = Vector2(610, 216)
@@ -17,13 +18,28 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_7u47w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-8, -6)
 shape = SubResource("RectangleShape2D_7u47w")
 
 [node name="InteractArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+visible = false
 shape = SubResource("CircleShape2D_7u47w")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(231, -29)
+color = Color(1, 0, 0, 1)
+texture = ExtResource("3_lvc4q")
+texture_scale = 0.5
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(45, -20)
+color = Color(1, 0, 0, 1)
+energy = 0.3
+texture = ExtResource("3_lvc4q")
+texture_scale = 0.2
 
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

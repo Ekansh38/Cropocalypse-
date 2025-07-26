@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://drnv81hnt06ad"]
+[gd_scene load_steps=11 format=3 uid="uid://drnv81hnt06ad"]
 
 [ext_resource type="PackedScene" uid="uid://bx4iymtkeaw8m" path="res://Scenes/plant.tscn" id="1_1gakv"]
 [ext_resource type="Texture2D" uid="uid://dyoivficmhutl" path="res://Assets/mangoanim/small.png" id="2_m7dcw"]
@@ -26,6 +26,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_xjsj4"]
+offsets = PackedFloat32Array(0, 0.865116, 0.993023)
+colors = PackedColorArray(1, 0.564706, 0, 1, 0.866667, 0.615686, 0, 1, 1, 0.54902, 0, 0)
+
 [node name="MangoPlant" instance=ExtResource("1_1gakv")]
 script = ExtResource("2_xjsj4")
 
@@ -40,3 +44,6 @@ texture = ExtResource("4_2i6f1")
 
 [node name="Mature" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_ff5vk")
+
+[node name="HitParticles" parent="." index="11"]
+color_ramp = SubResource("Gradient_xjsj4")

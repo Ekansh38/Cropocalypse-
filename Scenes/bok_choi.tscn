@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d2vyrpu6foea"]
+[gd_scene load_steps=13 format=3 uid="uid://d2vyrpu6foea"]
 
 [ext_resource type="PackedScene" uid="uid://bx4iymtkeaw8m" path="res://Scenes/plant.tscn" id="1_8w4ua"]
 [ext_resource type="Texture2D" uid="uid://dim7msgiqijqq" path="res://Assets/bokchoianim/small.png" id="2_jc4ts"]
@@ -21,6 +21,10 @@ animations = [{
 "name": &"walk",
 "speed": 5.0
 }]
+
+[sub_resource type="Gradient" id="Gradient_tgldm"]
+offsets = PackedFloat32Array(0, 0.87703, 1)
+colors = PackedColorArray(0, 0.388235, 0, 1, 0, 0.784314, 0, 1, 0, 0.745098, 0, 0)
 
 [node name="BokChoi" instance=ExtResource("1_8w4ua")]
 script = ExtResource("2_mu7ks")
@@ -63,3 +67,6 @@ metadata/_edit_lock_ = true
 
 [node name="AttackArea" parent="." index="12"]
 script = null
+
+[node name="HitParticles" parent="." index="15"]
+color_ramp = SubResource("Gradient_tgldm")

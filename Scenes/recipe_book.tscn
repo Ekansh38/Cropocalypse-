@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cg3hk1o4t108d"]
+[gd_scene load_steps=20 format=3 uid="uid://cg3hk1o4t108d"]
 
 [ext_resource type="Texture2D" uid="uid://c8114e6koxyom" path="res://Assets/gjmangoinv.png" id="1_focq1"]
 [ext_resource type="Script" uid="uid://cmf7dqrxse36g" path="res://Scenes/recipe_book.gd" id="1_pv1l3"]
@@ -8,9 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://d2sr7q2veujym" path="res://Assets/onionrice.png" id="5_4wqci"]
 [ext_resource type="Texture2D" uid="uid://d313iehin3v1" path="res://Assets/gjbokchoiinv.png" id="7_3urkt"]
 [ext_resource type="Texture2D" uid="uid://c2xaud0lwa8kw" path="res://Assets/spicyrice.png" id="7_ccjdk"]
+[ext_resource type="Texture2D" uid="uid://dn2331266oeos" path="res://Assets/mochi.png" id="8_k3ha3"]
 [ext_resource type="Texture2D" uid="uid://vi4g7u2485t0" path="res://Assets/gjchiliinv.png" id="8_wd2ax"]
 [ext_resource type="Texture2D" uid="uid://c111snl0xnncc" path="res://Assets/bcchili.png" id="9_wd2ax"]
 [ext_resource type="Texture2D" uid="uid://h7g38uhduxqa" path="res://Assets/yzrice.png" id="9_y7wn8"]
+[ext_resource type="Texture2D" uid="uid://dp2ubrfomi5y8" path="res://Assets/chilionioncrunch.png" id="10_g4mlv"]
+[ext_resource type="Texture2D" uid="uid://mupujlqyfvw3" path="res://Assets/mangochilisalad.png" id="11_ve5qh"]
+[ext_resource type="Texture2D" uid="uid://i5te74ojrj2i" path="res://Assets/onionspicynoodle.png" id="12_pye3l"]
 
 [sub_resource type="Animation" id="Animation_y5tnk"]
 length = 0.001
@@ -111,8 +115,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 320.0
-offset_top = -805.0
-offset_bottom = -800.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -123,8 +126,6 @@ process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -800.0
-offset_bottom = -800.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -222,7 +223,7 @@ modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 offset_left = 650.0
 offset_top = -363.0
-offset_right = 960.0
+offset_right = 954.0
 offset_bottom = -129.0
 
 [node name="Unlocked" type="ColorRect" parent="VBoxContainer/SpicyFriedRice"]
@@ -230,7 +231,7 @@ process_mode = 3
 layout_mode = 2
 offset_left = 649.0
 offset_top = -363.0
-offset_right = 960.0
+offset_right = 954.0
 offset_bottom = -128.0
 color = Color(0, 0, 0, 1)
 
@@ -314,6 +315,111 @@ offset_bottom = -313.0
 theme_override_font_sizes/font_size = 25
 text = "Spicy Fried Rice"
 
+[node name="MangoMochi" type="Control" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MangoMochi"]
+process_mode = 3
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+offset_left = 965.0
+offset_top = -367.0
+offset_right = 1270.0
+offset_bottom = -132.0
+
+[node name="Unlocked" type="ColorRect" parent="VBoxContainer/MangoMochi"]
+process_mode = 3
+layout_mode = 2
+offset_left = 965.0
+offset_top = -367.0
+offset_right = 1271.0
+offset_bottom = -133.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MangoMochi"]
+process_mode = 3
+layout_mode = 0
+offset_left = 965.0
+offset_top = -324.0
+offset_right = 1065.0
+offset_bottom = -224.0
+texture = ExtResource("1_focq1")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/MangoMochi"]
+process_mode = 3
+layout_mode = 0
+offset_left = 1066.0
+offset_top = -223.0
+offset_right = 1166.0
+offset_bottom = -123.0
+rotation = -1.5708
+texture = ExtResource("2_4i557")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/MangoMochi"]
+process_mode = 3
+layout_mode = 2
+offset_left = 1166.0
+offset_top = -297.0
+offset_right = 1204.0
+offset_bottom = -228.0
+theme_override_font_sizes/font_size = 50
+text = "+"
+
+[node name="Label4" type="Label" parent="VBoxContainer/MangoMochi"]
+process_mode = 3
+layout_mode = 2
+offset_left = 1054.0
+offset_top = -297.0
+offset_right = 1092.0
+offset_bottom = -228.0
+theme_override_font_sizes/font_size = 50
+text = "+"
+
+[node name="Label2" type="Label" parent="VBoxContainer/MangoMochi"]
+process_mode = 3
+layout_mode = 2
+offset_left = 985.0
+offset_top = -199.0
+offset_right = 1023.0
+offset_bottom = -130.0
+theme_override_font_sizes/font_size = 50
+text = "="
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/MangoMochi"]
+process_mode = 3
+layout_mode = 2
+offset_left = 1177.0
+offset_top = -220.0
+offset_right = 1277.0
+offset_bottom = -120.0
+rotation = -1.5708
+texture = ExtResource("2_4i557")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/MangoMochi"]
+process_mode = 3
+layout_mode = 2
+offset_left = 1059.0
+offset_top = -249.0
+offset_right = 1159.0
+offset_bottom = -149.0
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_k3ha3")
+expand_mode = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/MangoMochi"]
+process_mode = 3
+layout_mode = 2
+offset_left = 1037.0
+offset_top = -359.0
+offset_right = 1253.0
+offset_bottom = -324.0
+theme_override_font_sizes/font_size = 25
+text = "Mango Mochi"
+
 [node name="YangzhouFriedRice" type="Control" parent="VBoxContainer"]
 process_mode = 3
 layout_mode = 2
@@ -324,7 +430,7 @@ modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 offset_left = 649.0
 offset_top = -111.0
-offset_right = 960.0
+offset_right = 953.0
 offset_bottom = 123.0
 
 [node name="Unlocked" type="ColorRect" parent="VBoxContainer/YangzhouFriedRice"]
@@ -332,7 +438,7 @@ process_mode = 3
 layout_mode = 2
 offset_left = 649.0
 offset_top = -111.0
-offset_right = 960.0
+offset_right = 953.0
 offset_bottom = 123.0
 color = Color(0, 0, 0, 1)
 
@@ -415,6 +521,272 @@ offset_right = 925.0
 offset_bottom = -70.0
 theme_override_font_sizes/font_size = 25
 text = "Yangzhou Fried Rice"
+
+[node name="ChiliMangoSalad" type="Control" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/ChiliMangoSalad"]
+process_mode = 3
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+offset_left = 966.0
+offset_top = -115.0
+offset_right = 1271.0
+offset_bottom = 119.0
+
+[node name="Unlocked" type="ColorRect" parent="VBoxContainer/ChiliMangoSalad"]
+process_mode = 3
+layout_mode = 2
+offset_left = 966.0
+offset_top = -115.0
+offset_right = 1271.0
+offset_bottom = 119.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ChiliMangoSalad"]
+process_mode = 3
+layout_mode = 0
+offset_left = 979.0
+offset_top = -67.0
+offset_right = 1079.0
+offset_bottom = 33.0
+texture = ExtResource("8_wd2ax")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/ChiliMangoSalad"]
+process_mode = 3
+layout_mode = 0
+offset_left = 1146.0
+offset_top = -63.0
+offset_right = 1246.0
+offset_bottom = 37.0
+texture = ExtResource("1_focq1")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/ChiliMangoSalad"]
+process_mode = 3
+layout_mode = 2
+offset_left = 1095.0
+offset_top = -49.0
+offset_right = 1133.0
+offset_bottom = 20.0
+theme_override_font_sizes/font_size = 50
+text = "+"
+
+[node name="Label2" type="Label" parent="VBoxContainer/ChiliMangoSalad"]
+process_mode = 3
+layout_mode = 2
+offset_left = 992.0
+offset_top = 44.0
+offset_right = 1030.0
+offset_bottom = 113.0
+theme_override_font_sizes/font_size = 50
+text = "="
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/ChiliMangoSalad"]
+process_mode = 3
+layout_mode = 2
+offset_left = 1064.0
+offset_top = 18.0
+offset_right = 1164.0
+offset_bottom = 118.0
+texture = ExtResource("11_ve5qh")
+expand_mode = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/ChiliMangoSalad"]
+process_mode = 3
+layout_mode = 2
+offset_left = 1007.0
+offset_top = -105.0
+offset_right = 1249.0
+offset_bottom = -70.0
+theme_override_font_sizes/font_size = 25
+text = "Chili Mango Salad"
+
+[node name="ChiliGarlicNoodles" type="Control" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/ChiliGarlicNoodles"]
+process_mode = 3
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+offset_left = 966.0
+offset_top = 137.0
+offset_right = 1271.0
+offset_bottom = 367.0
+
+[node name="Unlocked" type="ColorRect" parent="VBoxContainer/ChiliGarlicNoodles"]
+process_mode = 3
+layout_mode = 2
+offset_left = 966.0
+offset_top = 137.0
+offset_right = 1271.0
+offset_bottom = 367.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ChiliGarlicNoodles"]
+process_mode = 3
+layout_mode = 0
+offset_left = 959.0
+offset_top = 182.0
+offset_right = 1059.0
+offset_bottom = 282.0
+texture = ExtResource("8_wd2ax")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/ChiliGarlicNoodles"]
+process_mode = 3
+layout_mode = 0
+offset_left = 1057.0
+offset_top = 179.0
+offset_right = 1157.0
+offset_bottom = 279.0
+texture = ExtResource("4_po80a")
+expand_mode = 1
+
+[node name="TextureRect5" type="TextureRect" parent="VBoxContainer/ChiliGarlicNoodles"]
+process_mode = 3
+layout_mode = 0
+offset_left = 1171.0
+offset_top = 173.0
+offset_right = 1271.0
+offset_bottom = 273.0
+texture = ExtResource("7_3urkt")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/ChiliGarlicNoodles"]
+process_mode = 3
+layout_mode = 2
+offset_left = 1040.0
+offset_top = 197.0
+offset_right = 1078.0
+offset_bottom = 266.0
+theme_override_font_sizes/font_size = 50
+text = "+"
+
+[node name="Label4" type="Label" parent="VBoxContainer/ChiliGarlicNoodles"]
+process_mode = 3
+layout_mode = 2
+offset_left = 1145.0
+offset_top = 195.0
+offset_right = 1183.0
+offset_bottom = 264.0
+theme_override_font_sizes/font_size = 50
+text = "+"
+
+[node name="Label2" type="Label" parent="VBoxContainer/ChiliGarlicNoodles"]
+process_mode = 3
+layout_mode = 2
+offset_left = 984.0
+offset_top = 300.0
+offset_right = 1022.0
+offset_bottom = 369.0
+theme_override_font_sizes/font_size = 50
+text = "="
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/ChiliGarlicNoodles"]
+process_mode = 3
+layout_mode = 2
+offset_left = 1063.0
+offset_top = 271.0
+offset_right = 1163.0
+offset_bottom = 371.0
+texture = ExtResource("12_pye3l")
+expand_mode = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/ChiliGarlicNoodles"]
+process_mode = 3
+layout_mode = 2
+offset_left = 998.0
+offset_top = 145.0
+offset_right = 1240.0
+offset_bottom = 180.0
+theme_override_font_sizes/font_size = 25
+text = "Chili Garlic Noodles"
+
+[node name="ChiliCrunchOil" type="Control" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/ChiliCrunchOil"]
+process_mode = 3
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+offset_left = 649.0
+offset_top = 133.0
+offset_right = 954.0
+offset_bottom = 363.0
+
+[node name="Unlocked" type="ColorRect" parent="VBoxContainer/ChiliCrunchOil"]
+process_mode = 3
+layout_mode = 2
+offset_left = 649.0
+offset_top = 133.0
+offset_right = 954.0
+offset_bottom = 363.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ChiliCrunchOil"]
+process_mode = 3
+layout_mode = 0
+offset_left = 677.0
+offset_top = 182.0
+offset_right = 777.0
+offset_bottom = 282.0
+texture = ExtResource("4_po80a")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/ChiliCrunchOil"]
+process_mode = 3
+layout_mode = 0
+offset_left = 838.0
+offset_top = 175.0
+offset_right = 938.0
+offset_bottom = 275.0
+texture = ExtResource("8_wd2ax")
+expand_mode = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/ChiliCrunchOil"]
+process_mode = 3
+layout_mode = 2
+offset_left = 794.0
+offset_top = 197.0
+offset_right = 832.0
+offset_bottom = 266.0
+theme_override_font_sizes/font_size = 50
+text = "+"
+
+[node name="Label2" type="Label" parent="VBoxContainer/ChiliCrunchOil"]
+process_mode = 3
+layout_mode = 2
+offset_left = 661.0
+offset_top = 298.0
+offset_right = 699.0
+offset_bottom = 367.0
+theme_override_font_sizes/font_size = 50
+text = "="
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/ChiliCrunchOil"]
+process_mode = 3
+layout_mode = 2
+offset_left = 759.0
+offset_top = 260.0
+offset_right = 859.0
+offset_bottom = 360.0
+texture = ExtResource("10_g4mlv")
+expand_mode = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/ChiliCrunchOil"]
+process_mode = 3
+layout_mode = 2
+offset_left = 702.0
+offset_top = 141.0
+offset_right = 944.0
+offset_bottom = 176.0
+theme_override_font_sizes/font_size = 25
+text = "Chili Crunch Oil"
 
 [node name="OrdinaryFriedRice" type="Control" parent="VBoxContainer"]
 process_mode = 3

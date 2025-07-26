@@ -134,13 +134,23 @@ func _physics_process(delta):
 		var is_moving = false
 
 		if target:
-			var direction = (target.global_position - global_position).normalized()
-			final_velocity += direction * speed
-			is_moving = true
+			var to_target = target.global_position - global_position
+			var distance = to_target.length()
+			var desired_distance = 100.0  
 
-			if mature_sprite.visible:
-				mature_sprite.play("walk")
-				mature_sprite.flip_h = direction.x < -0.1
+			if distance < desired_distance - 10:
+				var direction = -to_target.normalized()
+				final_velocity += direction * speed
+				is_moving = true
+			elif distance > desired_distance + 10:
+				var direction = to_target.normalized()
+				final_velocity += direction * speed
+				is_moving = true
+			else:
+				final_velocity = Vector2.ZERO
+			
+			mature_sprite.flip_h = final_velocity.x < -0.1
+ # Stay in place
 		else:
 			wander_timer -= delta
 			if wander_timer <= 0.0:
@@ -153,8 +163,17 @@ func _physics_process(delta):
 				mature_sprite.play("walk_slow")
 				mature_sprite.flip_h = wander_direction.x < -0.1
 
-		if mature_sprite.visible and not is_moving:
-			mature_sprite.stop()
+			if mature_sprite.visible:
+				if is_moving:
+					if target:
+						if mature_sprite.animation != "walk":
+							mature_sprite.play("walk")
+					else:
+						if mature_sprite.animation != "walk_slow":
+							mature_sprite.play("walk_slow")
+				else:
+					if mature_sprite.animation == "walk" or mature_sprite.animation == "walk_slow":
+						mature_sprite.stop()
 			
 	var collision = move_and_collide(final_velocity * delta)
 	

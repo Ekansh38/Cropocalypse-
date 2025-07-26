@@ -32,6 +32,8 @@ func _on_inventory_button_pressed() -> void:
 
 
 func _on_recipe_book_button_pressed() -> void:
+	if Globals.is_cooking:
+		return
 	if is_open_recipe_book:
 		is_open_recipe_book = false
 		cooking_ui.close()

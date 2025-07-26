@@ -94,6 +94,8 @@ func rotate_guns_to_mouse() -> void:
 		right_gun.rotation = dir
 
 func emit_shoot_signal():
+	$ShotSFX.pitch_scale = randf_range(0.9, 1.1)
+	$ShotSFX.play()
 	var using_left = $Sprite2D/LeftGun.visible
 	var marker
 	if using_left:

@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq2is33qg02t0"]
+
+[ext_resource type="PackedScene" uid="uid://d3wgca6eatko6" path="res://Scenes/plant_drop.tscn" id="1_mc3ru"]
+[ext_resource type="Script" uid="uid://cfibjdirxnur2" path="res://Scenes/chili_drop.gd" id="2_a4llj"]
+[ext_resource type="Texture2D" uid="uid://vi4g7u2485t0" path="res://Assets/gjchiliinv.png" id="2_ttlvw"]
+[ext_resource type="Resource" uid="uid://ym7u31ee8x2" path="res://Inventory/items/chili.tres" id="3_7uofj"]
+
+[node name="ChiliDrop" instance=ExtResource("1_mc3ru")]
+script = ExtResource("2_a4llj")
+chili = ExtResource("3_7uofj")
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_ttlvw")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-3, -1)

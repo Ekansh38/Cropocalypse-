@@ -38,12 +38,24 @@ func _physics_process(delta):
 		var is_moving = false
 
 		if target:
-			var direction = (target.global_position - global_position).normalized()
-			final_velocity += direction * speed
-			is_moving = true
-			if mature_sprite.visible:
-				mature_sprite.play("walk")
-				mature_sprite.flip_h = direction.x < -0.1
+			var to_target = target.global_position - global_position
+			var distance = to_target.length()
+			var desired_distance = 100.0  # Distance to maintain
+
+			if distance < desired_distance - 10:
+				# Move away from player
+				var direction = -to_target.normalized()
+				final_velocity += direction * speed
+				is_moving = true
+			elif distance > desired_distance + 10:
+				# Move closer to maintain distance
+				var direction = to_target.normalized()
+				final_velocity += direction * speed
+				is_moving = true
+			else:
+				final_velocity = Vector2.ZERO
+			mature_sprite.flip_h = final_velocity.x < -0.1
+  # Stay in place
 		else:
 			wander_timer -= delta
 			if wander_timer <= 0.0:

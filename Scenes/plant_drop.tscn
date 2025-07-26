@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://do8tx4ax2xpy2" path="res://Scripts/plant_drop.gd" id="1_l8nav"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhecq"]
-size = Vector2(124, 68)
+size = Vector2(132, 148)
 
 [node name="PlantDrop" type="Area2D"]
 script = ExtResource("1_l8nav")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv2c1m8bwu8mc"]
+
+[ext_resource type="PackedScene" uid="uid://d3wgca6eatko6" path="res://Scenes/plant_drop.tscn" id="1_1ouxd"]
+[ext_resource type="Script" uid="uid://c5tucyurf56kw" path="res://Scenes/bok_choi_drop.gd" id="2_3jifw"]
+[ext_resource type="Texture2D" uid="uid://d313iehin3v1" path="res://Assets/gjbokchoiinv.png" id="2_ulyqw"]
+[ext_resource type="Resource" uid="uid://krgmg53y4dfa" path="res://Inventory/items/bok_choi.tres" id="3_l8du3"]
+
+[node name="BokChoiDrop" instance=ExtResource("1_1ouxd")]
+script = ExtResource("2_3jifw")
+bok_choi = ExtResource("3_l8du3")
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_ulyqw")

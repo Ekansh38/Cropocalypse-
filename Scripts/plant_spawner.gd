@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var plant_scene: PackedScene
+@export var onion_scene: PackedScene
 @export var chili_scene: PackedScene
 @export var rice_scene: PackedScene
 @export var bok_choi_scene: PackedScene
@@ -19,10 +19,10 @@ var plant_scenes: Array[PackedScene] = []
 func _ready():
 	# Add all plant scenes to the list
 	plant_scenes = [
-		#plant_scene,
-		#chili_scene,
+		onion_scene,
+		chili_scene,
 		rice_scene,
-		#bok_choi_scene
+		bok_choi_scene
 	]
 	spawn_plant_timer()
 

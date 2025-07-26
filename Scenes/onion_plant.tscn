@@ -1,0 +1,78 @@
+[gd_scene load_steps=13 format=3 uid="uid://7jq6jdp07dqg"]
+
+[ext_resource type="PackedScene" uid="uid://bx4iymtkeaw8m" path="res://Scenes/plant.tscn" id="1_llf6c"]
+[ext_resource type="Texture2D" uid="uid://egxwt4xujhkv" path="res://Assets/onionanim/small.png" id="2_tuib7"]
+[ext_resource type="Script" uid="uid://bk36xxf4uy4o6" path="res://Scenes/onion_plant.gd" id="2_w3uj4"]
+[ext_resource type="Texture2D" uid="uid://b458hb5rtco00" path="res://Assets/onionanim/med.png" id="3_32by7"]
+[ext_resource type="Texture2D" uid="uid://g5770wt4b238" path="res://Assets/onionanim/mature.png" id="4_6fyj2"]
+[ext_resource type="Texture2D" uid="uid://d0q73glje6bx7" path="res://Assets/onionanim/1.png" id="5_umpd0"]
+[ext_resource type="Texture2D" uid="uid://dl3bu1y7b7th8" path="res://Assets/onionanim/2.png" id="6_w3uj4"]
+[ext_resource type="Texture2D" uid="uid://7ei6rdbnih8i" path="res://Assets/onionanim/3.png" id="7_0odyh"]
+[ext_resource type="Texture2D" uid="uid://bmqlyvlbnp4xa" path="res://Assets/onionanim/4.png" id="8_e14pl"]
+[ext_resource type="Texture2D" uid="uid://x0cv0xrkjfhp" path="res://Assets/onionanim/5.png" id="9_41t5f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hyy5l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_umpd0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_w3uj4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0odyh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_e14pl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_41t5f")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_umpd0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_w3uj4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0odyh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_e14pl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_41t5f")
+}],
+"loop": true,
+"name": &"walk_slow",
+"speed": 6.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_w3uj4"]
+offsets = PackedFloat32Array(0, 0.874419, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="OnionPlant" instance=ExtResource("1_llf6c")]
+script = ExtResource("2_w3uj4")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_tuib7")
+
+[node name="Medium" parent="." index="1"]
+texture = ExtResource("3_32by7")
+
+[node name="Large" parent="." index="2"]
+texture = ExtResource("4_6fyj2")
+
+[node name="Mature" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_hyy5l")
+animation = &"walk_slow"
+
+[node name="HitParticles" parent="." index="11"]
+color_ramp = SubResource("Gradient_w3uj4")

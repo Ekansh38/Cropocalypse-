@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://bm0748l5r6shs"]
+
+[ext_resource type="Script" uid="uid://dxfvm7kg0xker" path="res://Inventory/inventory_item.gd" id="1_j4sx0"]
+[ext_resource type="Texture2D" uid="uid://dp2ubrfomi5y8" path="res://Assets/chilionioncrunch.png" id="2_j4sx0"]
+
+[resource]
+script = ExtResource("1_j4sx0")
+name = "Chili Crunch Oil"
+texture = ExtResource("2_j4sx0")
+details = "+5 Hunger -20 Thirst"
+added_hunger = 5
+added_thirst = -20
+metadata/_custom_type_script = "uid://dxfvm7kg0xker"

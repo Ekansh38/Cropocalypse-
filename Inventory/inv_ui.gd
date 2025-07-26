@@ -16,7 +16,7 @@ func update_slots():
 		slots[i].update(inv.slots[i])
 	
 func _process(delta):
-	if Input.is_action_just_pressed("inventory") and not Globals.is_cooking:
+	if Input.is_action_just_pressed("inventory") and not Globals.is_cooking and not Globals.is_recipe_book_open:
 		if is_open:
 			close()
 		else:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://vgn3dqi6c31"]
+[gd_scene load_steps=34 format=3 uid="uid://vgn3dqi6c31"]
 
 [ext_resource type="Script" uid="uid://7vk5l1qhqne5" path="res://Scripts/game.gd" id="1_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://dt8ocs65hig4d" path="res://Assets/plantgjmap.png" id="2_v158k"]
@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://pvc6mebt813n" path="res://Assets/dissected/1b.png" id="5_1phco"]
 [ext_resource type="Script" uid="uid://cg7pw0t77snb8" path="res://Scripts/plant_spawner.gd" id="5_ldgsr"]
 [ext_resource type="Texture2D" uid="uid://bdgwcj1lspvxa" path="res://Assets/dissected/2b.png" id="6_nb51f"]
-[ext_resource type="PackedScene" uid="uid://bx4iymtkeaw8m" path="res://Scenes/plant.tscn" id="6_o5yvi"]
 [ext_resource type="PackedScene" uid="uid://chidqrqdcwv07" path="res://Scenes/chili_plant.tscn" id="7_h4fw4"]
 [ext_resource type="Texture2D" uid="uid://n438cvvlb05b" path="res://Assets/dissected/2a.png" id="7_nnt18"]
 [ext_resource type="Script" uid="uid://r0oeg7cq4f4g" path="res://Scenes/camera_2d.gd" id="7_vm72l"]
+[ext_resource type="PackedScene" uid="uid://7jq6jdp07dqg" path="res://Scenes/onion_plant.tscn" id="8_ese38"]
 [ext_resource type="Texture2D" uid="uid://dip7cfj1yhybg" path="res://Assets/dissected/3a.png" id="8_ewbju"]
 [ext_resource type="PackedScene" uid="uid://cxxiysmvxwhe" path="res://Inventory/inv_ui.tscn" id="8_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://biljgomemmnhc" path="res://Scenes/ui.tscn" id="8_v158k"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://cg3hk1o4t108d" path="res://Scenes/recipe_book.tscn" id="28_tgy6u"]
 [ext_resource type="PackedScene" uid="uid://b2k6maew0cise" path="res://Scenes/kitchen.tscn" id="30_mucmn"]
 [ext_resource type="PackedScene" uid="uid://dt8wktxmadump" path="res://Scenes/cooking_ui.tscn" id="31_8m3t6"]
+[ext_resource type="Script" uid="uid://c1u3s20b10dmj" path="res://Scenes/performance_mode.gd" id="32_ese38"]
 
 [sub_resource type="Environment" id="Environment_nb51f"]
 background_mode = 3
@@ -75,7 +76,7 @@ position = Vector2(-711, -1080)
 [node name="PlantSpawner" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("5_ldgsr")
-plant_scene = ExtResource("6_o5yvi")
+onion_scene = ExtResource("8_ese38")
 chili_scene = ExtResource("7_h4fw4")
 rice_scene = ExtResource("14_ewbju")
 bok_choi_scene = ExtResource("22_cwurv")
@@ -278,5 +279,8 @@ cooking_ui = NodePath("../CookingUI")
 [node name="RecipeBook" parent="." instance=ExtResource("28_tgy6u")]
 
 [node name="CookingUI" parent="." instance=ExtResource("31_8m3t6")]
+
+[node name="PerformanceMode" type="Node2D" parent="."]
+script = ExtResource("32_ese38")
 
 [connection signal="shoot_fired" from="Player" to="." method="_on_player_shoot_fired"]

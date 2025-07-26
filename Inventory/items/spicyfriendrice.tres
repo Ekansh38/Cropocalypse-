@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://bwxembmt5avmq"]
+
+[ext_resource type="Script" uid="uid://dxfvm7kg0xker" path="res://Inventory/inventory_item.gd" id="1_txhbh"]
+[ext_resource type="Texture2D" uid="uid://c2xaud0lwa8kw" path="res://Assets/spicyrice.png" id="2_txhbh"]
+
+[resource]
+script = ExtResource("1_txhbh")
+name = "Spicy Fried Rice"
+texture = ExtResource("2_txhbh")
+details = "+40 Hunger -5 Thirst"
+added_hunger = 40
+added_thirst = -5
+metadata/_custom_type_script = "uid://dxfvm7kg0xker"

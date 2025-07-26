@@ -6,8 +6,8 @@
 [node name="CookingInvUISlot" instance=ExtResource("1_ttyoe")]
 script = ExtResource("2_rr3go")
 
-[node name="HoverDisplay" parent="." index="2"]
-visible = false
+[node name="Background" parent="HoverDisplay" index="0"]
+offset_top = -171.0
 
 [node name="DropButton" parent="HoverDisplay/VBoxContainer" index="0"]
 text = "ADD"

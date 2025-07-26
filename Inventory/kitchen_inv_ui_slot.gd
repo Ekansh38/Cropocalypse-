@@ -66,7 +66,8 @@ func _on_drop_button_pressed() -> void:
 		Globals.kitchen_slots = new_slots 
 
 		inv.remove(item_to_remove)
-
+		$"../Button".disabled = true
+		$"../.."._update_kitchen()
 		player_inv.insert(item_to_remove)
 
 		# Clear visuals

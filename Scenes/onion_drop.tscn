@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8i3tk3g8gc4j"]
+
+[ext_resource type="PackedScene" uid="uid://d3wgca6eatko6" path="res://Scenes/plant_drop.tscn" id="1_8020v"]
+[ext_resource type="Script" uid="uid://ba5dfwun2h4ir" path="res://Scenes/onion_drop.gd" id="2_g45ug"]
+[ext_resource type="Texture2D" uid="uid://dtubjuk82am05" path="res://Assets/gjonioninv.png" id="2_q8ium"]
+[ext_resource type="Resource" uid="uid://0qo0n2ucgb8h" path="res://Inventory/items/onion.tres" id="3_g45ug"]
+
+[node name="OnionDrop" instance=ExtResource("1_8020v")]
+script = ExtResource("2_g45ug")
+onion = ExtResource("3_g45ug")
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_q8ium")

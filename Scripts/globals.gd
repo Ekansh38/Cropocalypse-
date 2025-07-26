@@ -3,7 +3,7 @@ extends Node
 signal update_stats()
 
 signal update_kitchen()
-
+var is_recipe_book_open = false
 var is_hovering_on_ui = false
 
 var _kitchen_slots: Array[InvItem] = []
@@ -27,31 +27,31 @@ var recipes = {
 	},
 	"Spicy Bok Choy Salad": {
 		"ingredients": ["Bok Choy", "Chili"],
-		"unlocked": false
+		"unlocked": true
 	},
 	"Spicy Fried Rice": {
 		"ingredients": ["Rice", "Onion", "Chili"],
-		"unlocked": false
+		"unlocked": true
 	},
 	"Yangzhou Fried Rice": {
 		"ingredients": ["Rice", "Onion", "Bok Choy"],
-		"unlocked": false
+		"unlocked": true
 	},
 	"Chili Crunch Oil": {
 		"ingredients": ["Onion", "Chili"],
-		"unlocked": false
+		"unlocked": true
 	},
 	"Mango Mochi": {
 		"ingredients": ["Mango", "Rice", "Rice"],
-		"unlocked": false
+		"unlocked": true
 	},
 	"Chili Mango Salad": {
 		"ingredients": ["Mango", "Chili"],
-		"unlocked": false
+		"unlocked": true
 	},
 	"Chili Garlic Noodles": {
 		"ingredients": ["Chili", "Onion", "Bok Choy"],
-		"unlocked": false
+		"unlocked": true
 	}
 }
 

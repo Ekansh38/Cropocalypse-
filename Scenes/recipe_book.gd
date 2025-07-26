@@ -22,6 +22,8 @@ func _ready():
 				recipe_ui.modulate = Color("#000000")
 	
 func close():
+	Globals.is_recipe_book_open = false
+
 	$AnimationPlayer.play("close")
 	await $AnimationPlayer.animation_finished
 	is_open = false
@@ -31,6 +33,7 @@ func close():
 
 
 func open():
+	Globals.is_recipe_book_open = true
 	is_open = true
 	$VBoxContainer.visible = true
 	$ColorRect.visible = true

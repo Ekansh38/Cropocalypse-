@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://cfba8uy1lb7jl"]
+
+[ext_resource type="Script" uid="uid://dxfvm7kg0xker" path="res://Inventory/inventory_item.gd" id="1_hq8n6"]
+[ext_resource type="Texture2D" uid="uid://i5te74ojrj2i" path="res://Assets/onionspicynoodle.png" id="2_hq8n6"]
+
+[resource]
+script = ExtResource("1_hq8n6")
+name = "Chili Garlic Noodles"
+texture = ExtResource("2_hq8n6")
+details = "+35 Hunger"
+added_hunger = 35
+added_thirst = 0
+metadata/_custom_type_script = "uid://dxfvm7kg0xker"

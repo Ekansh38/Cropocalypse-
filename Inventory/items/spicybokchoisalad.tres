@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://drb2q3luw4lfs"]
+
+[ext_resource type="Script" uid="uid://dxfvm7kg0xker" path="res://Inventory/inventory_item.gd" id="1_hl5mb"]
+[ext_resource type="Texture2D" uid="uid://c111snl0xnncc" path="res://Assets/bcchili.png" id="2_hl5mb"]
+
+[resource]
+script = ExtResource("1_hl5mb")
+name = "Spicy Bok Choy Salad"
+texture = ExtResource("2_hl5mb")
+details = "+20 Hunger +5 Thirst"
+added_hunger = 20
+added_thirst = 5
+metadata/_custom_type_script = "uid://dxfvm7kg0xker"

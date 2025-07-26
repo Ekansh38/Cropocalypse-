@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://dqdl3o6iyxbyv"]
+
+[ext_resource type="Script" uid="uid://dxfvm7kg0xker" path="res://Inventory/inventory_item.gd" id="1_nfi04"]
+[ext_resource type="Texture2D" uid="uid://h7g38uhduxqa" path="res://Assets/yzrice.png" id="2_nfi04"]
+
+[resource]
+script = ExtResource("1_nfi04")
+name = "Yangzhou Fried Rice"
+texture = ExtResource("2_nfi04")
+details = "+50 Hunger"
+added_hunger = 50
+added_thirst = 0
+metadata/_custom_type_script = "uid://dxfvm7kg0xker"
