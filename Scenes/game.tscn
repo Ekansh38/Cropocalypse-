@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://vgn3dqi6c31"]
+[gd_scene load_steps=29 format=3 uid="uid://vgn3dqi6c31"]
 
 [ext_resource type="Script" uid="uid://7vk5l1qhqne5" path="res://Scripts/game.gd" id="1_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://dt8ocs65hig4d" path="res://Assets/plantgjmap.png" id="2_v158k"]
@@ -24,7 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://bkmf8sjhlcm6i" path="res://Assets/dissected/6a.png" id="14_mg4q0"]
 [ext_resource type="Texture2D" uid="uid://dtj1gpohq6sa7" path="res://Assets/dissected/6b.png" id="15_vm72l"]
 [ext_resource type="Script" uid="uid://dc2eq0fpnganu" path="res://Scenes/day_night.gd" id="16_nnt18"]
+[ext_resource type="Script" uid="uid://cf8qx0q8efoo0" path="res://Scenes/mango_drop_points.gd" id="24_fkdbe"]
 [ext_resource type="PackedScene" uid="uid://dpurbaaypl0uw" path="res://Scenes/lantern.tscn" id="25_22asu"]
+[ext_resource type="PackedScene" uid="uid://drnv81hnt06ad" path="res://Scenes/mango_plant.tscn" id="25_81klo"]
 
 [sub_resource type="Environment" id="Environment_nb51f"]
 background_mode = 3
@@ -60,6 +62,8 @@ texture = ExtResource("12_exi56")
 [node name="Sprite2D4" type="Sprite2D" parent="."]
 position = Vector2(-1331, -150)
 texture = ExtResource("14_mg4q0")
+
+[node name="ActiveEnemies" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("3_v158k")]
 position = Vector2(-854, -198)
@@ -168,6 +172,7 @@ plant_scene = ExtResource("6_o5yvi")
 chili_scene = ExtResource("7_h4fw4")
 rice_scene = ExtResource("14_ewbju")
 spawn_interval_variance = 3.0
+max_plants = 5
 min_distance_between_plants = 100.0
 spawn_bounds_top_left = Vector2(274, -1001)
 spawn_bounds_bottom_right = Vector2(1626, 871)
@@ -190,10 +195,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -191.0
-offset_top = -105.0
-offset_right = -104.0
-offset_bottom = -57.0
+offset_left = -258.0
+offset_top = -189.0
+offset_right = -171.0
+offset_bottom = -141.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -205,26 +210,58 @@ color = Color(1, 1, 0.945098, 1)
 script = ExtResource("16_nnt18")
 
 [node name="MangoDropPoints" type="Node2D" parent="."]
+script = ExtResource("24_fkdbe")
+mango_scene = ExtResource("25_81klo")
+min_spawn_delay = 6.0
+max_spawn_delay = 12.0
 
 [node name="Pair1" type="Node2D" parent="MangoDropPoints"]
 
 [node name="Start" type="Marker2D" parent="MangoDropPoints/Pair1"]
 position = Vector2(-1144, -24)
 
-[node name="Drop" type="Marker2D" parent="MangoDropPoints/Pair1"]
-position = Vector2(-837, 127)
-
 [node name="Pair2" type="Node2D" parent="MangoDropPoints"]
 
 [node name="Start" type="Marker2D" parent="MangoDropPoints/Pair2"]
 position = Vector2(-1276, 141)
 
-[node name="Drop" type="Marker2D" parent="MangoDropPoints/Pair2"]
-position = Vector2(-1470, 90)
+[node name="Pair3" type="Node2D" parent="MangoDropPoints"]
+
+[node name="Start" type="Marker2D" parent="MangoDropPoints/Pair3"]
+position = Vector2(-999, 320)
+
+[node name="Pair4" type="Node2D" parent="MangoDropPoints"]
+
+[node name="Start" type="Marker2D" parent="MangoDropPoints/Pair4"]
+position = Vector2(-1565, 427)
+
+[node name="Pair5" type="Node2D" parent="MangoDropPoints"]
+
+[node name="Start" type="Marker2D" parent="MangoDropPoints/Pair5"]
+position = Vector2(-1220, -1098)
+
+[node name="Pair6" type="Node2D" parent="MangoDropPoints"]
+
+[node name="Start" type="Marker2D" parent="MangoDropPoints/Pair6"]
+position = Vector2(-1401, -1142)
+
+[node name="Pair7" type="Node2D" parent="MangoDropPoints"]
+
+[node name="Start" type="Marker2D" parent="MangoDropPoints/Pair7"]
+position = Vector2(-1366, -992)
+
+[node name="Pair8" type="Node2D" parent="MangoDropPoints"]
+
+[node name="Start" type="Marker2D" parent="MangoDropPoints/Pair8"]
+position = Vector2(-1049, 503)
+
+[node name="Pair9" type="Node2D" parent="MangoDropPoints"]
+
+[node name="Start" type="Marker2D" parent="MangoDropPoints/Pair9"]
+position = Vector2(-1572, 631)
 
 [node name="Lantern" parent="." instance=ExtResource("25_22asu")]
-position = Vector2(-409, 286)
-metadata/_edit_lock_ = true
+position = Vector2(-230, 723)
 
 [node name="UI" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("8_v158k")]
 inventory = NodePath("../CanvasLayer/InvUI")

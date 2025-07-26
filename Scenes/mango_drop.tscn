@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://l77ag132mh2g"]
+
+[ext_resource type="PackedScene" uid="uid://d3wgca6eatko6" path="res://Scenes/plant_drop.tscn" id="1_dj5la"]
+[ext_resource type="Script" uid="uid://b2siuo00eoe20" path="res://Scenes/mango_drop.gd" id="2_5n6ny"]
+[ext_resource type="Resource" uid="uid://dwhus1mn2745t" path="res://Inventory/items/mango.tres" id="3_3wrsh"]
+
+[node name="MangoDrop" instance=ExtResource("1_dj5la")]
+script = ExtResource("2_5n6ny")
+mango = ExtResource("3_3wrsh")

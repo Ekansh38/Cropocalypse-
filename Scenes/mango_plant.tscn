@@ -1,0 +1,42 @@
+[gd_scene load_steps=10 format=3 uid="uid://drnv81hnt06ad"]
+
+[ext_resource type="PackedScene" uid="uid://bx4iymtkeaw8m" path="res://Scenes/plant.tscn" id="1_1gakv"]
+[ext_resource type="Texture2D" uid="uid://dyoivficmhutl" path="res://Assets/mangoanim/small.png" id="2_m7dcw"]
+[ext_resource type="Script" uid="uid://g1aphw0gwa2c" path="res://Scenes/mango_plant.gd" id="2_xjsj4"]
+[ext_resource type="Texture2D" uid="uid://cbb1cg7m355gc" path="res://Assets/mangoanim/med.png" id="3_m7dcw"]
+[ext_resource type="Texture2D" uid="uid://3oi84knwvyys" path="res://Assets/mangoanim/mature.png" id="4_2i6f1"]
+[ext_resource type="Texture2D" uid="uid://cbcptap5rlef2" path="res://Assets/mangoanim/1.png" id="5_fqdud"]
+[ext_resource type="Texture2D" uid="uid://daeqotde1i47h" path="res://Assets/mangoanim/2.png" id="6_xjsj4"]
+[ext_resource type="Texture2D" uid="uid://061rf4hvhn2q" path="res://Assets/mangoanim/3.png" id="7_3heqv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ff5vk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_fqdud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xjsj4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3heqv")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="MangoPlant" instance=ExtResource("1_1gakv")]
+script = ExtResource("2_xjsj4")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_m7dcw")
+
+[node name="Medium" parent="." index="1"]
+texture = ExtResource("3_m7dcw")
+
+[node name="Large" parent="." index="2"]
+texture = ExtResource("4_2i6f1")
+
+[node name="Mature" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_ff5vk")
