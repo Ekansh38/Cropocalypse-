@@ -1,7 +1,9 @@
 extends CanvasLayer
 
 @export var inventory: Control
+@export var recipe_book: CanvasLayer
 
+var is_open_recipe_book = false
 var is_inv_open = false
 func _ready() -> void:
 	Globals.connect("update_stats", update_stats)
@@ -16,6 +18,8 @@ func update_stats():
 func _on_inventory_button_pressed() -> void:
 
 	if not is_inv_open:
+		is_open_recipe_book = false
+		recipe_book.close()
 		inventory.open()
 		is_inv_open = true
 	else:
@@ -25,7 +29,14 @@ func _on_inventory_button_pressed() -> void:
 
 
 func _on_recipe_book_button_pressed() -> void:
-	pass
+	if is_open_recipe_book:
+		is_open_recipe_book = false
+		recipe_book.close()
+	else:
+		inventory.close()
+		is_inv_open = false
+		is_open_recipe_book = true
+		recipe_book.open()
 
 
 func _on_inventory_button_mouse_entered() -> void:

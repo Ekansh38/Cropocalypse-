@@ -3,7 +3,7 @@ extends Node2D
 @export var plant_scene: PackedScene
 @export var chili_scene: PackedScene
 @export var rice_scene: PackedScene
-#@export var corn_scene: PackedScene
+@export var bok_choi_scene: PackedScene
 
 @export var spawn_interval: float = 5.0
 @export var spawn_interval_variance: float = 2.0
@@ -21,8 +21,8 @@ func _ready():
 	plant_scenes = [
 		#plant_scene,
 		#chili_scene,
-		rice_scene,
-		#corn_scene
+		#rice_scene,
+		bok_choi_scene
 	]
 	spawn_plant_timer()
 
@@ -48,7 +48,7 @@ func spawn_plant():
 	var plant_scene = plant_scenes.pick_random()
 	var plant = plant_scene.instantiate()
 	plant.global_position = pos
-	get_parent().add_child(plant)
+	add_child(plant)
 	plants.append(plant)
 
 	plant.tree_exited.connect(func():

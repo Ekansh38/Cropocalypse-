@@ -73,10 +73,11 @@ func _process(delta: float) -> void:
 
 func rotate_guns_to_mouse() -> void:
 	var mouse_pos = get_viewport().get_mouse_position()
-	var screen_center_x = get_viewport_rect().size.x / 2
 
+	var screen_center_x = get_viewport_rect().size.x / 2
 	var left_gun = $Sprite2D/LeftGun
 	var right_gun = $Sprite2D/RightGun
+	
 
 	if mouse_pos.x < screen_center_x:
 		$Sprite2D.flip_h = false

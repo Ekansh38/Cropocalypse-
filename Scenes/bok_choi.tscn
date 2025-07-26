@@ -1,0 +1,65 @@
+[gd_scene load_steps=12 format=3 uid="uid://d2vyrpu6foea"]
+
+[ext_resource type="PackedScene" uid="uid://bx4iymtkeaw8m" path="res://Scenes/plant.tscn" id="1_8w4ua"]
+[ext_resource type="Texture2D" uid="uid://dim7msgiqijqq" path="res://Assets/bokchoianim/small.png" id="2_jc4ts"]
+[ext_resource type="Script" uid="uid://dj202h566vpbs" path="res://Scenes/bok_choi.gd" id="2_mu7ks"]
+[ext_resource type="Texture2D" uid="uid://b0srjvn66htqg" path="res://Assets/bokchoianim/med.png" id="3_qmwx3"]
+[ext_resource type="Texture2D" uid="uid://by4wtymoh4qhf" path="res://Assets/bokchoianim/large.png" id="4_wtotp"]
+[ext_resource type="Texture2D" uid="uid://bguphxifw1wum" path="res://Assets/bokchoianim/windpunchbody.png" id="5_rxhi7"]
+[ext_resource type="Texture2D" uid="uid://bfl77gsxycatm" path="res://Assets/bokchoianim/mature.png" id="5_sw78s"]
+[ext_resource type="Texture2D" uid="uid://dob5nic3nw1ug" path="res://Assets/bokchoianim/windpuncharm.png" id="6_mu7ks"]
+[ext_resource type="Texture2D" uid="uid://lubvjohe8y6o" path="res://Assets/bokchoianim/punchbody.png" id="8_url58"]
+[ext_resource type="Texture2D" uid="uid://cbuspy5ais1qm" path="res://Assets/bokchoianim/puncharm.png" id="9_tgldm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rviom"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_sw78s")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="BokChoi" instance=ExtResource("1_8w4ua")]
+script = ExtResource("2_mu7ks")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_jc4ts")
+
+[node name="Medium" parent="." index="1"]
+texture = ExtResource("3_qmwx3")
+
+[node name="Large" parent="." index="2"]
+texture = ExtResource("4_wtotp")
+
+[node name="Mature" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_rviom")
+
+[node name="WindBody" type="Sprite2D" parent="." index="4"]
+visible = false
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_rxhi7")
+metadata/_edit_lock_ = true
+
+[node name="WindArm" type="Sprite2D" parent="." index="5"]
+visible = false
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_mu7ks")
+metadata/_edit_lock_ = true
+
+[node name="PunchBody" type="Sprite2D" parent="." index="6"]
+visible = false
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("8_url58")
+metadata/_edit_lock_ = true
+
+[node name="PunchArm" type="Sprite2D" parent="." index="7"]
+visible = false
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_tgldm")
+metadata/_edit_lock_ = true
+
+[node name="AttackArea" parent="." index="12"]
+script = null

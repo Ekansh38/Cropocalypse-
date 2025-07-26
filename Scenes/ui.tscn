@@ -60,6 +60,7 @@ scale = Vector2(0.15, 0.15)
 icon = ExtResource("2_qdvrb")
 
 [node name="RecipeBookButton" type="Button" parent="."]
+process_mode = 3
 offset_left = 1.0
 offset_top = 213.0
 offset_right = 709.0
