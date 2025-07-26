@@ -117,3 +117,7 @@ func take_damage():
 	$Camera2D.screen_shake(2)
 	Globals.player_health -= 5
 	print(Globals.player_health)
+
+
+func change_control_label(message):
+	$ControlLabel.text = message

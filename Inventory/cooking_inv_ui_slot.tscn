@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb07u0br2jw0m"]
+
+[ext_resource type="PackedScene" uid="uid://dkqlw6jmevolj" path="res://Inventory/inv_ui_slot.tscn" id="1_ttyoe"]
+[ext_resource type="Script" uid="uid://duysp7scu6y6c" path="res://Inventory/cooking_inv_ui_slot.gd" id="2_rr3go"]
+
+[node name="CookingInvUISlot" instance=ExtResource("1_ttyoe")]
+script = ExtResource("2_rr3go")
+
+[node name="HoverDisplay" parent="." index="2"]
+visible = false
+
+[node name="DropButton" parent="HoverDisplay/VBoxContainer" index="0"]
+text = "ADD"

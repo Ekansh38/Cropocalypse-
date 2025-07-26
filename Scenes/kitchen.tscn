@@ -1,11 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2k6maew0cise"]
+[gd_scene load_steps=5 format=3 uid="uid://b2k6maew0cise"]
 
 [ext_resource type="Texture2D" uid="uid://dbmdjrawaoxy4" path="res://Assets/kitchen.png" id="1_7u47w"]
+[ext_resource type="Script" uid="uid://btmf0f4uyfcm8" path="res://Scenes/kitchen.gd" id="1_23qos"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7u47w"]
 size = Vector2(610, 216)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7u47w"]
+radius = 333.6
+
 [node name="Kitchen" type="StaticBody2D"]
+script = ExtResource("1_23qos")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -14,3 +19,11 @@ texture = ExtResource("1_7u47w")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-8, -6)
 shape = SubResource("RectangleShape2D_7u47w")
+
+[node name="InteractArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+shape = SubResource("CircleShape2D_7u47w")
+
+[connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

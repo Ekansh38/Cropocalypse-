@@ -1,24 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxxiysmvxwhe"]
+[gd_scene load_steps=5 format=3 uid="uid://b4outgtx2l4hf"]
 
-[ext_resource type="Script" uid="uid://su2ba4cgnjdb" path="res://Inventory/inv_ui.gd" id="1_605em"]
-[ext_resource type="Texture2D" uid="uid://conwocaey6pwt" path="res://Assets/buttons and icons/inventorybox.png" id="2_s8fnp"]
-[ext_resource type="PackedScene" uid="uid://dkqlw6jmevolj" path="res://Inventory/inv_ui_slot.tscn" id="3_ltxgc"]
-[ext_resource type="Resource" uid="uid://c8k5f6a02kd8s" path="res://Inventory/player_inventory.tres" id="4_s8fnp"]
+[ext_resource type="Script" uid="uid://07kmr0ul3r2f" path="res://Scenes/cooking_inv_ui.gd" id="1_6wpp4"]
+[ext_resource type="Texture2D" uid="uid://conwocaey6pwt" path="res://Assets/buttons and icons/inventorybox.png" id="2_45xgh"]
+[ext_resource type="PackedScene" uid="uid://bb07u0br2jw0m" path="res://Inventory/cooking_inv_ui_slot.tscn" id="3_irjss"]
+[ext_resource type="Resource" uid="uid://c8k5f6a02kd8s" path="res://Inventory/player_inventory.tres" id="4_568yh"]
 
-[node name="InvUI" type="Control"]
+[node name="CookingInvUI" type="Control"]
 process_mode = 3
 custom_minimum_size = Vector2(87, 48)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 87.0
 offset_bottom = 48.0
-script = ExtResource("1_605em")
+script = ExtResource("1_6wpp4")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
 offset_right = 551.0
 offset_bottom = 387.0
-texture = ExtResource("2_s8fnp")
+texture = ExtResource("2_45xgh")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
@@ -41,29 +41,29 @@ theme_override_constants/h_separation = 100
 theme_override_constants/v_separation = 100
 columns = 3
 
-[node name="InvUISlot" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+[node name="InvUISlot" parent="NinePatchRect/GridContainer" instance=ExtResource("3_irjss")]
 layout_mode = 2
-inv = ExtResource("4_s8fnp")
+inv = ExtResource("4_568yh")
 
-[node name="InvUISlot2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+[node name="InvUISlot2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_irjss")]
 layout_mode = 2
-inv = ExtResource("4_s8fnp")
+inv = ExtResource("4_568yh")
 
-[node name="InvUISlot3" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+[node name="InvUISlot3" parent="NinePatchRect/GridContainer" instance=ExtResource("3_irjss")]
 layout_mode = 2
-inv = ExtResource("4_s8fnp")
+inv = ExtResource("4_568yh")
 
-[node name="InvUISlot4" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+[node name="InvUISlot4" parent="NinePatchRect/GridContainer" instance=ExtResource("3_irjss")]
 layout_mode = 2
-inv = ExtResource("4_s8fnp")
+inv = ExtResource("4_568yh")
 
-[node name="InvUISlot5" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+[node name="InvUISlot5" parent="NinePatchRect/GridContainer" instance=ExtResource("3_irjss")]
 layout_mode = 2
-inv = ExtResource("4_s8fnp")
+inv = ExtResource("4_568yh")
 
-[node name="InvUISlot6" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+[node name="InvUISlot6" parent="NinePatchRect/GridContainer" instance=ExtResource("3_irjss")]
 layout_mode = 2
-inv = ExtResource("4_s8fnp")
+inv = ExtResource("4_568yh")
 
 [connection signal="entered" from="NinePatchRect/GridContainer/InvUISlot" to="." method="_on_inv_ui_slot_entered"]
 [connection signal="entered" from="NinePatchRect/GridContainer/InvUISlot2" to="." method="_on_inv_ui_slot_2_entered"]

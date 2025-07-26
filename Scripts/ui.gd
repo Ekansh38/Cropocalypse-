@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @export var inventory: Control
 @export var recipe_book: CanvasLayer
+@export var cooking_ui: CanvasLayer
 
 var is_open_recipe_book = false
 var is_inv_open = false
@@ -20,6 +21,8 @@ func _on_inventory_button_pressed() -> void:
 	if not is_inv_open:
 		is_open_recipe_book = false
 		recipe_book.close()
+		cooking_ui.close()
+
 		inventory.open()
 		is_inv_open = true
 	else:
@@ -31,6 +34,8 @@ func _on_inventory_button_pressed() -> void:
 func _on_recipe_book_button_pressed() -> void:
 	if is_open_recipe_book:
 		is_open_recipe_book = false
+		cooking_ui.close()
+
 		recipe_book.close()
 	else:
 		inventory.close()

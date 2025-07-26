@@ -71,3 +71,14 @@ occluder = SubResource("OccluderPolygon2D_x3wgy")
 energy = 0.1
 texture = ExtResource("7_3smsa")
 texture_scale = 0.8
+
+[node name="ControlLabel" type="Label" parent="."]
+offset_left = -174.0
+offset_top = -216.0
+offset_right = 194.0
+offset_bottom = -147.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 50

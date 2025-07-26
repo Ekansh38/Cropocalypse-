@@ -2,9 +2,20 @@ extends Node
 
 signal update_stats()
 
+signal update_kitchen()
+
 var is_hovering_on_ui = false
 
+var _kitchen_slots: Array[InvItem] = []
 
+var kitchen_slots: Array[InvItem]:
+	get: return _kitchen_slots
+	set(value):
+		_kitchen_slots = value
+		update_kitchen.emit()
+		
+		
+var is_cooking = false
 var recipes = {
 	"Mango Sticky Rice": {
 		"ingredients": ["Mango", "Rice"],

@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://dt8wktxmadump"]
+
+[ext_resource type="Script" uid="uid://c7mx5g0ap8r0q" path="res://Scenes/cooking_ui.gd" id="1_id7lv"]
+[ext_resource type="PackedScene" uid="uid://b4outgtx2l4hf" path="res://Inventory/cooking_inv_ui.tscn" id="2_vh6f4"]
+[ext_resource type="PackedScene" uid="uid://btdet1st6d4m8" path="res://Inventory/kitchen_inv_ui_slot.tscn" id="3_7cbl3"]
+[ext_resource type="Resource" uid="uid://djl7sum1qayfa" path="res://Inventory/kitcheninv.tres" id="4_11ijc"]
+[ext_resource type="Resource" uid="uid://c8k5f6a02kd8s" path="res://Inventory/player_inventory.tres" id="5_48die"]
+
+[node name="CookingUI" type="CanvasLayer"]
+script = ExtResource("1_id7lv")
+
+[node name="CookingInvUI" parent="." instance=ExtResource("2_vh6f4")]
+offset_left = 412.0
+offset_top = 429.0
+offset_right = 499.0
+offset_bottom = 477.0
+scale = Vector2(0.8, 0.8)
+
+[node name="OtherThings" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="OtherThings"]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 78.0
+offset_right = 1042.0
+offset_bottom = 418.0
+
+[node name="KitchenInvUISlot" parent="OtherThings" instance=ExtResource("3_7cbl3")]
+layout_mode = 0
+offset_left = 309.0
+offset_top = 155.0
+offset_right = 389.0
+offset_bottom = 235.0
+inv = ExtResource("4_11ijc")
+player_inv = ExtResource("5_48die")
+
+[node name="KitchenInvUISlot2" parent="OtherThings" instance=ExtResource("3_7cbl3")]
+layout_mode = 0
+offset_left = 583.0
+offset_top = 157.0
+offset_right = 663.0
+offset_bottom = 237.0
+inv = ExtResource("4_11ijc")
+player_inv = ExtResource("5_48die")
+
+[node name="KitchenInvUISlot3" parent="OtherThings" instance=ExtResource("3_7cbl3")]
+layout_mode = 0
+offset_left = 861.0
+offset_top = 156.0
+offset_right = 941.0
+offset_bottom = 236.0
+inv = ExtResource("4_11ijc")
+player_inv = ExtResource("5_48die")
+
+[node name="Plus" type="Label" parent="OtherThings"]
+layout_mode = 0
+offset_left = 442.0
+offset_top = 115.0
+offset_right = 499.0
+offset_bottom = 252.0
+theme_override_font_sizes/font_size = 100
+text = "+"
+
+[node name="Plus2" type="Label" parent="OtherThings"]
+layout_mode = 0
+offset_left = 743.0
+offset_top = 115.0
+offset_right = 800.0
+offset_bottom = 252.0
+theme_override_font_sizes/font_size = 100
+text = "+"
+
+[node name="Button" type="Button" parent="OtherThings"]
+layout_mode = 0
+offset_left = 529.0
+offset_top = 311.0
+offset_right = 705.0
+offset_bottom = 388.0
+theme_override_font_sizes/font_size = 50
+text = "Cook"

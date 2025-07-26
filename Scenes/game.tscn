@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://vgn3dqi6c31"]
+[gd_scene load_steps=33 format=3 uid="uid://vgn3dqi6c31"]
 
 [ext_resource type="Script" uid="uid://7vk5l1qhqne5" path="res://Scripts/game.gd" id="1_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://dt8ocs65hig4d" path="res://Assets/plantgjmap.png" id="2_v158k"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://drnv81hnt06ad" path="res://Scenes/mango_plant.tscn" id="25_81klo"]
 [ext_resource type="PackedScene" uid="uid://cg3hk1o4t108d" path="res://Scenes/recipe_book.tscn" id="28_tgy6u"]
 [ext_resource type="PackedScene" uid="uid://b2k6maew0cise" path="res://Scenes/kitchen.tscn" id="30_mucmn"]
+[ext_resource type="PackedScene" uid="uid://dt8wktxmadump" path="res://Scenes/cooking_ui.tscn" id="31_8m3t6"]
 
 [sub_resource type="Environment" id="Environment_nb51f"]
 background_mode = 3
@@ -69,7 +70,7 @@ texture = ExtResource("14_mg4q0")
 [node name="ActiveEnemies" type="Node2D" parent="."]
 
 [node name="Kitchen" parent="." instance=ExtResource("30_mucmn")]
-position = Vector2(-851, -1068)
+position = Vector2(-711, -1080)
 
 [node name="PlantSpawner" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -269,10 +270,13 @@ position = Vector2(-1572, 631)
 [node name="Lantern" parent="." instance=ExtResource("25_22asu")]
 position = Vector2(-230, 723)
 
-[node name="UI" parent="." node_paths=PackedStringArray("inventory", "recipe_book") instance=ExtResource("8_v158k")]
+[node name="UI" parent="." node_paths=PackedStringArray("inventory", "recipe_book", "cooking_ui") instance=ExtResource("8_v158k")]
 inventory = NodePath("../CanvasLayer/InvUI")
 recipe_book = NodePath("../RecipeBook")
+cooking_ui = NodePath("../CookingUI")
 
 [node name="RecipeBook" parent="." instance=ExtResource("28_tgy6u")]
+
+[node name="CookingUI" parent="." instance=ExtResource("31_8m3t6")]
 
 [connection signal="shoot_fired" from="Player" to="." method="_on_player_shoot_fired"]

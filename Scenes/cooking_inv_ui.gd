@@ -15,20 +15,13 @@ func update_slots():
 	for i in range(min(inv.slots.size(), slots.size())):
 		slots[i].update(inv.slots[i])
 	
-func _process(delta):
-	if Input.is_action_just_pressed("inventory") and not Globals.is_cooking:
-		if is_open:
-			close()
-		else:
-			open()
+
 	
 func open():
-	get_tree().paused = true
 	visible = true
 	is_open = true
 	
 func close():
-	get_tree().paused = false
 	visible = false
 	is_open = false
 

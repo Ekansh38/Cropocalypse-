@@ -21,8 +21,8 @@ func _ready():
 	plant_scenes = [
 		#plant_scene,
 		#chili_scene,
-		#rice_scene,
-		bok_choi_scene
+		rice_scene,
+		#bok_choi_scene
 	]
 	spawn_plant_timer()
 

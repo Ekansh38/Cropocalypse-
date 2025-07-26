@@ -13,7 +13,6 @@ signal entered
 var details = ""
 
 func _ready():
-	item_visual.visible = false
 	$HoverDisplay.visible = false
 	
 	hover_area.modulate.a = 0
@@ -59,6 +58,15 @@ func _hide_hover_display():
 
 func _on_drop_button_pressed() -> void:
 	if current_slot and current_slot.item:
+		if Globals.kitchen_slots.size() >= 3:
+			print("Pot is full!")
+			return
+
+		var new_slots = Globals.kitchen_slots.duplicate()
+		new_slots.append(current_slot.item)
+		Globals.kitchen_slots = new_slots
+
+		print(Globals.kitchen_slots)
 		current_slot.item = null
 		item_visual.visible = false
 		$HoverDisplay.visible = false

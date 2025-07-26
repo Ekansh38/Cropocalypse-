@@ -7,7 +7,7 @@ var hide_timer := Timer.new()
 var current_slot: InvSlot
 @export var inv: Inv
 
-
+@export var player_inv: Inv
 signal entered
 
 var details = ""
@@ -22,7 +22,6 @@ func _ready():
 	hide_timer.timeout.connect(_hide_hover_display)
 	add_child(hide_timer)
 
-	
 func update(slot: InvSlot):
 	current_slot = slot  
 
@@ -34,6 +33,7 @@ func update(slot: InvSlot):
 		details = slot.item.details
 		$HoverDisplay/VBoxContainer/DetailsLabel.text = details
 
+		
 func _on_hover_area_mouse_entered():
 	entered.emit()
 	is_hovering = true
@@ -59,13 +59,23 @@ func _hide_hover_display():
 
 func _on_drop_button_pressed() -> void:
 	if current_slot and current_slot.item:
+		var item_to_remove = current_slot.item 
+
+		var new_slots = Globals.kitchen_slots.duplicate()
+		new_slots.erase(item_to_remove)
+		Globals.kitchen_slots = new_slots 
+
+		inv.remove(item_to_remove)
+
+		player_inv.insert(item_to_remove)
+
+		# Clear visuals
 		current_slot.item = null
 		item_visual.visible = false
 		$HoverDisplay.visible = false
 		$HoverDisplay/VBoxContainer/DetailsLabel.text = ""
-		inv.remove(current_slot.item)
-
-
+		
+		
 func _on_eat_button_pressed() -> void:
 	if current_slot and current_slot.item:
 		Globals.player_hunger += current_slot.item.added_hunger

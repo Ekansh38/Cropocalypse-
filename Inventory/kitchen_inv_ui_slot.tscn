@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://btdet1st6d4m8"]
+
+[ext_resource type="PackedScene" uid="uid://dkqlw6jmevolj" path="res://Inventory/inv_ui_slot.tscn" id="1_8jj1c"]
+[ext_resource type="Script" uid="uid://bu31o8s38lrme" path="res://Inventory/kitchen_inv_ui_slot.gd" id="2_psamg"]
+
+[node name="KitchenInvUISlot" instance=ExtResource("1_8jj1c")]
+script = ExtResource("2_psamg")
+player_inv = null
+
+[node name="HoverDisplay" parent="." index="2"]
+visible = false
+
+[node name="DropButton" parent="HoverDisplay/VBoxContainer" index="0"]
+text = "REMOVE"

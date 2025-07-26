@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cboaiq28qipsr"]
+
+[ext_resource type="PackedScene" uid="uid://cxxiysmvxwhe" path="res://Inventory/inv_ui.tscn" id="1_b3rsd"]
+[ext_resource type="Script" uid="uid://07kmr0ul3r2f" path="res://Scenes/cooking_inv_ui.gd" id="2_ptdda"]
+
+[node name="CookingInvUI" instance=ExtResource("1_b3rsd")]
+script = ExtResource("2_ptdda")
