@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://biljgomemmnhc"]
+[gd_scene load_steps=10 format=3 uid="uid://biljgomemmnhc"]
 
 [ext_resource type="Script" uid="uid://uup87w8r0a8g" path="res://Scripts/ui.gd" id="1_jxero"]
 [ext_resource type="Texture2D" uid="uid://5cesqaf1eky8" path="res://Assets/inventoryicon.png" id="2_qdvrb"]
+[ext_resource type="Texture2D" uid="uid://b5snqedalek7a" path="res://Assets/kenney_ui-pack-rpg-expansion/PNG/barBack_horizontalMid.png" id="2_ryf15"]
+[ext_resource type="Texture2D" uid="uid://bfo4a2hdrwmws" path="res://Assets/kenney_ui-pack-rpg-expansion/PNG/barGreen_horizontalMid.png" id="3_mmixe"]
 [ext_resource type="Texture2D" uid="uid://d1n6qoxw4pmqu" path="res://Assets/recipeicon.png" id="3_nf4gj"]
 [ext_resource type="Shader" uid="uid://ew6w8qlo33ps" path="res://Scenes/vignette.gdshader" id="4_2246s"]
 [ext_resource type="Texture2D" uid="uid://c111snl0xnncc" path="res://Assets/bcchili.png" id="5_q7pk6"]
+[ext_resource type="FontFile" uid="uid://byj2p0422aock" path="res://Assets/RocketDoodleRegular-lxRYd.ttf" id="6_m78vo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q7pk6"]
 shader = ExtResource("4_2246s")
@@ -40,7 +43,7 @@ offset_right = 4.0
 grow_vertical = 0
 value = 100.0
 
-[node name="HealthBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="TextureProgressBar" parent="."]
 modulate = Color(0, 1, 0, 1)
 anchors_preset = -1
 anchor_left = 0.01
@@ -50,7 +53,10 @@ anchor_bottom = 0.88
 offset_top = -27.0
 offset_right = 4.0
 grow_vertical = 0
+scale = Vector2(22, 2)
 value = 100.0
+texture_under = ExtResource("2_ryf15")
+texture_progress = ExtResource("3_mmixe")
 
 [node name="InventoryButton" type="Button" parent="."]
 offset_left = 1.0
@@ -88,11 +94,12 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("5_q7pk6")
 
 [node name="GrenadeAmount" type="Label" parent="."]
-offset_left = 1182.0
-offset_top = 38.0
-offset_right = 1268.0
-offset_bottom = 107.0
-theme_override_font_sizes/font_size = 50
+offset_left = 1187.0
+offset_top = 33.0
+offset_right = 1273.0
+offset_bottom = 111.0
+theme_override_fonts/font = ExtResource("6_m78vo")
+theme_override_font_sizes/font_size = 70
 text = "3"
 
 [connection signal="mouse_entered" from="InventoryButton" to="." method="_on_inventory_button_mouse_entered"]

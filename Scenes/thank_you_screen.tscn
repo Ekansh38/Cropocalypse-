@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://brstdo3ke0r1l"]
+
+[node name="ThankYouScreen" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 60.0
+offset_top = 62.0
+offset_right = 1207.0
+offset_bottom = 335.0
+theme_override_font_sizes/font_size = 200
+text = "THANK YOU"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 96.0
+offset_top = 394.0
+offset_right = 1243.0
+offset_bottom = 667.0
+theme_override_font_sizes/font_size = 50
+text = "Credits:
+Programming & Music: Byte Colony
+Art: Tukotara"

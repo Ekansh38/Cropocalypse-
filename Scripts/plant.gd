@@ -191,11 +191,11 @@ func _on_body_exited(body: Node) -> void:
 	if body == target:
 		target = null
 		
-func take_damage(knockback_velocity_input: Vector2 = Vector2.ZERO):
+func take_damage(knockback_velocity_input: Vector2 = Vector2.ZERO, damage: int = 25):
 	if state != PlantState.HOSTILE:
 		queue_free()
 
-	health -= 25
+	health -= damage
 	$HitParticles.emitting = true
 	$HealthBar.value = health
 	camera.screen_shake()
@@ -207,5 +207,7 @@ func take_damage(knockback_velocity_input: Vector2 = Vector2.ZERO):
 	if health <= 0:
 		var plant_drop_obj = plant_drop.instantiate()
 		plant_drop_obj.global_position = global_position
-		get_tree().current_scene.add_child(plant_drop_obj)
+		var plant_drops = $"../../PlantDrops"
+
+		plant_drops.add_child(plant_drop_obj)
 		queue_free()

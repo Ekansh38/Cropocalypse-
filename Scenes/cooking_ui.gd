@@ -18,9 +18,15 @@ func open():
 
 	
 func close():	
+	Globals.is_cooking = false
+
 	$CookingInvUI.close()
 	$OtherThings.visible = false
-	
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("inventory"):
+		close()
+
 func _update_kitchen():
 	var slot_nodes = [
 		$OtherThings/KitchenInvUISlot,
@@ -59,6 +65,8 @@ func _update_kitchen():
 
 
 func _on_button_pressed() -> void:
+	if player_inv.is_full():
+		return
 	var dish
 	var current_ingredients: Array[String] = []
 	for item in Globals.kitchen_slots:

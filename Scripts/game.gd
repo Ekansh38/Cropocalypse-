@@ -13,8 +13,8 @@ func _on_player_shoot_fired(global_position: Vector2, direction: Vector2) -> voi
 func _on_player_grenade_thrown(global_position: Vector2, direction: Vector2) -> void:
 	var grenade = grenade_scene.instantiate()
 	grenade.global_position = global_position
-	
+	grenade.camera = $Player/Camera2D
 	if grenade.has_method("launch"):
 		grenade.launch(direction)
 
-	get_tree().current_scene.add_child(grenade)
+	$Grenades.add_child(grenade)

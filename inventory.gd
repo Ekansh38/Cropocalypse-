@@ -20,3 +20,9 @@ func remove(item: InvItem) -> void:
 			slot.item = null
 			update.emit()
 			return
+
+func is_full() -> bool:
+	for slot in slots:
+		if slot.item == null:
+			return false
+	return true

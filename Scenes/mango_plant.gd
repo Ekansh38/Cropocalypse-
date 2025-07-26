@@ -72,11 +72,11 @@ func _physics_process(delta):
 
 	move_and_collide(final_velocity * delta)
 
-func take_damage(knockback_velocity_input: Vector2 = Vector2.ZERO):
+func take_damage(knockback_velocity_input: Vector2 = Vector2.ZERO, damage: int = 25):
 	if state != PlantState.HOSTILE:
 		queue_free()
 
-	health -= 25
+	health -= damage
 	$HitParticles.emitting = true
 	$HealthBar.value = health
 
@@ -87,9 +87,12 @@ func take_damage(knockback_velocity_input: Vector2 = Vector2.ZERO):
 	if health <= 0:
 		var plant_drop_obj = plant_drop.instantiate()
 		plant_drop_obj.global_position = global_position
-		get_tree().current_scene.add_child(plant_drop_obj)
-		queue_free()
+		var plant_drops = $"../../PlantDrops"
 
+		plant_drops.add_child(plant_drop_obj)
+		queue_free()
+		
+		
 func transition_to_state(new_state: PlantState) -> void:
 	state = new_state
 

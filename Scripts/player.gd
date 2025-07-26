@@ -1,5 +1,6 @@
 extends CharacterBody2D
-
+var is_aiming_grenade: bool = false
+@onready var aim_line := $AimLine2D 
 var vel: Vector2 = Vector2.ZERO
 var acc: Vector2 = Vector2.ZERO
 var dir: Vector2 = Vector2.ZERO
@@ -64,9 +65,24 @@ func _process(delta: float) -> void:
 	Globals.player_hunger = clamp(Globals.player_hunger, 0, 100)
 	Globals.player_thirst = clamp(Globals.player_thirst, 0, 100)
 	
-	if Input.is_action_just_pressed("grenade") and not Globals.is_hovering_on_ui:
-		emit_grenade_signal()
-		
+	if Input.is_action_pressed("grenade") and not Globals.is_hovering_on_ui:
+		is_aiming_grenade = true
+		update_grenade_aim_line()
+	elif is_aiming_grenade:
+		is_aiming_grenade = false
+		aim_line.clear_points()
+		if Globals.grenades > 0:
+			Globals.grenades -= 1
+			var using_left = $Player/LeftGun.visible
+			var marker
+			if using_left:
+				marker = $Player/LeftGun/Marker2D
+			else:
+				marker = $Player/RightGun/Marker2D
+			var throw_pos = marker.global_position
+			var mouse_pos = get_global_mouse_position()
+			var throw_dir = (mouse_pos - throw_pos).normalized()
+			emit_signal("grenade_thrown", throw_pos, throw_dir)		
 	if Input.is_action_just_pressed("shoot") and can_shoot and not Globals.is_hovering_on_ui:
 		emit_shoot_signal()
 		can_shoot = false
@@ -170,11 +186,45 @@ func emit_shoot_signal():
 func add_item(type):
 	inv.insert(type)
 
-func take_damage():
+func take_damage(damage: int = 5):
 	$Camera2D.screen_shake(2)
-	Globals.player_health -= 5
+	Globals.player_health -= damage
 	print(Globals.player_health)
 
 
 func change_control_label(message):
 	$ControlLabel.text = message
+	
+	
+func update_grenade_aim_line():
+	var marker: Marker2D
+	if $Player/LeftGun.visible:
+		marker = $Player/LeftGun/Marker2D
+	else:
+		marker = $Player/RightGun/Marker2D
+
+	var start_pos = marker.global_position
+	var mouse_pos = get_global_mouse_position()
+
+	var max_range = 400.0
+	var diff = mouse_pos - start_pos
+	var dist = diff.length()
+	var clamped_dir = diff.normalized()
+
+	var target_pos: Vector2
+	if dist > max_range:
+		target_pos = start_pos + clamped_dir * max_range
+	else:
+		target_pos = mouse_pos
+
+	var arc_height = -150.0
+	var steps = 25
+	var points: Array[Vector2] = []
+
+	for i in range(steps + 1):
+		var t = i / float(steps)
+		var p = start_pos.lerp(target_pos, t)
+		p.y += arc_height * sin(PI * t)
+		points.append(aim_line.to_local(p))
+
+	aim_line.points = points

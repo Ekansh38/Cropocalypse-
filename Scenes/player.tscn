@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://chgtjd83j5y7"]
+[gd_scene load_steps=24 format=3 uid="uid://chgtjd83j5y7"]
 
 [ext_resource type="Script" uid="uid://20lm0festh54" path="res://Scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Resource" uid="uid://c8k5f6a02kd8s" path="res://Inventory/player_inventory.tres" id="2_vgqql"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bhgvr745urhwi" path="res://Assets/soldieranim/6.png" id="14_wpjfl"]
 [ext_resource type="Texture2D" uid="uid://c61b04fq1tfqc" path="res://Assets/soldieranim/7.png" id="15_bi64h"]
 [ext_resource type="Texture2D" uid="uid://dkyu02iemfpx0" path="res://Assets/soldieranim/8.png" id="16_2ijsl"]
+[ext_resource type="FontFile" uid="uid://byj2p0422aock" path="res://Assets/RocketDoodleRegular-lxRYd.ttf" id="17_fs7ks"]
 [ext_resource type="Texture2D" uid="uid://bo6h7atxdvkow" path="res://Assets/soldieranim/9.png" id="17_p1odr"]
 [ext_resource type="AudioStream" uid="uid://t22ou82bwmsd" path="res://Assets/walkingsfx.wav" id="18_igrcy"]
 
@@ -142,14 +143,15 @@ texture = ExtResource("7_3smsa")
 texture_scale = 0.8
 
 [node name="ControlLabel" type="Label" parent="."]
-offset_left = -174.0
-offset_top = -216.0
-offset_right = 194.0
-offset_bottom = -147.0
+offset_left = -150.0
+offset_top = -202.0
+offset_right = 218.0
+offset_bottom = -133.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("17_fs7ks")
 theme_override_font_sizes/font_size = 50
 
 [node name="ShotSFX" type="AudioStreamPlayer2D" parent="."]
@@ -158,3 +160,6 @@ stream = ExtResource("8_8erm5")
 [node name="WalkingSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("18_igrcy")
 volume_db = -10.0
+
+[node name="AimLine2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, -3)

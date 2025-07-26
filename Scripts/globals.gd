@@ -68,12 +68,16 @@ var player_health = 100:
 		return player_health
 	set(value):
 		player_health = value
+		if player_health <= 0:
+			get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 		update_stats.emit()
 
 var player_hunger = 100:
 	get:
 		return player_hunger
 	set(value):
+		if player_hunger <= 0:
+			get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 		player_hunger = value
 		update_stats.emit()
 
@@ -81,6 +85,8 @@ var player_thirst = 100:
 	get:
 		return player_thirst
 	set(value):
+		if player_thirst <= 0:
+			get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 		player_thirst = value
 		update_stats.emit()
 

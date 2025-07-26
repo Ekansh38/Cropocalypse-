@@ -13,7 +13,8 @@ func _ready():
 
 func schedule_next_spawn():
 	var delay = randf_range(min_spawn_delay, max_spawn_delay)
-	await get_tree().create_timer(delay).timeout
+	if get_tree():
+		await get_tree().create_timer(delay).timeout
 	spawn_random_mango()
 	schedule_next_spawn()
 

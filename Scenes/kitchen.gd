@@ -25,7 +25,6 @@ func _process(delta: float) -> void:
 				Globals.is_cooking = true
 
 			else:
-				Globals.is_cooking = false
 
 				is_ui_open = false
 

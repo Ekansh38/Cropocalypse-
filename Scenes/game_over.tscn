@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://crlcgr4ss82r0"]
+
+[ext_resource type="Script" uid="uid://bd5gpkiowdyyh" path="res://Scenes/game_over.gd" id="1_ojehl"]
+[ext_resource type="FontFile" uid="uid://byj2p0422aock" path="res://Assets/RocketDoodleRegular-lxRYd.ttf" id="2_8fo1c"]
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_ojehl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 190.0
+offset_top = 74.0
+offset_right = 1337.0
+offset_bottom = 347.0
+theme_override_fonts/font = ExtResource("2_8fo1c")
+theme_override_font_sizes/font_size = 200
+text = "GAME OVER"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 526.0
+offset_top = 432.0
+offset_right = 779.0
+offset_bottom = 577.0
+theme_override_fonts/font = ExtResource("2_8fo1c")
+theme_override_font_sizes/font_size = 100
+text = "Quit"
+
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

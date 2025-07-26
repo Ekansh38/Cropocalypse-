@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://vgn3dqi6c31"]
+[gd_scene load_steps=35 format=3 uid="uid://vgn3dqi6c31"]
 
 [ext_resource type="Script" uid="uid://7vk5l1qhqne5" path="res://Scripts/game.gd" id="1_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://dt8ocs65hig4d" path="res://Assets/plantgjmap.png" id="2_v158k"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://b2k6maew0cise" path="res://Scenes/kitchen.tscn" id="30_mucmn"]
 [ext_resource type="PackedScene" uid="uid://dt8wktxmadump" path="res://Scenes/cooking_ui.tscn" id="31_8m3t6"]
 [ext_resource type="Script" uid="uid://c1u3s20b10dmj" path="res://Scenes/performance_mode.gd" id="32_ese38"]
+[ext_resource type="PackedScene" uid="uid://pxfduykbiusj" path="res://Scenes/pause_menu.tscn" id="33_oeip8"]
 
 [sub_resource type="Environment" id="Environment_nb51f"]
 background_mode = 3
@@ -73,6 +74,8 @@ texture = ExtResource("14_mg4q0")
 [node name="Kitchen" parent="." instance=ExtResource("30_mucmn")]
 position = Vector2(-711, -1080)
 
+[node name="PlantDrops" type="Node2D" parent="."]
+
 [node name="PlantSpawner" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("5_ldgsr")
@@ -86,6 +89,8 @@ min_distance_between_plants = 100.0
 spawn_bounds_top_left = Vector2(274, -1001)
 spawn_bounds_bottom_right = Vector2(1626, 871)
 metadata/_edit_lock_ = true
+
+[node name="Grenades" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("3_v158k")]
 position = Vector2(-854, -198)
@@ -282,6 +287,8 @@ cooking_ui = NodePath("../CookingUI")
 
 [node name="PerformanceMode" type="Node2D" parent="."]
 script = ExtResource("32_ese38")
+
+[node name="PauseMenu" parent="." instance=ExtResource("33_oeip8")]
 
 [connection signal="grenade_thrown" from="Player" to="." method="_on_player_grenade_thrown"]
 [connection signal="shoot_fired" from="Player" to="." method="_on_player_shoot_fired"]
