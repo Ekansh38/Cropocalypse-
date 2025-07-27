@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6jxusofcfy7c"]
+[gd_scene load_steps=18 format=3 uid="uid://c6jxusofcfy7c"]
 
 [ext_resource type="PackedScene" uid="uid://bx4iymtkeaw8m" path="res://Scenes/plant.tscn" id="1_113d2"]
 [ext_resource type="Texture2D" uid="uid://c8mi4n7154qvv" path="res://Assets/riceanim/small.png" id="2_37863"]
@@ -7,10 +7,39 @@
 [ext_resource type="Texture2D" uid="uid://ceo6mlj42e381" path="res://Assets/riceanim/mature.png" id="4_baxwb"]
 [ext_resource type="Texture2D" uid="uid://yaxkbhrpw7sw" path="res://Assets/riceanim/1.png" id="5_pdhmv"]
 [ext_resource type="Texture2D" uid="uid://dldb7ksyohn53" path="res://Assets/riceanim/2.png" id="6_h5k1m"]
+[ext_resource type="Texture2D" uid="uid://dfhb3p5gk2bxq" path="res://Assets/riceattack/1.png" id="6_k643q"]
 [ext_resource type="Texture2D" uid="uid://b3b3l7mjt2pb" path="res://Assets/riceanim/3.png" id="7_7wlok"]
+[ext_resource type="Texture2D" uid="uid://dk6ojatpwrwjs" path="res://Assets/riceattack/2.png" id="7_p61n7"]
+[ext_resource type="Texture2D" uid="uid://cfhpn1vk6bg77" path="res://Assets/riceattack/3.png" id="8_jmrbi"]
+[ext_resource type="Texture2D" uid="uid://nmsr2j4c3nya" path="res://Assets/riceattack/4.png" id="9_58euq"]
+[ext_resource type="Texture2D" uid="uid://ca7nnwlbtg6sg" path="res://Assets/riceattack/5.png" id="10_duou1"]
+[ext_resource type="Texture2D" uid="uid://bng65sgp8qp8v" path="res://Assets/riceattack/6.png" id="11_eo1hr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pdhmv"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_k643q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_p61n7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jmrbi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_58euq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_duou1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_eo1hr")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 12.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("5_pdhmv")
@@ -40,6 +69,10 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k643q"]
+radius = 59.0
+height = 174.0
+
 [sub_resource type="Gradient" id="Gradient_h5k1m"]
 offsets = PackedFloat32Array(0, 0.84186, 0.986046)
 colors = PackedColorArray(1, 0.635294, 0, 1, 0.85098, 0.678431, 0, 1, 1, 0.807843, 0, 0)
@@ -58,7 +91,9 @@ texture = ExtResource("4_baxwb")
 
 [node name="Mature" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_pdhmv")
-animation = &"walk_slow"
+animation = &"attack"
+frame = 5
+frame_progress = 1.0
 
 [node name="CollisionShape2D" parent="." index="4"]
 position = Vector2(0, 11.5)
@@ -66,12 +101,18 @@ position = Vector2(0, 11.5)
 [node name="CollisionShape2D" parent="DetectRadius" index="0"]
 metadata/_edit_lock_ = true
 
-[node name="HitParticles" parent="." index="11"]
+[node name="CollisionShape2D" parent="AttackArea" index="0"]
+shape = SubResource("CapsuleShape2D_k643q")
+
+[node name="SlapPlayer" parent="." index="9"]
+volume_db = -5.0
+
+[node name="HitParticles" parent="." index="14"]
 color_ramp = SubResource("Gradient_h5k1m")
 
-[node name="GrowingLight" parent="." index="12"]
+[node name="GrowingLight" parent="." index="15"]
 metadata/_edit_lock_ = true
 
-[node name="generallight" parent="." index="13"]
+[node name="generallight" parent="." index="16"]
 energy = 0.08
 metadata/_edit_lock_ = true

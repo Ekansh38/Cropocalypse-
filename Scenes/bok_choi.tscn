@@ -75,14 +75,18 @@ shape = SubResource("CircleShape2D_tgldm")
 [node name="CollisionShape2D" parent="DetectRadius" index="0"]
 metadata/_edit_lock_ = true
 
+[node name="HealthBar" parent="." index="10"]
+max_value = 150.0
+value = 150.0
+
 [node name="AttackArea" parent="." index="12"]
 script = null
 
-[node name="HitParticles" parent="." index="15"]
+[node name="HitParticles" parent="." index="18"]
 color_ramp = SubResource("Gradient_tgldm")
 
-[node name="GrowingLight" parent="." index="16"]
+[node name="GrowingLight" parent="." index="19"]
 metadata/_edit_lock_ = true
 
-[node name="generallight" parent="." index="17"]
+[node name="generallight" parent="." index="20"]
 metadata/_edit_lock_ = true

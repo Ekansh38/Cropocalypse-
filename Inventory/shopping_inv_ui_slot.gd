@@ -61,7 +61,10 @@ func _on_drop_button_pressed() -> void:
 	if current_slot and current_slot.item:
 		
 		Globals.money += current_slot.item.sell_price
-		
+		if current_slot.item.sell_price > 20:
+			$Expensive.play()
+		else:
+			$Cheap.play()
 		current_slot.item = null
 		item_visual.visible = false
 		$HoverDisplay.visible = false

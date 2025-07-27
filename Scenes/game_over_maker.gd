@@ -8,6 +8,7 @@ func game_over():
 	get_tree().paused = true
 
 	print("GAME OVER")
+	$"../Death".play()
 
 	process_mode = Node.PROCESS_MODE_ALWAYS
 

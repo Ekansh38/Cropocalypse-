@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://chgtjd83j5y7"]
+[gd_scene load_steps=26 format=3 uid="uid://chgtjd83j5y7"]
 
 [ext_resource type="Script" uid="uid://20lm0festh54" path="res://Scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Resource" uid="uid://c8k5f6a02kd8s" path="res://Inventory/player_inventory.tres" id="2_vgqql"]
@@ -16,9 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://bhgvr745urhwi" path="res://Assets/soldieranim/6.png" id="14_wpjfl"]
 [ext_resource type="Texture2D" uid="uid://c61b04fq1tfqc" path="res://Assets/soldieranim/7.png" id="15_bi64h"]
 [ext_resource type="Texture2D" uid="uid://dkyu02iemfpx0" path="res://Assets/soldieranim/8.png" id="16_2ijsl"]
-[ext_resource type="FontFile" uid="uid://byj2p0422aock" path="res://Assets/RocketDoodleRegular-lxRYd.ttf" id="17_fs7ks"]
+[ext_resource type="FontFile" uid="uid://beeqc45t64scm" path="res://Assets/WarningChristmas-e9gLl.otf" id="17_l6n3p"]
 [ext_resource type="Texture2D" uid="uid://bo6h7atxdvkow" path="res://Assets/soldieranim/9.png" id="17_p1odr"]
 [ext_resource type="AudioStream" uid="uid://t22ou82bwmsd" path="res://Assets/walkingsfx.wav" id="18_igrcy"]
+[ext_resource type="Texture2D" uid="uid://dp57m8pwlm2mb" path="res://Assets/kenney_particle-pack (1)/PNG (Transparent)/fire_01.png" id="20_l6n3p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0gysh"]
 animations = [{
@@ -58,11 +59,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(63, 93)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cvnsp"]
-radius = 115.07
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l6n3p"]
+radius = 96.0
+height = 252.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_x3wgy"]
 polygon = PackedVector2Array(-22, 93, -26, 92, -29, 61, -29, 30, -30, 17, -25, 6, -21, 3, -42, 4, -52, 0, -48, -6, -46, -16, -47, -29, -48, -36, -69, -44, -75, -49, -75, -53, -72, -55, -67, -55, -62, -55, -53, -52, -45, -49, -43, -60, -37, -79, -27, -84, -17, -86, -7, -87, 8, -86, 20, -84, 28, -79, 32, -70, 38, -46, 50, -47, 57, -45, 62, -44, 68, -40, 67, -36, 61, -30, 51, -26, 43, -25, 44, -24, 50, -2, 30, -1, 19, 5, 26, 14, 28, 18, 29, 40, 30, 71, 30, 91, 28, 93, 25, 93, 12, 75, 8, 70, -9, 70)
+
+[sub_resource type="Gradient" id="Gradient_olqyp"]
+offsets = PackedFloat32Array(0, 0.891832, 1)
+colors = PackedColorArray(0.619608, 0.133333, 0, 1, 0.437744, 0.241752, 0, 1, 0.415686, 0.254902, 0, 0)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_onrkg")
@@ -125,6 +131,7 @@ position = Vector2(143.333, -43.3333)
 scale = Vector2(1.89104, 5.68889)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-0.5, 47.5)
 shape = SubResource("RectangleShape2D_onrkg")
 metadata/_edit_lock_ = true
@@ -133,10 +140,11 @@ metadata/_edit_lock_ = true
 script = ExtResource("3_6t5aa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAttackArea"]
-shape = SubResource("CircleShape2D_cvnsp")
+shape = SubResource("CapsuleShape2D_l6n3p")
 metadata/_edit_lock_ = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
 occluder = SubResource("OccluderPolygon2D_x3wgy")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
@@ -146,19 +154,20 @@ texture_scale = 0.8
 metadata/_edit_lock_ = true
 
 [node name="ControlLabel" type="Label" parent="."]
-offset_left = -150.0
-offset_top = -202.0
-offset_right = 218.0
-offset_bottom = -133.0
+offset_left = -185.0
+offset_top = -211.0
+offset_right = 184.0
+offset_bottom = -121.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("17_fs7ks")
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("17_l6n3p")
+theme_override_font_sizes/font_size = 100
 
 [node name="ShotSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_8erm5")
+volume_db = -7.0
 bus = &"SFX"
 
 [node name="WalkingSFX" type="AudioStreamPlayer2D" parent="."]
@@ -168,3 +177,21 @@ bus = &"SFX"
 
 [node name="AimLine2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, -3)
+
+[node name="HitParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 30
+texture = ExtResource("20_l6n3p")
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.6
+emission_shape = 1
+emission_sphere_radius = 19.22
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 10)
+initial_velocity_min = 200.0
+initial_velocity_max = 350.0
+scale_amount_min = 0.07
+scale_amount_max = 0.13
+color_ramp = SubResource("Gradient_olqyp")

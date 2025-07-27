@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4i5owvy2mnfi"]
+[gd_scene load_steps=5 format=3 uid="uid://d4i5owvy2mnfi"]
 
 [ext_resource type="Script" uid="uid://cmg7kxant523c" path="res://Inventory/shopping_inv_ui_slot.gd" id="1_saybo"]
 [ext_resource type="Texture2D" uid="uid://dgq7t3ike7qcx" path="res://Assets/buttons and icons/plantbox.png" id="2_xbxpa"]
+[ext_resource type="AudioStream" uid="uid://bvvdjmfuv0lhg" path="res://Assets/cheapsellsfx.wav" id="3_xbxpa"]
+[ext_resource type="AudioStream" uid="uid://c6veufmibmjnh" path="res://Assets/expensivesellsfx.wav" id="4_i7k8n"]
 
 [node name="InvUISlot" type="Panel"]
 process_mode = 3
@@ -79,6 +81,14 @@ offset_top = -1.0
 offset_right = 81.0
 offset_bottom = 79.0
 mouse_filter = 1
+
+[node name="Cheap" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xbxpa")
+volume_db = -5.0
+
+[node name="Expensive" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_i7k8n")
+volume_db = -6.0
 
 [connection signal="pressed" from="HoverDisplay/VBoxContainer/DropButton" to="." method="_on_drop_button_pressed"]
 [connection signal="pressed" from="HoverDisplay/VBoxContainer/EatButton" to="." method="_on_eat_button_pressed"]

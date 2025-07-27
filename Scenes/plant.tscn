@@ -1,12 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://bx4iymtkeaw8m"]
+[gd_scene load_steps=17 format=3 uid="uid://bx4iymtkeaw8m"]
 
 [ext_resource type="Script" uid="uid://cy1wc84cfcu88" path="res://Scripts/plant.gd" id="1_t03al"]
 [ext_resource type="Texture2D" uid="uid://d4lqdpbe8jnum" path="res://Assets/plant.png" id="2_mbetm"]
 [ext_resource type="Script" uid="uid://beek4ysilfnko" path="res://Scripts/attack_area.gd" id="3_8frh5"]
-[ext_resource type="AudioStream" uid="uid://cllpv50e2cv58" path="res://Assets/PlantSLAP.wav" id="4_wt21e"]
+[ext_resource type="AudioStream" uid="uid://ysck3u0tqfxn" path="res://Assets/chomp.wav" id="4_b4bfk"]
 [ext_resource type="Texture2D" uid="uid://dqevtxu4227jd" path="res://Assets/kenney_particle-pack (1)/PNG (Transparent)/star_07.png" id="5_fl1so"]
+[ext_resource type="AudioStream" uid="uid://gwqv76r8ovyh" path="res://Assets/death1.wav" id="5_guixl"]
 [ext_resource type="Texture2D" uid="uid://susm0btw48ue" path="res://Assets/light.png" id="5_ujn7j"]
 [ext_resource type="Texture2D" uid="uid://dp57m8pwlm2mb" path="res://Assets/kenney_particle-pack (1)/PNG (Transparent)/fire_01.png" id="6_b4bfk"]
+[ext_resource type="AudioStream" uid="uid://bp5hra705p1tk" path="res://Assets/death2.wav" id="6_thy18"]
+[ext_resource type="AudioStream" uid="uid://wkd357m0ytxp" path="res://Assets/death3.wav" id="7_xvlid"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wt21e"]
 animations = [{
@@ -23,7 +26,7 @@ size = Vector2(103, 135.25)
 radius = 562.008
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8frh5"]
-radius = 160.028
+radius = 107.005
 
 [sub_resource type="Gradient" id="Gradient_b4bfk"]
 offsets = PackedFloat32Array(0, 0.841216, 1)
@@ -91,7 +94,20 @@ shape = SubResource("CircleShape2D_8frh5")
 metadata/_edit_lock_ = true
 
 [node name="SlapPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_wt21e")
+stream = ExtResource("4_b4bfk")
+volume_db = -7.0
+bus = &"SFX"
+
+[node name="Death1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_guixl")
+bus = &"SFX"
+
+[node name="Death2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_thy18")
+bus = &"SFX"
+
+[node name="Death3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_xvlid")
 bus = &"SFX"
 
 [node name="GrowingParticles" type="CPUParticles2D" parent="."]
@@ -137,4 +153,5 @@ energy = 0.05
 texture = ExtResource("5_ujn7j")
 texture_scale = 0.6
 
+[connection signal="animation_finished" from="Mature" to="." method="_on_mature_animation_finished"]
 [connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]

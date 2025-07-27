@@ -77,5 +77,5 @@ animation = &"walk_slow"
 [node name="CollisionShape2D" parent="." index="4"]
 position = Vector2(-1.5, 8)
 
-[node name="HitParticles" parent="." index="11"]
+[node name="HitParticles" parent="." index="14"]
 color_ramp = SubResource("Gradient_w3uj4")

@@ -169,6 +169,8 @@ func reset():
 	is_shopping = false
 	_money = 0
 	_available_guns = ["Pistol"]
+	_kitchen_slots = []
+
 	active_gun = "Pistol"
 	var inventory = load("res://Inventory/player_inventory.tres")
 	if inventory:

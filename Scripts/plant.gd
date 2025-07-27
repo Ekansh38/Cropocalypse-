@@ -6,6 +6,8 @@ var knockback_timer := 0.0
 const KNOCKBACK_DURATION := 0.3
 enum PlantState { SEEDLING, MEDIUM, LARGE, HOSTILE }
 
+var is_attack_playing = false
+
 var plant_drop: PackedScene = preload("res://Scenes/plant_drop.tscn")
 @onready var mature_sprite = $Mature
 var state = PlantState.SEEDLING
@@ -30,7 +32,7 @@ func _ready():
 	$GrowthBar.visible = true
 	$GrowthBar.max_value = grow_time
 	$GrowthBar.value = 0
-	$CollisionShape2D.disabled = true
+	$CollisionShape2D.disabled = false
 	$DetectRadius.body_entered.connect(_on_body_entered)
 	$DetectRadius.body_exited.connect(_on_body_exited)
 
@@ -60,6 +62,12 @@ func _process(delta):
 
 	elif state == PlantState.LARGE and grow_timer >= grow_time:
 		transition_to_state(PlantState.HOSTILE)
+		
+	
+	
+	
+
+
 
 func transition_to_state(new_state: PlantState) -> void:
 	state = new_state
@@ -71,14 +79,14 @@ func transition_to_state(new_state: PlantState) -> void:
 			seedling_sprite.visible = false
 			medium_sprite.visible = true
 			large_sprite.visible = false
-			$CollisionShape2D.disabled = true
+			$CollisionShape2D.disabled = false
 		PlantState.LARGE:
 			$GrowingParticles.visible = true
 			$GrowingLight.visible = true
 			seedling_sprite.visible = false
 			medium_sprite.visible = false
 			large_sprite.visible = true
-			$CollisionShape2D.disabled = true
+			$CollisionShape2D.disabled = false
 		PlantState.HOSTILE:
 			$GrowingParticles.visible = false
 			$GrowingLight.visible = false
@@ -89,7 +97,8 @@ func transition_to_state(new_state: PlantState) -> void:
 			medium_sprite.visible = false
 			large_sprite.visible = false
 			mature_sprite.visible = true
-			mature_sprite.play("walk")
+			if not is_attack_playing:
+				mature_sprite.play("walk")
 
 
 			for body in $DetectRadius.get_overlapping_bodies():
@@ -156,7 +165,7 @@ func _physics_process(delta):
 		if mature_sprite.visible:
 			if is_moving:
 				if target:
-					if mature_sprite.animation != "walk":
+					if mature_sprite.animation != "walk" and not is_attack_playing:
 						mature_sprite.play("walk")
 				else:
 					if mature_sprite.animation != "walk_slow":
@@ -199,6 +208,18 @@ func take_damage(knockback_velocity_input: Vector2 = Vector2.ZERO, damage: int =
 		var plant_drop_obj = plant_drop.instantiate()
 		plant_drop_obj.global_position = global_position
 		var plant_drops = $"../../PlantDrops"
+		
+		
+
 
 		plant_drops.add_child(plant_drop_obj)
+		$Mature.visible = false
+		var sounds = [$Death1, $Death2, $Death3]
+		var random_sound: AudioStreamPlayer2D = sounds[randi() % sounds.size()]
+		random_sound.play()
+		await random_sound.finished
 		queue_free()
+
+
+func _on_mature_animation_finished() -> void:
+	is_attack_playing = false

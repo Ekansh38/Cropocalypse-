@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://drnv81hnt06ad"]
+[gd_scene load_steps=15 format=3 uid="uid://drnv81hnt06ad"]
 
 [ext_resource type="PackedScene" uid="uid://bx4iymtkeaw8m" path="res://Scenes/plant.tscn" id="1_1gakv"]
 [ext_resource type="Texture2D" uid="uid://dyoivficmhutl" path="res://Assets/mangoanim/small.png" id="2_m7dcw"]
@@ -6,11 +6,32 @@
 [ext_resource type="Texture2D" uid="uid://cbb1cg7m355gc" path="res://Assets/mangoanim/med.png" id="3_m7dcw"]
 [ext_resource type="Texture2D" uid="uid://3oi84knwvyys" path="res://Assets/mangoanim/mature.png" id="4_2i6f1"]
 [ext_resource type="Texture2D" uid="uid://cbcptap5rlef2" path="res://Assets/mangoanim/1.png" id="5_fqdud"]
+[ext_resource type="Texture2D" uid="uid://2e0bc0jn3lw" path="res://Assets/mangoattack/1.png" id="6_2rofh"]
 [ext_resource type="Texture2D" uid="uid://daeqotde1i47h" path="res://Assets/mangoanim/2.png" id="6_xjsj4"]
 [ext_resource type="Texture2D" uid="uid://061rf4hvhn2q" path="res://Assets/mangoanim/3.png" id="7_3heqv"]
+[ext_resource type="Texture2D" uid="uid://chtxem8egmxb" path="res://Assets/mangoattack/2.png" id="7_bup6y"]
+[ext_resource type="Texture2D" uid="uid://bal8e0khwk6ov" path="res://Assets/mangoattack/3.png" id="8_o1cse"]
+[ext_resource type="Texture2D" uid="uid://bhquxshvqnbe2" path="res://Assets/mangoattack/4.png" id="9_no5m1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ff5vk"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_2rofh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bup6y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_o1cse")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_no5m1")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 12.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("5_fqdud")
@@ -44,9 +65,12 @@ texture = ExtResource("4_2i6f1")
 
 [node name="Mature" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_ff5vk")
+animation = &"attack"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" parent="." index="4"]
 position = Vector2(-2.5, 7.625)
 
-[node name="HitParticles" parent="." index="11"]
+[node name="HitParticles" parent="." index="14"]
 color_ramp = SubResource("Gradient_xjsj4")

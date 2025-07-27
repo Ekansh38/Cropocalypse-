@@ -9,7 +9,8 @@ func _ready():
 	$GrowthBar.visible = true
 	$GrowthBar.max_value = grow_time
 	$GrowthBar.value = 0
-
+	speed = 200
+	WANDER_SPEED = 90
 	$DetectRadius.body_entered.connect(_on_body_entered)
 	$DetectRadius.body_exited.connect(_on_body_exited)
 

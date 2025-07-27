@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://vgn3dqi6c31"]
+[gd_scene load_steps=39 format=3 uid="uid://vgn3dqi6c31"]
 
 [ext_resource type="Script" uid="uid://7vk5l1qhqne5" path="res://Scripts/game.gd" id="1_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://dt8ocs65hig4d" path="res://Assets/plantgjmap.png" id="2_v158k"]
@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://pxfduykbiusj" path="res://Scenes/pause_menu.tscn" id="33_oeip8"]
 [ext_resource type="PackedScene" uid="uid://ckemcw11b6dgh" path="res://Scenes/shop_ui.tscn" id="35_d3cha"]
 [ext_resource type="Script" uid="uid://bdv1hqub8ah03" path="res://Scenes/game_over_maker.gd" id="36_i26dy"]
+[ext_resource type="AudioStream" uid="uid://crk61niwfdq1f" path="res://Assets/death.wav" id="37_lmoi6"]
 
 [sub_resource type="Environment" id="Environment_nb51f"]
 background_mode = 3
@@ -309,6 +310,10 @@ environment = SubResource("Environment_nb51f")
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(1, 1, 0.945098, 1)
 script = ExtResource("16_nnt18")
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("37_lmoi6")
+bus = &"Music"
 
 [connection signal="grenade_thrown" from="Player" to="." method="_on_player_grenade_thrown"]
 [connection signal="shoot_fired" from="Player" to="." method="_on_player_shoot_fired"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://k7tjisppx6mx"]
+[gd_scene load_steps=6 format=3 uid="uid://k7tjisppx6mx"]
 
-[ext_resource type="FontFile" uid="uid://byj2p0422aock" path="res://Assets/RocketDoodleRegular-lxRYd.ttf" id="1_28flt"]
 [ext_resource type="Script" uid="uid://bnw1qeu7ebo2o" path="res://Scenes/main_menu.gd" id="1_48xlc"]
+[ext_resource type="FontFile" uid="uid://beeqc45t64scm" path="res://Assets/WarningChristmas-e9gLl.otf" id="2_ce3w2"]
 [ext_resource type="AudioStream" uid="uid://de0ss7de6ubsb" path="res://Assets/ClickSFX.wav" id="3_1ehe0"]
 [ext_resource type="PackedScene" uid="uid://67ccaeypt8jq" path="res://Scenes/options.tscn" id="4_ce3w2"]
+[ext_resource type="AudioStream" uid="uid://pqv6yk0vqin4" path="res://Assets/menutheme.wav" id="5_n45e2"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_48xlc")
@@ -16,21 +17,22 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="."]
-offset_left = 92.0
-offset_top = 48.0
-offset_right = 1164.0
-offset_bottom = 269.0
+offset_left = 141.0
+offset_top = 17.0
+offset_right = 1081.0
+offset_bottom = 287.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_28flt")
-theme_override_font_sizes/font_size = 200
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 300
 text = "Cropocalypse"
 
 [node name="Play" type="Button" parent="."]
-offset_left = 740.0
-offset_top = 328.0
-offset_right = 949.0
-offset_bottom = 473.0
-theme_override_font_sizes/font_size = 100
+offset_left = 795.0
+offset_top = 330.0
+offset_right = 1004.0
+offset_bottom = 475.0
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 150
 text = "Play"
 
 [node name="Controls" type="Button" parent="."]
@@ -67,6 +69,11 @@ offset_left = 57.0
 offset_top = 64.0
 offset_right = 1188.0
 offset_bottom = 658.0
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_n45e2")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Controls" to="." method="_on_controls_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckemcw11b6dgh"]
+[gd_scene load_steps=10 format=3 uid="uid://ckemcw11b6dgh"]
 
 [ext_resource type="Script" uid="uid://bjna1tqemslqx" path="res://Scenes/shop_ui.gd" id="1_60nai"]
 [ext_resource type="PackedScene" uid="uid://bcdra6jg7e18s" path="res://Inventory/shopping_inv_ui.tscn" id="2_o75od"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bhijjupdjy8sb" path="res://Assets/weapons/akshop.png" id="5_60nai"]
 [ext_resource type="Texture2D" uid="uid://biwxatrck5fhq" path="res://Assets/weapons/launchershop.png" id="6_jjsl5"]
 [ext_resource type="Texture2D" uid="uid://diadydfi0y6di" path="res://Assets/weapons/grenade.png" id="7_ktnr1"]
+[ext_resource type="Texture2D" uid="uid://dhgc7o0bsstfg" path="res://Assets/boots.png" id="7_q20er"]
 [ext_resource type="AudioStream" uid="uid://ce6v0leblb7ru" path="res://Assets/BuySFX.wav" id="8_ewckf"]
 
 [node name="ShopUI" type="CanvasLayer"]
@@ -183,7 +184,7 @@ offset_right = 661.0
 offset_bottom = 376.0
 theme_override_fonts/font = ExtResource("3_a7r41")
 theme_override_font_sizes/font_size = 40
-text = "$300"
+text = "$400"
 
 [node name="BuyGrenadeLauncher" type="Button" parent="BuyArea/GrenadeLauncher"]
 layout_mode = 0
@@ -257,7 +258,7 @@ offset_right = 1866.0
 offset_bottom = 1203.0
 scale = Vector2(0.18, 0.18)
 mouse_filter = 2
-texture = ExtResource("6_jjsl5")
+texture = ExtResource("7_q20er")
 
 [node name="Grenade" type="Control" parent="BuyArea"]
 anchors_preset = 0

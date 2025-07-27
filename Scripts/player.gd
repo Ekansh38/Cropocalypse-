@@ -189,7 +189,7 @@ func rotate_guns_to_mouse() -> void:
 
 
 func emit_shoot_signal():
-	$ShotSFX.pitch_scale = randf_range(0.9, 1.1)
+	$ShotSFX.pitch_scale = randf_range(0.85, 1.15)
 	$ShotSFX.play()
 	var using_left = $Player/LeftGun.visible
 	var marker
@@ -211,6 +211,7 @@ func add_item(type):
 	inv.insert(type)
 
 func take_damage(damage: int = 3):
+	$HitParticles.emitting = true
 	$Camera2D.screen_shake(2)
 	Globals.player_health -= damage
 	print(Globals.player_health)

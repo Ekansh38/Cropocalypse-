@@ -4,7 +4,7 @@ func _ready():
 	if camera == null:
 		camera = get_tree().current_scene.get_node("Player/Camera2D")
 	plant_drop = preload("res://Scenes/mango_drop.tscn")
-	speed = 400
+	speed = 300
 	$CollisionShape2D.disabled = true
 
 	# Run base class setup

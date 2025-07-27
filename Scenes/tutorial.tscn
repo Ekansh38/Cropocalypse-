@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://f1smalnofag8"]
+[gd_scene load_steps=8 format=3 uid="uid://f1smalnofag8"]
 
 [ext_resource type="Texture2D" uid="uid://t7lgofilvwtg" path="res://Assets/kenney_input-prompts-pixel-16/Tilemap/tilemap.png" id="1_ka2pi"]
 [ext_resource type="Script" uid="uid://byvpjd1ian0j7" path="res://Scenes/tutorial.gd" id="1_omtrn"]
 [ext_resource type="FontFile" uid="uid://byj2p0422aock" path="res://Assets/RocketDoodleRegular-lxRYd.ttf" id="2_feyax"]
 [ext_resource type="AudioStream" uid="uid://de0ss7de6ubsb" path="res://Assets/ClickSFX.wav" id="4_i6t4g"]
+[ext_resource type="AudioStream" uid="uid://pqv6yk0vqin4" path="res://Assets/menutheme.wav" id="5_p8jf4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ka2pi"]
 texture = ExtResource("1_ka2pi")
@@ -1043,5 +1044,10 @@ text = "Back"
 stream = ExtResource("4_i6t4g")
 volume_db = 5.0
 bus = &"SFX"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_p8jf4")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

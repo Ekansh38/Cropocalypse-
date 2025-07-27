@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://boa7kmu2cd7vb"]
+[gd_scene load_steps=7 format=3 uid="uid://boa7kmu2cd7vb"]
 
 [ext_resource type="Script" uid="uid://cvbv6348h4et" path="res://shop.gd" id="1_blqjs"]
 [ext_resource type="Texture2D" uid="uid://daousgq4cc5uj" path="res://Assets/shadow.png" id="1_e7rdd"]
 [ext_resource type="Texture2D" uid="uid://dlsjnodjkik1h" path="res://Assets/shop.png" id="1_viryw"]
+[ext_resource type="Texture2D" uid="uid://susm0btw48ue" path="res://Assets/light.png" id="4_fgaav"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7rdd"]
 size = Vector2(394, 353)
@@ -31,6 +32,12 @@ shape = SubResource("RectangleShape2D_e7rdd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
 shape = SubResource("CircleShape2D_e7rdd")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 1, 0.886275, 1)
+energy = 0.5
+texture = ExtResource("4_fgaav")
+texture_scale = 1.2
 
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

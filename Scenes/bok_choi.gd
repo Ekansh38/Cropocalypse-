@@ -12,12 +12,12 @@ var attack_cooldown_timer := 0.0
 func _ready():
 	super._ready()  # Call parent's _ready if needed
 	plant_drop = preload("res://Scenes/bok_choi_drop.tscn")
-
 	# Hide arms initially
 	wind_body.visible = false
 	wind_arm.visible = false
 	punch_body.visible = false
 	punch_arm.visible = false
+	health = 150
 
 func _physics_process(delta):
 	super._physics_process(delta)  # Keep movement and knockback from parent
