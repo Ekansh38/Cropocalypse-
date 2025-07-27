@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://chgtjd83j5y7"]
 
 [ext_resource type="Script" uid="uid://20lm0festh54" path="res://Scripts/player.gd" id="1_onrkg"]
-[ext_resource type="Resource" uid="uid://c8k5f6a02kd8s" path="res://Inventory/player_inventory.tres" id="2_vgqql"]
+[ext_resource type="Resource" uid="uid://dcsm6ch7d7evx" path="res://Inventory/player_inventory.tres" id="2_vgqql"]
 [ext_resource type="Script" uid="uid://cxmx5aoepo0em" path="res://Scenes/player_attack_area.gd" id="3_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://b3m6258tsphu4" path="res://Assets/gjsoldier.png" id="3_fkybt"]
 [ext_resource type="Texture2D" uid="uid://daousgq4cc5uj" path="res://Assets/shadow.png" id="3_x3wgy"]

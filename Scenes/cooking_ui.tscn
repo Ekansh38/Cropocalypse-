@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b4outgtx2l4hf" path="res://Inventory/cooking_inv_ui.tscn" id="2_vh6f4"]
 [ext_resource type="PackedScene" uid="uid://btdet1st6d4m8" path="res://Inventory/kitchen_inv_ui_slot.tscn" id="3_7cbl3"]
 [ext_resource type="Resource" uid="uid://djl7sum1qayfa" path="res://Inventory/kitcheninv.tres" id="4_11ijc"]
-[ext_resource type="Resource" uid="uid://c8k5f6a02kd8s" path="res://Inventory/player_inventory.tres" id="5_48die"]
+[ext_resource type="Resource" uid="uid://dcsm6ch7d7evx" path="res://Inventory/player_inventory.tres" id="5_48die"]
 [ext_resource type="AudioStream" uid="uid://bgvcpdt7lo5be" path="res://Assets/DoneCookingSFX.wav" id="6_edgd8"]
 
 [node name="CookingUI" type="CanvasLayer"]

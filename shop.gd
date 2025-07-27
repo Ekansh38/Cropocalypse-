@@ -6,7 +6,7 @@ var is_ui_open = false
 func _on_interact_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		player_in_area = body
-		player_in_area.change_control_label("Press E to Shop")
+		player_in_area.change_control_label("Press E to Open Shop")
 
 func _on_interact_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):

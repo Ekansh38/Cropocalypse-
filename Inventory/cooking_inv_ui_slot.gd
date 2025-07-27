@@ -63,7 +63,7 @@ func _on_drop_button_pressed() -> void:
 			return
 
 		var new_slots = Globals.kitchen_slots.duplicate()
-		new_slots.append(current_slot.item)
+		new_slots.append(current_slot.item.duplicate())
 		Globals.kitchen_slots = new_slots
 
 		print(Globals.kitchen_slots)

@@ -103,20 +103,29 @@ animations = [{
 [node name="ChiliPlant" instance=ExtResource("1_oahed")]
 script = ExtResource("2_h6aaf")
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Shadow" parent="." index="0"]
+visible = false
+position = Vector2(3, 59)
+
+[node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_hr87q")
 
-[node name="Medium" parent="." index="1"]
+[node name="Medium" parent="." index="2"]
 texture = ExtResource("3_2ab3a")
 
-[node name="Large" parent="." index="2"]
+[node name="Large" parent="." index="3"]
 texture = ExtResource("4_i7tyl")
 
-[node name="Mature" parent="." index="3"]
+[node name="Mature" parent="." index="4"]
+visible = true
 sprite_frames = SubResource("SpriteFrames_1ojp5")
-animation = &"attack"
-frame = 4
-frame_progress = 1.0
 
-[node name="CollisionShape2D" parent="." index="4"]
+[node name="CollisionShape2D" parent="." index="5"]
+visible = false
 position = Vector2(-2, 1.5)
+
+[node name="CollisionShape2D" parent="DetectRadius" index="0"]
+visible = false
+
+[node name="CollisionShape2D" parent="AttackArea" index="0"]
+visible = false

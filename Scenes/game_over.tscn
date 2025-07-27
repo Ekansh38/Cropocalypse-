@@ -1,47 +1,73 @@
-[gd_scene load_steps=4 format=3 uid="uid://crlcgr4ss82r0"]
+[gd_scene load_steps=9 format=3 uid="uid://crlcgr4ss82r0"]
 
 [ext_resource type="Script" uid="uid://bd5gpkiowdyyh" path="res://Scenes/game_over.gd" id="1_ojehl"]
 [ext_resource type="FontFile" uid="uid://byj2p0422aock" path="res://Assets/RocketDoodleRegular-lxRYd.ttf" id="2_8fo1c"]
+[ext_resource type="Texture2D" uid="uid://ds5fesbjodtr7" path="res://Assets/gameover.png" id="2_eoghk"]
 [ext_resource type="AudioStream" uid="uid://de0ss7de6ubsb" path="res://Assets/ClickSFX.wav" id="3_ek8ke"]
+[ext_resource type="FontFile" uid="uid://beeqc45t64scm" path="res://Assets/WarningChristmas-e9gLl.otf" id="3_j3ryr"]
+[ext_resource type="Texture2D" uid="uid://d3ysel1gko8cr" path="res://Assets/quit.png" id="5_gjtdd"]
+[ext_resource type="Texture2D" uid="uid://bv4l0rj37y7gs" path="res://Assets/retry.png" id="5_rjluv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjluv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+skew = Vector2(1, 0)
 
 [node name="GameOver" type="CanvasLayer"]
 script = ExtResource("1_ojehl")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.67, 0.67)
+texture = ExtResource("2_eoghk")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 190.0
-offset_top = 74.0
-offset_right = 1337.0
-offset_bottom = 347.0
-theme_override_fonts/font = ExtResource("2_8fo1c")
+offset_left = 96.0
+offset_top = 46.0
+offset_right = 573.0
+offset_bottom = 226.0
+theme_override_fonts/font = ExtResource("3_j3ryr")
 theme_override_font_sizes/font_size = 200
 text = "GAME OVER"
 
+[node name="Label2" type="Label" parent="."]
+offset_left = 701.0
+offset_top = 77.0
+offset_right = 1387.0
+offset_bottom = 473.0
+theme_override_fonts/font = ExtResource("3_j3ryr")
+theme_override_font_sizes/font_size = 60
+text = "Thanks for playing!
+
+Art & voice acting by tukotara
+
+programming & music by byte colony
+
+Made in 72 hours"
+
 [node name="Quit" type="Button" parent="."]
-offset_left = 508.0
-offset_top = 364.0
-offset_right = 761.0
-offset_bottom = 509.0
+offset_left = 987.0
+offset_top = 600.0
+offset_right = 1513.0
+offset_bottom = 809.0
+scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("2_8fo1c")
 theme_override_font_sizes/font_size = 100
-text = "Quit"
+theme_override_styles/hover = SubResource("StyleBoxFlat_rjluv")
+icon = ExtResource("5_gjtdd")
+flat = true
 
 [node name="Replay" type="Button" parent="."]
-offset_left = 524.0
-offset_top = 546.0
-offset_right = 777.0
-offset_bottom = 691.0
+offset_left = 697.0
+offset_top = 594.0
+offset_right = 1223.0
+offset_bottom = 803.0
+scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("2_8fo1c")
 theme_override_font_sizes/font_size = 100
-text = "REplay"
+theme_override_styles/hover = SubResource("StyleBoxFlat_rjluv")
+icon = ExtResource("5_rjluv")
+flat = true
 
 [node name="ClickSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ek8ke")

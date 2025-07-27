@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://bx4iymtkeaw8m"]
+[gd_scene load_steps=18 format=3 uid="uid://bx4iymtkeaw8m"]
 
 [ext_resource type="Script" uid="uid://cy1wc84cfcu88" path="res://Scripts/plant.gd" id="1_t03al"]
 [ext_resource type="Texture2D" uid="uid://d4lqdpbe8jnum" path="res://Assets/plant.png" id="2_mbetm"]
+[ext_resource type="Texture2D" uid="uid://daousgq4cc5uj" path="res://Assets/shadow.png" id="2_thy18"]
 [ext_resource type="Script" uid="uid://beek4ysilfnko" path="res://Scripts/attack_area.gd" id="3_8frh5"]
 [ext_resource type="AudioStream" uid="uid://ysck3u0tqfxn" path="res://Assets/chomp.wav" id="4_b4bfk"]
 [ext_resource type="Texture2D" uid="uid://dqevtxu4227jd" path="res://Assets/kenney_particle-pack (1)/PNG (Transparent)/star_07.png" id="5_fl1so"]
@@ -39,6 +40,12 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0)
 [node name="Plant" type="CharacterBody2D" groups=["Plant"]]
 script = ExtResource("1_t03al")
 
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.368627)
+position = Vector2(-1, 94)
+scale = Vector2(0.2, 0.0878906)
+texture = ExtResource("2_thy18")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_mbetm")
@@ -65,11 +72,13 @@ animation = &"walk"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 21)
 shape = SubResource("RectangleShape2D_mbetm")
+metadata/_edit_lock_ = true
 
 [node name="DetectRadius" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRadius"]
 shape = SubResource("CircleShape2D_6gypx")
+metadata/_edit_lock_ = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -114.0
@@ -147,11 +156,13 @@ color_ramp = SubResource("Gradient_fl1so")
 energy = 0.3
 texture = ExtResource("5_ujn7j")
 texture_scale = 0.4
+metadata/_edit_lock_ = true
 
 [node name="generallight" type="PointLight2D" parent="."]
 energy = 0.05
 texture = ExtResource("5_ujn7j")
 texture_scale = 0.6
+metadata/_edit_lock_ = true
 
 [connection signal="animation_finished" from="Mature" to="." method="_on_mature_animation_finished"]
 [connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]

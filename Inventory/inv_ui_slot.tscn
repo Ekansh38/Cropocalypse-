@@ -57,7 +57,7 @@ process_mode = 3
 z_index = 100
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
-text = "DROP"
+text = "TRASH"
 
 [node name="EatButton" type="Button" parent="HoverDisplay/VBoxContainer"]
 process_mode = 3

@@ -156,7 +156,6 @@ var player_thirst = 100:
 
 
 
-
 func reset():
 	player_health = 100
 	player_hunger = 100
@@ -172,9 +171,13 @@ func reset():
 	_kitchen_slots = []
 
 	active_gun = "Pistol"
-	var inventory = load("res://Inventory/player_inventory.tres")
+	var inventory := load("res://Inventory/player_inventory.tres") as Inv
+
 	if inventory:
 		inventory.slots.clear()
+		for i in range(6):
+			inventory.slots.append(InvSlot.new())
+		ResourceSaver.save(inventory, "res://Inventory/player_inventory.tres")
 
 	update_stats.emit()
 	update_kitchen.emit()

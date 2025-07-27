@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://07kmr0ul3r2f" path="res://Scenes/cooking_inv_ui.gd" id="1_6wpp4"]
 [ext_resource type="Texture2D" uid="uid://conwocaey6pwt" path="res://Assets/buttons and icons/inventorybox.png" id="2_45xgh"]
 [ext_resource type="PackedScene" uid="uid://bb07u0br2jw0m" path="res://Inventory/cooking_inv_ui_slot.tscn" id="3_irjss"]
-[ext_resource type="Resource" uid="uid://c8k5f6a02kd8s" path="res://Inventory/player_inventory.tres" id="4_568yh"]
+[ext_resource type="Resource" uid="uid://dcsm6ch7d7evx" path="res://Inventory/player_inventory.tres" id="4_568yh"]
 
 [node name="CookingInvUI" type="Control"]
 process_mode = 3

@@ -54,23 +54,34 @@ colors = PackedColorArray(1, 0.564706, 0, 1, 0.866667, 0.615686, 0, 1, 1, 0.5490
 [node name="MangoPlant" instance=ExtResource("1_1gakv")]
 script = ExtResource("2_xjsj4")
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Shadow" parent="." index="0"]
+position = Vector2(1, 61)
+
+[node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_m7dcw")
 
-[node name="Medium" parent="." index="1"]
+[node name="Medium" parent="." index="2"]
 texture = ExtResource("3_m7dcw")
 
-[node name="Large" parent="." index="2"]
+[node name="Large" parent="." index="3"]
 texture = ExtResource("4_2i6f1")
 
-[node name="Mature" parent="." index="3"]
+[node name="Mature" parent="." index="4"]
 sprite_frames = SubResource("SpriteFrames_ff5vk")
 animation = &"attack"
 frame = 3
 frame_progress = 1.0
 
-[node name="CollisionShape2D" parent="." index="4"]
+[node name="CollisionShape2D" parent="." index="5"]
+visible = false
 position = Vector2(-2.5, 7.625)
+disabled = true
 
-[node name="HitParticles" parent="." index="14"]
+[node name="CollisionShape2D" parent="DetectRadius" index="0"]
+visible = false
+
+[node name="CollisionShape2D" parent="AttackArea" index="0"]
+visible = false
+
+[node name="HitParticles" parent="." index="15"]
 color_ramp = SubResource("Gradient_xjsj4")

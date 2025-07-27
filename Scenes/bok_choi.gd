@@ -18,6 +18,8 @@ func _ready():
 	punch_body.visible = false
 	punch_arm.visible = false
 	health = 150
+	$HealthBar.value = health
+
 
 func _physics_process(delta):
 	super._physics_process(delta)  # Keep movement and knockback from parent

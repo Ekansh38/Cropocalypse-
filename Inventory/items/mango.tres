@@ -11,6 +11,4 @@ details = "+5 Hunger +10 Thirst"
 added_hunger = 5
 added_thirst = 10
 sell_price = 5
-buyable = false
-buy_price = 0
 metadata/_custom_type_script = "uid://dxfvm7kg0xker"

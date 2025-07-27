@@ -7,8 +7,8 @@
 script = ExtResource("1_eji0p")
 name = "Mango Sticky Rice"
 texture = ExtResource("2_eji0p")
-details = "+30 Hunger +20 Thirst"
+details = "+30 Hunger +30 Thirst"
 added_hunger = 30
-added_thirst = 20
+added_thirst = 30
 sell_price = 25
 metadata/_custom_type_script = "uid://dxfvm7kg0xker"

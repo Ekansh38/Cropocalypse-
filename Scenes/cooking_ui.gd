@@ -124,7 +124,9 @@ func _on_button_pressed() -> void:
 		var chili_garlic_noodles: InvItem = preload("res://Inventory/items/chili_garlic_noodles.tres")
 		player_inv.insert(chili_garlic_noodles)
 	
+	
 	$AudioStreamPlayer.play()
+	_update_kitchen()
 	$OtherThings/KitchenInvUISlot.remove()
 	$OtherThings/KitchenInvUISlot2.remove()
 	$OtherThings/KitchenInvUISlot3.remove()

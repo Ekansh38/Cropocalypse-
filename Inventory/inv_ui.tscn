@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://su2ba4cgnjdb" path="res://Inventory/inv_ui.gd" id="1_605em"]
 [ext_resource type="Texture2D" uid="uid://conwocaey6pwt" path="res://Assets/buttons and icons/inventorybox.png" id="2_s8fnp"]
 [ext_resource type="PackedScene" uid="uid://dkqlw6jmevolj" path="res://Inventory/inv_ui_slot.tscn" id="3_ltxgc"]
-[ext_resource type="Resource" uid="uid://c8k5f6a02kd8s" path="res://Inventory/player_inventory.tres" id="4_s8fnp"]
+[ext_resource type="Resource" uid="uid://dcsm6ch7d7evx" path="res://Inventory/player_inventory.tres" id="4_s8fnp"]
 
 [node name="InvUI" type="Control"]
 process_mode = 3

@@ -13,9 +13,10 @@ func _process(delta: float) -> void:
 			unpause()
 			
 func pause():
-	is_paused = true
-	visible = true
-	get_tree().paused = true
+	if not Globals.is_shopping and not Globals.is_cooking:
+		is_paused = true
+		visible = true
+		get_tree().paused = true
 	
 func unpause():
 	is_paused = false

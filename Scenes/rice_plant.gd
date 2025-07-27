@@ -13,6 +13,7 @@ func _ready():
 	WANDER_SPEED = 90
 	$DetectRadius.body_entered.connect(_on_body_entered)
 	$DetectRadius.body_exited.connect(_on_body_exited)
+	$Shadow.visible = false
 
 	$Sprite2D.scale = Vector2(0.1, 0.1)
 	$CollisionShape2D.scale = Vector2(0.5, 0.5)

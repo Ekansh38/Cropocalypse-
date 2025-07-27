@@ -15,7 +15,7 @@ var details = ""
 func _ready():
 	item_visual.visible = false
 	$HoverDisplay.visible = false
-	
+	$HoverDisplay/VBoxContainer/EatButton.visible = false
 	hover_area.modulate.a = 0
 	hide_timer.wait_time = 2
 	hide_timer.one_shot = true
@@ -23,6 +23,8 @@ func _ready():
 	add_child(hide_timer)
 
 func update(slot: InvSlot):
+	$HoverDisplay/VBoxContainer/EatButton.visible = false
+
 	current_slot = slot  
 
 	if !slot.item:
@@ -39,6 +41,8 @@ func _on_hover_area_mouse_entered():
 	is_hovering = true
 	if item_visual.visible == true:
 		$HoverDisplay.visible = true
+		$HoverDisplay/VBoxContainer/EatButton.visible = false
+
 		hide_timer.stop()
 	
 	$CenterContainer/Panel/ItemDisplay.scale = Vector2(0.13,0.13)
@@ -76,17 +80,7 @@ func _on_drop_button_pressed() -> void:
 		$HoverDisplay.visible = false
 		$HoverDisplay/VBoxContainer/DetailsLabel.text = ""
 		
-		
-func _on_eat_button_pressed() -> void:
-	if current_slot and current_slot.item:
-		Globals.player_hunger += current_slot.item.added_hunger
-		Globals.player_thirst += current_slot.item.added_thirst
-		current_slot.item = null
-		item_visual.visible = false
-		$HoverDisplay.visible = false
-		$HoverDisplay/VBoxContainer/DetailsLabel.text = ""
-		inv.remove(current_slot.item)
-		
+				
 func remove():
 	if current_slot and current_slot.item:
 

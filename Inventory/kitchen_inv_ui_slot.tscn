@@ -7,8 +7,5 @@
 script = ExtResource("2_psamg")
 player_inv = null
 
-[node name="HoverDisplay" parent="." index="2"]
-visible = false
-
 [node name="DropButton" parent="HoverDisplay/VBoxContainer" index="0"]
 text = "REMOVE"

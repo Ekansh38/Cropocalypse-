@@ -5,7 +5,7 @@ var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_timer := 0.0
 const KNOCKBACK_DURATION := 0.3
 enum PlantState { SEEDLING, MEDIUM, LARGE, HOSTILE }
-
+var is_alive = true
 var is_attack_playing = false
 
 var plant_drop: PackedScene = preload("res://Scenes/plant_drop.tscn")
@@ -24,6 +24,8 @@ var WANDER_SPEED = 90.0
 const WANDER_CHANGE_INTERVAL = 2.0
 
 func _ready():
+	$Shadow.visible = false
+
 	$Mature.visible = false
 	$GrowingParticles.visible = true
 	$GrowingLight.visible = true
@@ -80,6 +82,7 @@ func transition_to_state(new_state: PlantState) -> void:
 			medium_sprite.visible = true
 			large_sprite.visible = false
 			$CollisionShape2D.disabled = false
+			$Shadow.visible = false
 		PlantState.LARGE:
 			$GrowingParticles.visible = true
 			$GrowingLight.visible = true
@@ -87,7 +90,13 @@ func transition_to_state(new_state: PlantState) -> void:
 			medium_sprite.visible = false
 			large_sprite.visible = true
 			$CollisionShape2D.disabled = false
+			$Shadow.visible = true
+
 		PlantState.HOSTILE:
+			$Shadow.visible = true
+
+			if self is OnionPlant:
+				(self as OnionPlant).start_crying()
 			$GrowingParticles.visible = false
 			$GrowingLight.visible = false
 			growth_bar.visible = false
@@ -204,7 +213,7 @@ func take_damage(knockback_velocity_input: Vector2 = Vector2.ZERO, damage: int =
 		knockback_velocity = knockback_velocity_input
 		knockback_timer = KNOCKBACK_DURATION
 
-	if health <= 0:
+	if health <= 0 and is_alive:
 		var plant_drop_obj = plant_drop.instantiate()
 		plant_drop_obj.global_position = global_position
 		var plant_drops = $"../../PlantDrops"
@@ -214,6 +223,12 @@ func take_damage(knockback_velocity_input: Vector2 = Vector2.ZERO, damage: int =
 
 		plant_drops.add_child(plant_drop_obj)
 		$Mature.visible = false
+		$HealthBar.visible = false
+		$CollisionShape2D.disabled = true
+		$DetectRadius/CollisionShape2D.disabled = true
+		$AttackArea/CollisionShape2D.disabled = true
+		$Shadow.visible = false
+		is_alive = false
 		var sounds = [$Death1, $Death2, $Death3]
 		var random_sound: AudioStreamPlayer2D = sounds[randi() % sounds.size()]
 		random_sound.play()

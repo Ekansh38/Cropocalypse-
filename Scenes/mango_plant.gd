@@ -5,10 +5,11 @@ func _ready():
 		camera = get_tree().current_scene.get_node("Player/Camera2D")
 	plant_drop = preload("res://Scenes/mango_drop.tscn")
 	speed = 300
-	$CollisionShape2D.disabled = true
 
 	# Run base class setup
 	super._ready()
+	$CollisionShape2D.disabled = true
+
 
 
 func transition_to_state(new_state: PlantState) -> void:
@@ -31,6 +32,8 @@ func transition_to_state(new_state: PlantState) -> void:
 			large_sprite.visible = true
 			$CollisionShape2D.disabled = true
 		PlantState.HOSTILE:
+			$Shadow.visible = true
+
 			$GrowingParticles.visible = false
 			$GrowingLight.visible = false
 			growth_bar.visible = false

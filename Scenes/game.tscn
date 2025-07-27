@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://vgn3dqi6c31"]
+[gd_scene load_steps=40 format=3 uid="uid://vgn3dqi6c31"]
 
 [ext_resource type="Script" uid="uid://7vk5l1qhqne5" path="res://Scripts/game.gd" id="1_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://dt8ocs65hig4d" path="res://Assets/plantgjmap.png" id="2_v158k"]
@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://ckemcw11b6dgh" path="res://Scenes/shop_ui.tscn" id="35_d3cha"]
 [ext_resource type="Script" uid="uid://bdv1hqub8ah03" path="res://Scenes/game_over_maker.gd" id="36_i26dy"]
 [ext_resource type="AudioStream" uid="uid://crk61niwfdq1f" path="res://Assets/death.wav" id="37_lmoi6"]
+[ext_resource type="AudioStream" uid="uid://c563njfw2awkv" path="res://Assets/MAINTHEME.wav" id="38_6uxt2"]
 
 [sub_resource type="Environment" id="Environment_nb51f"]
 background_mode = 3
@@ -45,9 +46,9 @@ glow_blend_mode = 1
 glow_hdr_threshold = 0.55
 glow_hdr_scale = 0.0
 adjustment_enabled = true
-adjustment_brightness = 0.9
-adjustment_contrast = 1.13
-adjustment_saturation = 1.5
+adjustment_brightness = 0.95
+adjustment_contrast = 1.16
+adjustment_saturation = 1.7
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_1l0tm")
@@ -313,6 +314,12 @@ script = ExtResource("16_nnt18")
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("37_lmoi6")
+bus = &"Music"
+
+[node name="Maintheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("38_6uxt2")
+volume_db = -10.0
+autoplay = true
 bus = &"Music"
 
 [connection signal="grenade_thrown" from="Player" to="." method="_on_player_grenade_thrown"]

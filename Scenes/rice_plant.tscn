@@ -80,39 +80,40 @@ colors = PackedColorArray(1, 0.635294, 0, 1, 0.85098, 0.678431, 0, 1, 1, 0.80784
 [node name="RicePlant" instance=ExtResource("1_113d2")]
 script = ExtResource("2_h5k1m")
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Shadow" parent="." index="0"]
+position = Vector2(0, 62)
+
+[node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_37863")
 
-[node name="Medium" parent="." index="1"]
+[node name="Medium" parent="." index="2"]
 texture = ExtResource("3_kksx6")
 
-[node name="Large" parent="." index="2"]
+[node name="Large" parent="." index="3"]
 texture = ExtResource("4_baxwb")
 
-[node name="Mature" parent="." index="3"]
+[node name="Mature" parent="." index="4"]
 sprite_frames = SubResource("SpriteFrames_pdhmv")
 animation = &"attack"
 frame = 5
 frame_progress = 1.0
 
-[node name="CollisionShape2D" parent="." index="4"]
+[node name="CollisionShape2D" parent="." index="5"]
+visible = false
 position = Vector2(0, 11.5)
 
 [node name="CollisionShape2D" parent="DetectRadius" index="0"]
-metadata/_edit_lock_ = true
+visible = false
 
 [node name="CollisionShape2D" parent="AttackArea" index="0"]
+visible = false
 shape = SubResource("CapsuleShape2D_k643q")
 
-[node name="SlapPlayer" parent="." index="9"]
+[node name="SlapPlayer" parent="." index="10"]
 volume_db = -5.0
 
-[node name="HitParticles" parent="." index="14"]
+[node name="HitParticles" parent="." index="15"]
 color_ramp = SubResource("Gradient_h5k1m")
 
-[node name="GrowingLight" parent="." index="15"]
-metadata/_edit_lock_ = true
-
-[node name="generallight" parent="." index="16"]
+[node name="generallight" parent="." index="17"]
 energy = 0.08
-metadata/_edit_lock_ = true
