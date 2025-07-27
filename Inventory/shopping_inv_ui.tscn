@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcdra6jg7e18s"]
+
+[ext_resource type="Script" uid="uid://dlsmquu6y2dkh" path="res://Inventory/shopping_inv_ui.gd" id="1_t8ndh"]
+[ext_resource type="Texture2D" uid="uid://conwocaey6pwt" path="res://Assets/buttons and icons/inventorybox.png" id="2_hpmrl"]
+[ext_resource type="PackedScene" uid="uid://d4i5owvy2mnfi" path="res://Inventory/shopping_inv_ui_slot.tscn" id="3_t3piw"]
+[ext_resource type="Resource" uid="uid://c8k5f6a02kd8s" path="res://Inventory/player_inventory.tres" id="4_6fnyo"]
+
+[node name="ShoppingInvUI" type="Control"]
+process_mode = 3
+custom_minimum_size = Vector2(87, 48)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 87.0
+offset_bottom = 48.0
+script = ExtResource("1_t8ndh")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 551.0
+offset_bottom = 387.0
+texture = ExtResource("2_hpmrl")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.5
+offset_top = -93.0
+offset_right = 272.5
+offset_bottom = 143.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 100
+columns = 3
+
+[node name="InvUISlot" parent="NinePatchRect/GridContainer" instance=ExtResource("3_t3piw")]
+layout_mode = 2
+inv = ExtResource("4_6fnyo")
+
+[node name="InvUISlot2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_t3piw")]
+layout_mode = 2
+inv = ExtResource("4_6fnyo")
+
+[node name="InvUISlot3" parent="NinePatchRect/GridContainer" instance=ExtResource("3_t3piw")]
+layout_mode = 2
+inv = ExtResource("4_6fnyo")
+
+[node name="InvUISlot4" parent="NinePatchRect/GridContainer" instance=ExtResource("3_t3piw")]
+layout_mode = 2
+inv = ExtResource("4_6fnyo")
+
+[node name="InvUISlot5" parent="NinePatchRect/GridContainer" instance=ExtResource("3_t3piw")]
+layout_mode = 2
+inv = ExtResource("4_6fnyo")
+
+[node name="InvUISlot6" parent="NinePatchRect/GridContainer" instance=ExtResource("3_t3piw")]
+layout_mode = 2
+inv = ExtResource("4_6fnyo")
+
+[connection signal="entered" from="NinePatchRect/GridContainer/InvUISlot" to="." method="_on_inv_ui_slot_entered"]
+[connection signal="entered" from="NinePatchRect/GridContainer/InvUISlot2" to="." method="_on_inv_ui_slot_2_entered"]
+[connection signal="entered" from="NinePatchRect/GridContainer/InvUISlot3" to="." method="_on_inv_ui_slot_3_entered"]
+[connection signal="entered" from="NinePatchRect/GridContainer/InvUISlot4" to="." method="_on_inv_ui_slot_4_entered"]
+[connection signal="entered" from="NinePatchRect/GridContainer/InvUISlot5" to="." method="_on_inv_ui_slot_5_entered"]
+[connection signal="entered" from="NinePatchRect/GridContainer/InvUISlot6" to="." method="_on_inv_ui_slot_6_entered"]

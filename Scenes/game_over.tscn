@@ -24,12 +24,22 @@ theme_override_font_sizes/font_size = 200
 text = "GAME OVER"
 
 [node name="Quit" type="Button" parent="."]
-offset_left = 526.0
-offset_top = 432.0
-offset_right = 779.0
-offset_bottom = 577.0
+offset_left = 508.0
+offset_top = 364.0
+offset_right = 761.0
+offset_bottom = 509.0
 theme_override_fonts/font = ExtResource("2_8fo1c")
 theme_override_font_sizes/font_size = 100
 text = "Quit"
 
+[node name="Replay" type="Button" parent="."]
+offset_left = 524.0
+offset_top = 546.0
+offset_right = 777.0
+offset_bottom = 691.0
+theme_override_fonts/font = ExtResource("2_8fo1c")
+theme_override_font_sizes/font_size = 100
+text = "REplay"
+
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Replay" to="." method="_on_replay_pressed"]

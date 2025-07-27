@@ -43,8 +43,6 @@ func _update_kitchen():
 			var new_slot := InvSlot.new()
 			new_slot.item = item
 			slot_node.update(new_slot)
-		else:
-			slot_node.visible = false
 
 	var current_ingredients: Array[String] = []
 	for item in Globals.kitchen_slots:
@@ -125,5 +123,9 @@ func _on_button_pressed() -> void:
 		Globals.recipes["Chili Garlic Noodles"]["unlocked"] = true
 		var chili_garlic_noodles: InvItem = preload("res://Inventory/items/chili_garlic_noodles.tres")
 		player_inv.insert(chili_garlic_noodles)
-
+	
+	$AudioStreamPlayer.play()
+	$OtherThings/KitchenInvUISlot.remove()
+	$OtherThings/KitchenInvUISlot2.remove()
+	$OtherThings/KitchenInvUISlot3.remove()
 	$OtherThings/Button.disabled = true

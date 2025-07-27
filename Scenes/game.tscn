@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://vgn3dqi6c31"]
+[gd_scene load_steps=37 format=3 uid="uid://vgn3dqi6c31"]
 
 [ext_resource type="Script" uid="uid://7vk5l1qhqne5" path="res://Scripts/game.gd" id="1_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://dt8ocs65hig4d" path="res://Assets/plantgjmap.png" id="2_v158k"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cl8a7r5frm64b" path="res://Assets/dissected/4b.png" id="10_85qyi"]
 [ext_resource type="Texture2D" uid="uid://cvgbef2pvmqjt" path="res://Assets/dissected/4a.png" id="10_iivbl"]
 [ext_resource type="Texture2D" uid="uid://bc7v6onuet1nj" path="res://Assets/dissected/5a.png" id="12_exi56"]
+[ext_resource type="PackedScene" uid="uid://boa7kmu2cd7vb" path="res://shop.tscn" id="12_xe308"]
 [ext_resource type="Texture2D" uid="uid://cn3x4ttfnaljq" path="res://Assets/dissected/5b.png" id="13_7t8sx"]
 [ext_resource type="PackedScene" uid="uid://c6jxusofcfy7c" path="res://Scenes/rice_plant.tscn" id="14_ewbju"]
 [ext_resource type="Texture2D" uid="uid://bkmf8sjhlcm6i" path="res://Assets/dissected/6a.png" id="14_mg4q0"]
@@ -33,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://dt8wktxmadump" path="res://Scenes/cooking_ui.tscn" id="31_8m3t6"]
 [ext_resource type="Script" uid="uid://c1u3s20b10dmj" path="res://Scenes/performance_mode.gd" id="32_ese38"]
 [ext_resource type="PackedScene" uid="uid://pxfduykbiusj" path="res://Scenes/pause_menu.tscn" id="33_oeip8"]
+[ext_resource type="PackedScene" uid="uid://ckemcw11b6dgh" path="res://Scenes/shop_ui.tscn" id="35_d3cha"]
 
 [sub_resource type="Environment" id="Environment_nb51f"]
 background_mode = 3
@@ -92,6 +94,9 @@ spawn_bounds_bottom_right = Vector2(1626, 871)
 metadata/_edit_lock_ = true
 
 [node name="Grenades" type="Node2D" parent="."]
+
+[node name="Shop" parent="." instance=ExtResource("12_xe308")]
+position = Vector2(-800, 657)
 
 [node name="Player" parent="." instance=ExtResource("3_v158k")]
 position = Vector2(-854, -198)
@@ -270,9 +275,6 @@ position = Vector2(-1049, 503)
 [node name="Start" type="Marker2D" parent="MangoDropPoints/Pair9"]
 position = Vector2(-1572, 631)
 
-[node name="Lantern" parent="." instance=ExtResource("25_22asu")]
-position = Vector2(-230, 723)
-
 [node name="UI" parent="." node_paths=PackedStringArray("inventory", "recipe_book", "cooking_ui") instance=ExtResource("8_v158k")]
 inventory = NodePath("../CanvasLayer/InvUI")
 recipe_book = NodePath("../RecipeBook")
@@ -286,6 +288,23 @@ cooking_ui = NodePath("../CookingUI")
 script = ExtResource("32_ese38")
 
 [node name="PauseMenu" parent="." instance=ExtResource("33_oeip8")]
+
+[node name="ShopUI" parent="." instance=ExtResource("35_d3cha")]
+
+[node name="Lanterns" type="Node2D" parent="."]
+
+[node name="Lantern" parent="Lanterns" instance=ExtResource("25_22asu")]
+position = Vector2(-479, 784)
+
+[node name="Lantern3" parent="Lanterns" instance=ExtResource("25_22asu")]
+position = Vector2(1765, 1005)
+
+[node name="Lantern5" parent="Lanterns" instance=ExtResource("25_22asu")]
+position = Vector2(-1489, -163)
+
+[node name="Lantern4" parent="Lanterns" instance=ExtResource("25_22asu")]
+position = Vector2(1783, -1151)
+metadata/_edit_lock_ = true
 
 [connection signal="grenade_thrown" from="Player" to="." method="_on_player_grenade_thrown"]
 [connection signal="shoot_fired" from="Player" to="." method="_on_player_shoot_fired"]

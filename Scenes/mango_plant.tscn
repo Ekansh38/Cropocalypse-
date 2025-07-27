@@ -45,5 +45,8 @@ texture = ExtResource("4_2i6f1")
 [node name="Mature" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_ff5vk")
 
+[node name="CollisionShape2D" parent="." index="4"]
+position = Vector2(-2.5, 7.625)
+
 [node name="HitParticles" parent="." index="11"]
 color_ramp = SubResource("Gradient_xjsj4")

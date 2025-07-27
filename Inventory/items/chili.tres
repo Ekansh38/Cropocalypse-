@@ -10,4 +10,7 @@ texture = ExtResource("2_uq70y")
 details = "+5 Hunger -5 Thirst"
 added_hunger = 5
 added_thirst = -5
+sell_price = 10
+buyable = false
+buy_price = 0
 metadata/_custom_type_script = "uid://dxfvm7kg0xker"

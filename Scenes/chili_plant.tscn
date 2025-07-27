@@ -90,3 +90,6 @@ texture = ExtResource("4_i7tyl")
 [node name="Mature" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_1ojp5")
 animation = &"walk_slow"
+
+[node name="CollisionShape2D" parent="." index="4"]
+position = Vector2(-2, 1.5)

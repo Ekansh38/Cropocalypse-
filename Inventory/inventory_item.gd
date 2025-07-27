@@ -6,3 +6,4 @@ class_name InvItem
 @export var details: String 
 @export var added_hunger: int 
 @export var added_thirst: int 
+@export var sell_price: int 

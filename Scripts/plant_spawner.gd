@@ -30,7 +30,8 @@ func spawn_plant_timer():
 	spawn_plant()
 	var delay = spawn_interval + randf_range(-spawn_interval_variance, spawn_interval_variance)
 	delay = max(0.5, delay)
-	await get_tree().create_timer(delay).timeout
+	if get_tree():
+		await get_tree().create_timer(delay).timeout
 	spawn_plant_timer()
 
 func spawn_plant():

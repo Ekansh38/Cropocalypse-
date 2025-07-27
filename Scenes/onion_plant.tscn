@@ -74,5 +74,8 @@ texture = ExtResource("4_6fyj2")
 sprite_frames = SubResource("SpriteFrames_hyy5l")
 animation = &"walk_slow"
 
+[node name="CollisionShape2D" parent="." index="4"]
+position = Vector2(-1.5, 8)
+
 [node name="HitParticles" parent="." index="11"]
 color_ramp = SubResource("Gradient_w3uj4")

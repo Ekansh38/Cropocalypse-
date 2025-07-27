@@ -84,7 +84,7 @@ texture = ExtResource("4_fkybt")
 offset = Vector2(-35, -45)
 
 [node name="Marker2D" type="Marker2D" parent="Sprite2D/LeftGun"]
-position = Vector2(-63.3333, -1.19209e-06)
+position = Vector2(-140, -40)
 scale = Vector2(1.89104, 5.68889)
 
 [node name="RightGun" type="Sprite2D" parent="Sprite2D"]
@@ -94,7 +94,7 @@ offset = Vector2(35, -45)
 flip_h = true
 
 [node name="Marker2D" type="Marker2D" parent="Sprite2D/RightGun"]
-position = Vector2(173.333, -1.19209e-06)
+position = Vector2(143.333, -46.6666)
 scale = Vector2(1.89104, 5.68889)
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
@@ -102,14 +102,16 @@ scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_0gysh")
 animation = &"walk"
 frame_progress = 0.975269
+metadata/_edit_lock_ = true
 
 [node name="LeftGun" type="Sprite2D" parent="Player"]
 position = Vector2(-186.667, 83.3333)
 texture = ExtResource("4_fkybt")
 offset = Vector2(-35, -45)
+metadata/_edit_lock_ = true
 
 [node name="Marker2D" type="Marker2D" parent="Player/LeftGun"]
-position = Vector2(-63.3333, -1.19209e-06)
+position = Vector2(-146.666, -43.3333)
 scale = Vector2(1.89104, 5.68889)
 
 [node name="RightGun" type="Sprite2D" parent="Player"]
@@ -119,7 +121,7 @@ offset = Vector2(35, -45)
 flip_h = true
 
 [node name="Marker2D" type="Marker2D" parent="Player/RightGun"]
-position = Vector2(173.333, -1.19209e-06)
+position = Vector2(143.333, -43.3333)
 scale = Vector2(1.89104, 5.68889)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -141,6 +143,7 @@ occluder = SubResource("OccluderPolygon2D_x3wgy")
 energy = 0.1
 texture = ExtResource("7_3smsa")
 texture_scale = 0.8
+metadata/_edit_lock_ = true
 
 [node name="ControlLabel" type="Label" parent="."]
 offset_left = -150.0

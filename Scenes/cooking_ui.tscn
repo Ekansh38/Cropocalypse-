@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dt8wktxmadump"]
+[gd_scene load_steps=7 format=3 uid="uid://dt8wktxmadump"]
 
 [ext_resource type="Script" uid="uid://c7mx5g0ap8r0q" path="res://Scenes/cooking_ui.gd" id="1_id7lv"]
 [ext_resource type="PackedScene" uid="uid://b4outgtx2l4hf" path="res://Inventory/cooking_inv_ui.tscn" id="2_vh6f4"]
 [ext_resource type="PackedScene" uid="uid://btdet1st6d4m8" path="res://Inventory/kitchen_inv_ui_slot.tscn" id="3_7cbl3"]
 [ext_resource type="Resource" uid="uid://djl7sum1qayfa" path="res://Inventory/kitcheninv.tres" id="4_11ijc"]
 [ext_resource type="Resource" uid="uid://c8k5f6a02kd8s" path="res://Inventory/player_inventory.tres" id="5_48die"]
+[ext_resource type="AudioStream" uid="uid://bgvcpdt7lo5be" path="res://Assets/DoneCookingSFX.wav" id="6_edgd8"]
 
 [node name="CookingUI" type="CanvasLayer"]
 process_mode = 3
@@ -85,5 +86,9 @@ offset_right = 705.0
 offset_bottom = 388.0
 theme_override_font_sizes/font_size = 50
 text = "Cook"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_edgd8")
+volume_db = -10.0
 
 [connection signal="pressed" from="OtherThings/Button" to="." method="_on_button_pressed"]

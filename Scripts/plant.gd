@@ -9,7 +9,7 @@ enum PlantState { SEEDLING, MEDIUM, LARGE, HOSTILE }
 var plant_drop: PackedScene = preload("res://Scenes/plant_drop.tscn")
 @onready var mature_sprite = $Mature
 var state = PlantState.SEEDLING
-var grow_time = 7.0
+var grow_time = 8.0
 var grow_timer = 0.0
 @onready var camera = $"../../Player/Camera2D"
 var speed = 300
@@ -30,7 +30,7 @@ func _ready():
 	$GrowthBar.visible = true
 	$GrowthBar.max_value = grow_time
 	$GrowthBar.value = 0
-
+	$CollisionShape2D.disabled = true
 	$DetectRadius.body_entered.connect(_on_body_entered)
 	$DetectRadius.body_exited.connect(_on_body_exited)
 
@@ -71,32 +71,26 @@ func transition_to_state(new_state: PlantState) -> void:
 			seedling_sprite.visible = false
 			medium_sprite.visible = true
 			large_sprite.visible = false
-			main_shape.scale = Vector2(1, 4)
-			main_shape.position = Vector2(0, 25)
-
+			$CollisionShape2D.disabled = true
 		PlantState.LARGE:
 			$GrowingParticles.visible = true
 			$GrowingLight.visible = true
 			seedling_sprite.visible = false
 			medium_sprite.visible = false
 			large_sprite.visible = true
-			main_shape.scale = Vector2(1, 1)
-			main_shape.position = Vector2(0, 52.0)
-
+			$CollisionShape2D.disabled = true
 		PlantState.HOSTILE:
 			$GrowingParticles.visible = false
 			$GrowingLight.visible = false
 			growth_bar.visible = false
 			health_bar.visible = true
-
+			$CollisionShape2D.disabled = false
 			seedling_sprite.visible = false
 			medium_sprite.visible = false
 			large_sprite.visible = false
 			mature_sprite.visible = true
 			mature_sprite.play("walk")
 
-			main_shape.scale = Vector2(2, 7)
-			main_shape.position = Vector2(0, 0)
 
 			for body in $DetectRadius.get_overlapping_bodies():
 				if body.is_in_group("Player"):
@@ -166,10 +160,8 @@ func _physics_process(delta):
 						mature_sprite.play("walk")
 				else:
 					if mature_sprite.animation != "walk_slow":
-						mature_sprite.play("walk_slow")
-			else:
-				if mature_sprite.animation == "walk" or mature_sprite.animation == "walk_slow":
-					mature_sprite.stop()
+						if "walk_slow" in mature_sprite.sprite_frames.get_animation_names():
+							mature_sprite.play("walk_slow")
 
 			mature_sprite.flip_h = final_velocity.x < -0.1
 		

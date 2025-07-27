@@ -1,0 +1,86 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4i5owvy2mnfi"]
+
+[ext_resource type="Script" uid="uid://cmg7kxant523c" path="res://Inventory/shopping_inv_ui_slot.gd" id="1_saybo"]
+[ext_resource type="Texture2D" uid="uid://dgq7t3ike7qcx" path="res://Assets/buttons and icons/plantbox.png" id="2_xbxpa"]
+
+[node name="InvUISlot" type="Panel"]
+process_mode = 3
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+offset_right = 80.0
+offset_bottom = 80.0
+script = ExtResource("1_saybo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-104, -82)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_xbxpa")
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="ItemDisplay" type="Sprite2D" parent="CenterContainer/Panel"]
+scale = Vector2(0.1, 0.1)
+
+[node name="HoverDisplay" type="Control" parent="."]
+process_mode = 3
+z_index = 10
+anchors_preset = 0
+
+[node name="Background" type="ColorRect" parent="HoverDisplay"]
+layout_mode = 0
+offset_left = -54.0
+offset_top = -186.0
+offset_right = 130.0
+offset_bottom = -4.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HoverDisplay"]
+process_mode = 3
+layout_mode = 0
+offset_left = -44.0
+offset_top = -180.0
+offset_right = 120.0
+offset_bottom = -7.0
+alignment = 1
+
+[node name="DropButton" type="Button" parent="HoverDisplay/VBoxContainer"]
+process_mode = 3
+z_index = 100
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "SELL"
+
+[node name="EatButton" type="Button" parent="HoverDisplay/VBoxContainer"]
+process_mode = 3
+z_index = 100
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "EAT"
+
+[node name="DetailsLabel" type="Label" parent="HoverDisplay/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="HoverArea" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 81.0
+offset_bottom = 79.0
+mouse_filter = 1
+
+[connection signal="pressed" from="HoverDisplay/VBoxContainer/DropButton" to="." method="_on_drop_button_pressed"]
+[connection signal="pressed" from="HoverDisplay/VBoxContainer/EatButton" to="." method="_on_eat_button_pressed"]
+[connection signal="mouse_entered" from="HoverArea" to="." method="_on_hover_area_mouse_entered"]
+[connection signal="mouse_exited" from="HoverArea" to="." method="_on_hover_area_mouse_exited"]

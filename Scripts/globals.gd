@@ -1,13 +1,41 @@
 extends Node
 
 signal update_stats()
+signal update_active_gun()
+
+
+var _active_gun = "Pistol"
+var active_gun: String:
+	get:
+		return _active_gun
+	set(value):
+		_active_gun = value
+		update_active_gun.emit()
+
 
 signal update_kitchen()
 var is_recipe_book_open = false
 var is_hovering_on_ui = false
 
-var _kitchen_slots: Array[InvItem] = []
+var _available_guns = ["Pistol"]
+var available_guns:
+	get:
+		return _available_guns
+	set(value):
+		_available_guns = value
+		update_stats.emit()
 
+var _kitchen_slots: Array[InvItem] = []
+var _money = 0
+var money: int:
+	get:
+		return _money
+	set(value):
+		_money = value
+		update_stats.emit()
+		
+		
+		
 var damage_timer = null
 func _ready():
 	damage_timer = Timer.new()
@@ -36,7 +64,7 @@ func _on_damage_tick():
 		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 
 	update_stats.emit()
-
+var 	is_shopping = false
 
 var _grenades: int = 3
 var grenades: int:
@@ -55,6 +83,13 @@ var kitchen_slots: Array[InvItem]:
 
 var is_cooking = false
 
+var _has_speed_boots = false
+var has_speed_boots:
+	get:
+		return _has_speed_boots
+	set(value):
+		_has_speed_boots = value
+		update_active_gun.emit()
 
 var recipes = {
 	"Mango Sticky Rice": {
@@ -118,4 +153,25 @@ var player_thirst = 100:
 		player_thirst = value
 		update_stats.emit()
 
-var player_money = 0
+
+
+
+func reset():
+	player_health = 100
+	player_hunger = 100
+	player_thirst = 100
+	_grenades = 3
+	_kitchen_slots.clear()
+	is_cooking = false
+	is_recipe_book_open = false
+	is_hovering_on_ui = false
+	is_shopping = false
+	_money = 0
+	_available_guns = ["Pistol"]
+	active_gun = "Pistol"
+	var inventory = load("res://Inventory/player_inventory.tres")
+	if inventory:
+		inventory.slots.clear()
+
+	update_stats.emit()
+	update_kitchen.emit()

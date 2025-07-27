@@ -18,8 +18,8 @@ func explode():
 
 @export var throw_force := 800.0
 
-func launch(direction: Vector2) -> void:
-	linear_velocity = direction * throw_force
+func launch(direction: Vector2, force: int) -> void:
+	linear_velocity = direction * force
 
 func _on_explode_timer_timeout() -> void:
 	explode()

@@ -17,13 +17,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbetm"]
-size = Vector2(33, 19)
+size = Vector2(103, 135.25)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6gypx"]
-radius = 533.339
+radius = 562.008
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8frh5"]
-radius = 123.004
+radius = 160.028
 
 [sub_resource type="Gradient" id="Gradient_b4bfk"]
 offsets = PackedFloat32Array(0, 0.841216, 1)

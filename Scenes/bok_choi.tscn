@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d2vyrpu6foea"]
+[gd_scene load_steps=14 format=3 uid="uid://d2vyrpu6foea"]
 
 [ext_resource type="PackedScene" uid="uid://bx4iymtkeaw8m" path="res://Scenes/plant.tscn" id="1_8w4ua"]
 [ext_resource type="Texture2D" uid="uid://dim7msgiqijqq" path="res://Assets/bokchoianim/small.png" id="2_jc4ts"]
@@ -21,6 +21,9 @@ animations = [{
 "name": &"walk",
 "speed": 5.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tgldm"]
+radius = 65.5687
 
 [sub_resource type="Gradient" id="Gradient_tgldm"]
 offsets = PackedFloat32Array(0, 0.87703, 1)
@@ -65,8 +68,21 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("9_tgldm")
 metadata/_edit_lock_ = true
 
+[node name="CollisionShape2D" parent="." index="8"]
+position = Vector2(-6, 5)
+shape = SubResource("CircleShape2D_tgldm")
+
+[node name="CollisionShape2D" parent="DetectRadius" index="0"]
+metadata/_edit_lock_ = true
+
 [node name="AttackArea" parent="." index="12"]
 script = null
 
 [node name="HitParticles" parent="." index="15"]
 color_ramp = SubResource("Gradient_tgldm")
+
+[node name="GrowingLight" parent="." index="16"]
+metadata/_edit_lock_ = true
+
+[node name="generallight" parent="." index="17"]
+metadata/_edit_lock_ = true

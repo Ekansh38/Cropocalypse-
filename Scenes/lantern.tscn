@@ -1,13 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpurbaaypl0uw"]
+[gd_scene load_steps=5 format=3 uid="uid://dpurbaaypl0uw"]
 
+[ext_resource type="Script" uid="uid://b1d8unfbouydm" path="res://Scenes/lantern.gd" id="1_g4uhy"]
 [ext_resource type="Texture2D" uid="uid://kae0judvstpk" path="res://Assets/lantern.png" id="1_q5ajm"]
 [ext_resource type="Texture2D" uid="uid://susm0btw48ue" path="res://Assets/light.png" id="2_rm8es"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rm8es"]
+size = Vector2(73, 98)
+
 [node name="Lantern" type="StaticBody2D"]
+script = ExtResource("1_g4uhy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_q5ajm")
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(1, 0.439216, 0, 1)
@@ -15,3 +21,9 @@ energy = 0.6
 shadow_enabled = true
 texture = ExtResource("2_rm8es")
 texture_scale = 2.0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -2)
+shape = SubResource("RectangleShape2D_rm8es")
+metadata/_edit_lock_ = true

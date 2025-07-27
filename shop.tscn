@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://boa7kmu2cd7vb"]
+
+[ext_resource type="Script" uid="uid://cvbv6348h4et" path="res://shop.gd" id="1_blqjs"]
+[ext_resource type="Texture2D" uid="uid://daousgq4cc5uj" path="res://Assets/shadow.png" id="1_e7rdd"]
+[ext_resource type="Texture2D" uid="uid://dlsjnodjkik1h" path="res://Assets/shop.png" id="1_viryw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7rdd"]
+size = Vector2(394, 353)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e7rdd"]
+radius = 467.723
+
+[node name="Shop" type="StaticBody2D"]
+script = ExtResource("1_blqjs")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.431373)
+position = Vector2(0, 181)
+scale = Vector2(1, 0.292969)
+texture = ExtResource("1_e7rdd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_viryw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 6.5)
+shape = SubResource("RectangleShape2D_e7rdd")
+
+[node name="InteractArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+shape = SubResource("CircleShape2D_e7rdd")
+
+[connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

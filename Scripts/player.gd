@@ -9,11 +9,15 @@ signal shoot_fired(global_position: Vector2, direction: Vector2)
 var can_shoot: bool = true
 var shoot_cooldown: float = 0.6
 var last_move_key: String = "right" # Default to right
-signal grenade_thrown(global_position: Vector2, direction: Vector2)
+signal grenade_thrown(global_position: Vector2, direction: Vector2, with_launcher: bool)
 @export var inv: Inv
 @export var friction := 8.0
 @export var SPEED := 5000.0
 @export var MAX_SPEED := 800.0
+
+func _ready() -> void:
+	Globals.connect("update_active_gun", update_active_gun)
+
 
 func _physics_process(delta: float) -> void:
 	dir = Vector2.ZERO
@@ -53,7 +57,7 @@ func _process(delta: float) -> void:
 	rotate_guns_to_mouse()
 	
 	var hunger_drain = 0.4 * delta
-	var thirst_drain = 0.4 * delta
+	var thirst_drain = 0.6 * delta
 
 	if dir != Vector2.ZERO:
 		hunger_drain *= 3.0
@@ -82,9 +86,10 @@ func _process(delta: float) -> void:
 			var throw_pos = marker.global_position
 			var mouse_pos = get_global_mouse_position()
 			var throw_dir = (mouse_pos - throw_pos).normalized()
-			emit_signal("grenade_thrown", throw_pos, throw_dir)		
-	if Input.is_action_just_pressed("shoot") and can_shoot and not Globals.is_hovering_on_ui and not Globals.is_cooking:
+			emit_signal("grenade_thrown", throw_pos, throw_dir, false)		
+	if Input.is_action_just_pressed("shoot") and can_shoot and not Globals.is_hovering_on_ui and not Globals.is_cooking and not Globals.is_shopping:
 		emit_shoot_signal()
+		
 		can_shoot = false
 		await get_tree().create_timer(shoot_cooldown).timeout
 		can_shoot = true
@@ -186,7 +191,7 @@ func emit_shoot_signal():
 func add_item(type):
 	inv.insert(type)
 
-func take_damage(damage: int = 4):
+func take_damage(damage: int = 3):
 	$Camera2D.screen_shake(2)
 	Globals.player_health -= damage
 	print(Globals.player_health)
@@ -228,3 +233,76 @@ func update_grenade_aim_line():
 		points.append(aim_line.to_local(p))
 
 	aim_line.points = points
+
+
+
+func update_active_gun():
+	if Globals.has_speed_boots == true:
+		SPEED = 8000
+	else:
+		SPEED = 5000
+	
+	if Globals.active_gun == "Pistol" and "Pistol" in Globals.available_guns:
+		shoot_cooldown = 0.6
+		var pistol_texture = preload("res://Assets/gjpistol.png")
+
+		$Sprite2D/LeftGun.texture = pistol_texture
+		$Sprite2D/RightGun.texture = pistol_texture
+		$Player/LeftGun.texture = pistol_texture
+		$Player/RightGun.texture = pistol_texture
+
+		# Right guns flipped
+		$Sprite2D/RightGun.flip_h = true
+		$Player/RightGun.flip_h = true
+		$Sprite2D/RightGun.scale = Vector2(1, 1)
+		$Player/RightGun.scale = Vector2(1, 1)
+
+		# Left guns normal
+		$Sprite2D/LeftGun.flip_h = false
+		$Player/LeftGun.flip_h = false
+		$Sprite2D/LeftGun.scale = Vector2(1, 1)
+		$Player/LeftGun.scale = Vector2(1, 1)
+		
+	elif Globals.active_gun == "Shotgun" and "Shotgun" in Globals.available_guns:
+		shoot_cooldown = 1
+		var shotgun_texture = preload("res://Assets/weapons/shotgunhold.png")
+
+		$Sprite2D/LeftGun.texture = shotgun_texture
+		$Sprite2D/RightGun.texture = shotgun_texture
+		$Player/LeftGun.texture = shotgun_texture
+		$Player/RightGun.texture = shotgun_texture
+
+		# Left guns flipped
+		$Sprite2D/LeftGun.flip_h = true
+		$Player/LeftGun.flip_h = true
+		$Sprite2D/LeftGun.scale = Vector2(0.5, 0.5)
+		$Player/LeftGun.scale = Vector2(0.5, 0.5)
+
+		# Right guns normal
+		$Sprite2D/RightGun.flip_h = false
+		$Player/RightGun.flip_h = false
+		$Sprite2D/RightGun.scale = Vector2(0.5, 0.5)
+		$Player/RightGun.scale = Vector2(0.5, 0.5)
+		
+	elif Globals.active_gun == "AK47"  and "AK47" in Globals.available_guns:
+		shoot_cooldown = 0
+		var shotgun_texture = preload("res://Assets/weapons/akhold.png")
+
+		$Sprite2D/LeftGun.texture = shotgun_texture
+		$Sprite2D/RightGun.texture = shotgun_texture
+		$Player/LeftGun.texture = shotgun_texture
+		$Player/RightGun.texture = shotgun_texture
+
+		# Left guns flipped
+		$Sprite2D/LeftGun.flip_h = true
+		$Player/LeftGun.flip_h = true
+		$Sprite2D/LeftGun.scale = Vector2(0.5, 0.5)
+		$Player/LeftGun.scale = Vector2(0.5, 0.5)
+
+		# Right guns normal
+		$Sprite2D/RightGun.flip_h = false
+		$Player/RightGun.flip_h = false
+		$Sprite2D/RightGun.scale = Vector2(0.5, 0.5)
+		$Player/RightGun.scale = Vector2(0.5, 0.5)
+
+		

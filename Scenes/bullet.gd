@@ -20,6 +20,14 @@ func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
 		return
 	if "take_damage" in body:
+		var damage
+		if Globals.active_gun == "Shotgun":
+			damage = 100
+		elif Globals.active_gun == "Pistol":
+			damage = 25
+		elif Globals.active_gun == "AK47":
+			damage = 20
+			
 		var knockback_force = direction * 700  # tweak as needed
-		body.take_damage(knockback_force)
+		body.take_damage(knockback_force, damage)
 	queue_free()  
