@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://k7tjisppx6mx"]
+
+[ext_resource type="FontFile" uid="uid://byj2p0422aock" path="res://Assets/RocketDoodleRegular-lxRYd.ttf" id="1_28flt"]
+[ext_resource type="Script" uid="uid://bnw1qeu7ebo2o" path="res://Scenes/main_menu.gd" id="1_48xlc"]
+[ext_resource type="AudioStream" uid="uid://de0ss7de6ubsb" path="res://Assets/ClickSFX.wav" id="3_1ehe0"]
+[ext_resource type="PackedScene" uid="uid://67ccaeypt8jq" path="res://Scenes/options.tscn" id="4_ce3w2"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_48xlc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+offset_left = 92.0
+offset_top = 48.0
+offset_right = 1164.0
+offset_bottom = 269.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_28flt")
+theme_override_font_sizes/font_size = 200
+text = "Cropocalypse"
+
+[node name="Play" type="Button" parent="."]
+offset_left = 740.0
+offset_top = 328.0
+offset_right = 949.0
+offset_bottom = 473.0
+theme_override_font_sizes/font_size = 100
+text = "Play"
+
+[node name="Controls" type="Button" parent="."]
+offset_left = 772.0
+offset_top = 516.0
+offset_right = 1188.0
+offset_bottom = 661.0
+theme_override_font_sizes/font_size = 100
+text = "Controls"
+
+[node name="Options" type="Button" parent="."]
+offset_left = 68.0
+offset_top = 318.0
+offset_right = 484.0
+offset_bottom = 463.0
+theme_override_font_sizes/font_size = 100
+text = "Options"
+
+[node name="Freeplay" type="Button" parent="."]
+offset_left = 122.0
+offset_top = 512.0
+offset_right = 543.0
+offset_bottom = 657.0
+theme_override_font_sizes/font_size = 100
+text = "Freeplay"
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1ehe0")
+volume_db = 5.0
+bus = &"SFX"
+
+[node name="Options2" parent="." instance=ExtResource("4_ce3w2")]
+offset_left = 57.0
+offset_top = 64.0
+offset_right = 1188.0
+offset_bottom = 658.0
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Freeplay" to="." method="_on_freeplay_pressed"]

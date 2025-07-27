@@ -2,6 +2,7 @@ extends Node
 
 signal update_stats()
 signal update_active_gun()
+signal game_over()
 
 
 var _active_gun = "Pistol"
@@ -61,7 +62,7 @@ func _on_damage_tick():
 			player_health += 0.5
 
 	if player_health <= 0:
-		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
+		game_over.emit()
 
 	update_stats.emit()
 var 	is_shopping = false
@@ -136,7 +137,7 @@ var player_health = 100:
 	set(value):
 		player_health = value
 		if player_health <= 0:
-			get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
+			game_over.emit()
 		update_stats.emit()
 
 var player_hunger = 100:

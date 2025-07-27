@@ -90,5 +90,6 @@ text = "Cook"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_edgd8")
 volume_db = -10.0
+bus = &"SFX"
 
 [connection signal="pressed" from="OtherThings/Button" to="." method="_on_button_pressed"]

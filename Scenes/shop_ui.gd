@@ -96,3 +96,18 @@ func _on_buy_speed_boots_pressed() -> void:
 	Globals.money -= 200
 	
 	Globals.has_speed_boots = true
+
+
+func _on_buy_grenade_launcher_pressed() -> void:
+	if Globals.money < 300:
+		return
+	
+	if "Grenade Launcher" in Globals.available_guns:
+		return
+	
+	$BuySFX.play()
+
+	Globals.money -= 300
+	var temp = Globals.available_guns.duplicate()
+	temp.append("Grenade Launcher")
+	Globals.available_guns = temp

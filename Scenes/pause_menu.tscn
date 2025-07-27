@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://pxfduykbiusj"]
+[gd_scene load_steps=4 format=3 uid="uid://pxfduykbiusj"]
 
 [ext_resource type="Script" uid="uid://devnyddslecsk" path="res://Scenes/pause_menu.gd" id="1_emv3i"]
+[ext_resource type="PackedScene" uid="uid://67ccaeypt8jq" path="res://Scenes/options.tscn" id="2_k0w1u"]
+[ext_resource type="AudioStream" uid="uid://de0ss7de6ubsb" path="res://Assets/ClickSFX.wav" id="3_1och7"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -41,4 +43,16 @@ offset_bottom = 487.0
 theme_override_font_sizes/font_size = 50
 text = "OPTIONS"
 
+[node name="Options" parent="." instance=ExtResource("2_k0w1u")]
+offset_left = 73.0
+offset_top = 58.0
+offset_right = 1204.0
+offset_bottom = 652.0
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1och7")
+volume_db = 5.0
+bus = &"SFX"
+
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]

@@ -316,9 +316,11 @@ texture = ExtResource("7_ktnr1")
 [node name="BuySFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_ewckf")
 volume_db = -10.0
+bus = &"SFX"
 
 [connection signal="tab_changed" from="TabBar" to="." method="_on_tab_bar_tab_changed"]
 [connection signal="pressed" from="BuyArea/Shotgun/BuyShotgun" to="." method="_on_buy_shotgun_pressed"]
 [connection signal="pressed" from="BuyArea/Ak47/BuyAK47" to="." method="_on_buy_ak_47_pressed"]
+[connection signal="pressed" from="BuyArea/GrenadeLauncher/BuyGrenadeLauncher" to="." method="_on_buy_grenade_launcher_pressed"]
 [connection signal="pressed" from="BuyArea/SpeedBoots/BuySpeedBoots" to="." method="_on_buy_speed_boots_pressed"]
 [connection signal="pressed" from="BuyArea/Grenade/BuyGrenade" to="." method="_on_buy_grenade_pressed"]

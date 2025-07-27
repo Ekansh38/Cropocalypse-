@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://crlcgr4ss82r0"]
+[gd_scene load_steps=4 format=3 uid="uid://crlcgr4ss82r0"]
 
 [ext_resource type="Script" uid="uid://bd5gpkiowdyyh" path="res://Scenes/game_over.gd" id="1_ojehl"]
 [ext_resource type="FontFile" uid="uid://byj2p0422aock" path="res://Assets/RocketDoodleRegular-lxRYd.ttf" id="2_8fo1c"]
+[ext_resource type="AudioStream" uid="uid://de0ss7de6ubsb" path="res://Assets/ClickSFX.wav" id="3_ek8ke"]
 
 [node name="GameOver" type="CanvasLayer"]
 script = ExtResource("1_ojehl")
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="."]
@@ -40,6 +42,10 @@ offset_bottom = 691.0
 theme_override_fonts/font = ExtResource("2_8fo1c")
 theme_override_font_sizes/font_size = 100
 text = "REplay"
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ek8ke")
+volume_db = 5.0
 
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Replay" to="." method="_on_replay_pressed"]

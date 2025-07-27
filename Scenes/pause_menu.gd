@@ -24,4 +24,11 @@ func unpause():
 
 
 func _on_continue_button_pressed() -> void:
+	$ClickSFX.play()
+	await $ClickSFX.finished
 	unpause()
+
+
+func _on_options_button_pressed() -> void:
+	$ClickSFX.play()
+	$Options.open()

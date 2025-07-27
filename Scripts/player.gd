@@ -88,7 +88,10 @@ func _process(delta: float) -> void:
 			var throw_dir = (mouse_pos - throw_pos).normalized()
 			emit_signal("grenade_thrown", throw_pos, throw_dir, false)		
 	if Input.is_action_just_pressed("shoot") and can_shoot and not Globals.is_hovering_on_ui and not Globals.is_cooking and not Globals.is_shopping:
-		emit_shoot_signal()
+		if Globals.active_gun == "Grenade Launcher":
+			emit_grenade_launcher_signal()
+		else:
+			emit_shoot_signal()
 		
 		can_shoot = false
 		await get_tree().create_timer(shoot_cooldown).timeout
@@ -130,7 +133,23 @@ func emit_grenade_signal():
 		var mouse_pos = get_global_mouse_position()
 		var throw_dir = (mouse_pos - throw_pos).normalized()
 		
-		emit_signal("grenade_thrown", throw_pos, throw_dir)
+		emit_signal("grenade_thrown", throw_pos, throw_dir, false)
+func emit_grenade_launcher_signal():
+
+	var using_left = $Player/LeftGun.visible
+	var marker
+	if using_left:
+		marker = $Player/LeftGun/Marker2D
+	else:
+		marker = $Player/RightGun/Marker2D
+	
+	var throw_pos = marker.global_position
+	var mouse_pos = get_global_mouse_position()
+	var throw_dir = (mouse_pos - throw_pos).normalized()
+		
+	emit_signal("grenade_thrown", throw_pos, throw_dir, true)
+
+
 
 func rotate_guns_to_mouse() -> void:
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -284,6 +303,26 @@ func update_active_gun():
 		$Sprite2D/RightGun.scale = Vector2(0.5, 0.5)
 		$Player/RightGun.scale = Vector2(0.5, 0.5)
 		
+	elif Globals.active_gun == "Grenade Launcher"  and "Grenade Launcher" in Globals.available_guns:
+		shoot_cooldown = 1.5
+		var shotgun_texture = preload("res://Assets/weapons/launcherhold.png")
+
+		$Sprite2D/LeftGun.texture = shotgun_texture
+		$Sprite2D/RightGun.texture = shotgun_texture
+		$Player/LeftGun.texture = shotgun_texture
+		$Player/RightGun.texture = shotgun_texture
+
+		# Left guns flipped
+		$Sprite2D/LeftGun.flip_h = true
+		$Player/LeftGun.flip_h = true
+		$Sprite2D/LeftGun.scale = Vector2(0.5, 0.5)
+		$Player/LeftGun.scale = Vector2(0.5, 0.5)
+
+		# Right guns normal
+		$Sprite2D/RightGun.flip_h = false
+		$Player/RightGun.flip_h = false
+		$Sprite2D/RightGun.scale = Vector2(0.5, 0.5)
+		$Player/RightGun.scale = Vector2(0.5, 0.5)
 	elif Globals.active_gun == "AK47"  and "AK47" in Globals.available_guns:
 		shoot_cooldown = 0
 		var shotgun_texture = preload("res://Assets/weapons/akhold.png")
@@ -304,5 +343,7 @@ func update_active_gun():
 		$Player/RightGun.flip_h = false
 		$Sprite2D/RightGun.scale = Vector2(0.5, 0.5)
 		$Player/RightGun.scale = Vector2(0.5, 0.5)
+
+		
 
 		

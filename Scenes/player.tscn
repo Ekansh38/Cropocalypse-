@@ -159,10 +159,12 @@ theme_override_font_sizes/font_size = 50
 
 [node name="ShotSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_8erm5")
+bus = &"SFX"
 
 [node name="WalkingSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("18_igrcy")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="AimLine2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, -3)

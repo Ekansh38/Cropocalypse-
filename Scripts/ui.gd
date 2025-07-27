@@ -29,6 +29,8 @@ func update_stats():
 	for gun_name in ["Pistol", "Shotgun", "AK47", "GrenadeLauncher"]:
 		var gun_node = get_node(gun_name)
 		if gun_node.material is ShaderMaterial:
+			if gun_name == "GrenadeLauncher":
+				gun_name = "Grenade Launcher"
 			if gun_name == "Pistol" or gun_name in Globals.available_guns:
 				gun_node.material.set_shader_parameter("shade_color", Color(1, 1, 1, 0.1))
 			else:
@@ -86,19 +88,26 @@ func _process(delta: float) -> void:
 		Globals.active_gun = "Pistol"
 		$Pistol.material.set_shader_parameter("outline_color", outline_color)
 		$Pistol.material.set_shader_parameter("shade_color", shade_color)
+		$ChangeWeaponSFX.play()
 	elif Input.is_action_just_pressed("2") and "Shotgun" in Globals.available_guns:
 		Globals.active_gun = "Shotgun"
 		reset_outlines()
+		$ChangeWeaponSFX.play()
+
 		$Shotgun.material.set_shader_parameter("outline_color", outline_color)
 		$Shotgun.material.set_shader_parameter("shade_color", shade_color)
 	elif Input.is_action_just_pressed("3") and "AK47" in Globals.available_guns:
 		Globals.active_gun = "AK47"
 		reset_outlines()
+		$ChangeWeaponSFX.play()
+
 		$AK47.material.set_shader_parameter("outline_color", outline_color)
 		$AK47.material.set_shader_parameter("shade_color", shade_color)
 	elif Input.is_action_just_pressed("4") and "Grenade Launcher" in Globals.available_guns:
 		Globals.active_gun = "Grenade Launcher"
 		reset_outlines()
+		$ChangeWeaponSFX.play()
+
 		$GrenadeLauncher.material.set_shader_parameter("outline_color", outline_color)
 		$GrenadeLauncher.material.set_shader_parameter("shade_color", shade_color)
 

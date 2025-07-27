@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://chidqrqdcwv07"]
+[gd_scene load_steps=20 format=3 uid="uid://chidqrqdcwv07"]
 
 [ext_resource type="PackedScene" uid="uid://bx4iymtkeaw8m" path="res://Scenes/plant.tscn" id="1_oahed"]
 [ext_resource type="Script" uid="uid://byfpe4je648sd" path="res://Scenes/chili_plant.gd" id="2_h6aaf"]
@@ -6,16 +6,41 @@
 [ext_resource type="Texture2D" uid="uid://bnyk5bagrg2le" path="res://Assets/chilianim/med.png" id="3_2ab3a"]
 [ext_resource type="Texture2D" uid="uid://c4d8qvfskpxmd" path="res://Assets/chilianim/mature.png" id="4_i7tyl"]
 [ext_resource type="Texture2D" uid="uid://dyr2k1xacjhti" path="res://Assets/chilianim/1.png" id="5_oysvb"]
+[ext_resource type="Texture2D" uid="uid://3bfehmyrf0q6" path="res://Assets/chiliattack/1.png" id="6_7xo4m"]
 [ext_resource type="Texture2D" uid="uid://dax2i8iidx4ev" path="res://Assets/chilianim/2.png" id="6_h6aaf"]
+[ext_resource type="Texture2D" uid="uid://bw5q6o5udx84i" path="res://Assets/chiliattack/2.png" id="7_7fr7i"]
 [ext_resource type="Texture2D" uid="uid://p27d4dbrf2yd" path="res://Assets/chilianim/3.png" id="7_x3pn2"]
+[ext_resource type="Texture2D" uid="uid://bdjjnix13gy8v" path="res://Assets/chiliattack/3.png" id="8_1ojp5"]
 [ext_resource type="Texture2D" uid="uid://sbbs2rv0gd2p" path="res://Assets/chilianim/4.png" id="8_ctxvw"]
+[ext_resource type="Texture2D" uid="uid://cykw3btn20p3j" path="res://Assets/chiliattack/4.png" id="9_oq7b7"]
 [ext_resource type="Texture2D" uid="uid://bfnu5mjtwr00c" path="res://Assets/chilianim/5.png" id="9_qgpqr"]
+[ext_resource type="Texture2D" uid="uid://b53m32ylvx112" path="res://Assets/chiliattack/5.png" id="10_enixc"]
 [ext_resource type="Texture2D" uid="uid://cak4ts8u2tm72" path="res://Assets/chilianim/6.png" id="10_o8g0m"]
 [ext_resource type="Texture2D" uid="uid://d2i1amjyptxr8" path="res://Assets/chilianim/7.png" id="11_7xo4m"]
 [ext_resource type="Texture2D" uid="uid://d0tdupepxuisf" path="res://Assets/chilianim/8.png" id="12_7fr7i"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1ojp5"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_7xo4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7fr7i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1ojp5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_oq7b7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_enixc")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 6.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("5_oysvb")
@@ -89,7 +114,9 @@ texture = ExtResource("4_i7tyl")
 
 [node name="Mature" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_1ojp5")
-animation = &"walk_slow"
+animation = &"attack"
+frame = 4
+frame_progress = 1.0
 
 [node name="CollisionShape2D" parent="." index="4"]
 position = Vector2(-2, 1.5)
