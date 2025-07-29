@@ -86,8 +86,14 @@ func _process(delta: float) -> void:
 			var throw_pos = marker.global_position
 			var mouse_pos = get_global_mouse_position()
 			var throw_dir = (mouse_pos - throw_pos).normalized()
-			emit_signal("grenade_thrown", throw_pos, throw_dir, false)		
-	if Input.is_action_just_pressed("shoot") and can_shoot and not Globals.is_hovering_on_ui and not Globals.is_cooking and not Globals.is_shopping:
+			emit_signal("grenade_thrown", throw_pos, throw_dir, false)
+	if Input.is_action_pressed("shoot") and can_shoot and not Globals.is_hovering_on_ui and not Globals.is_cooking and not Globals.is_shopping and Globals.active_gun == "AK47":		
+		emit_shoot_signal()
+		can_shoot = false
+		await get_tree().create_timer(shoot_cooldown).timeout
+		can_shoot = true
+
+	elif Input.is_action_just_pressed("shoot") and can_shoot and not Globals.is_hovering_on_ui and not Globals.is_cooking and not Globals.is_shopping:
 		if Globals.active_gun == "Grenade Launcher":
 			emit_grenade_launcher_signal()
 		else:
@@ -325,7 +331,7 @@ func update_active_gun():
 		$Sprite2D/RightGun.scale = Vector2(0.5, 0.5)
 		$Player/RightGun.scale = Vector2(0.5, 0.5)
 	elif Globals.active_gun == "AK47"  and "AK47" in Globals.available_guns:
-		shoot_cooldown = 0
+		shoot_cooldown = 0.1
 		var shotgun_texture = preload("res://Assets/weapons/akhold.png")
 
 		$Sprite2D/LeftGun.texture = shotgun_texture

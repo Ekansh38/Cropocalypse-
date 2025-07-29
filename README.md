@@ -8,7 +8,7 @@
 
 Cook or be cooked.
 
-In this chaotic top-down survival game, hostile vegetables sprout around you. A soldier like you decides to survive off of the flesh of fellow plants... All while making bank. 
+In this chaotic top-down survival game, hostile vegetables sprout around you. A soldier like you decides to survive off of the flesh of fellow plants... All while making bank.
 
 Murder your ingredients in cold blood and combine them to craft dishes that restore health, thirst, or sell your dishes to a mysterious pigeon (which is also an arms dealer?) and save money to purchase powerful weapons. Do so while blasting bok choy with your trusty arsenal of weapons!
 
@@ -18,9 +18,9 @@ This game was made with team of 2 in 72 hours for Melon Jam 6.
 
 We hope you enjoy it!
 
-
-
 ## Controls
+
+![Contols Image](/Assets/Controls.png)
 
 Movement: WASD
 
@@ -34,8 +34,6 @@ Switch Weapons: 1 2 3 4
 
 Open Inventory: Tab
 
-
-
 ## Credits
 
 Programming & Music: Byte Colony
@@ -47,7 +45,6 @@ Some UI Elements were used from Kenny.nl asset packs, such as: progress bars and
 Sound effects are all royalty free from multiple platforms (freesound.org, youtube.com, etc.)
 
 Made using Godot
-
 
 ## Other
 
