@@ -1,5 +1,7 @@
 # Cropocalypse
 
+![Banner Image](/Assets/cover.png)
+
 [Play Cropocalypse on Itch.io](https://byte-colony.itch.io/cropocalypse)
 
 ## Description
