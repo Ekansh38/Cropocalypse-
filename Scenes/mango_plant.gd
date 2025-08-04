@@ -4,7 +4,7 @@ func _ready():
 	if camera == null:
 		camera = get_tree().current_scene.get_node("Player/Camera2D")
 	plant_drop = preload("res://Scenes/mango_drop.tscn")
-	speed = 300
+	speed = 200
 
 	# Run base class setup
 	super._ready()

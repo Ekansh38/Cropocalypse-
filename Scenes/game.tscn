@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://vgn3dqi6c31"]
+[gd_scene load_steps=41 format=3 uid="uid://vgn3dqi6c31"]
 
 [ext_resource type="Script" uid="uid://7vk5l1qhqne5" path="res://Scripts/game.gd" id="1_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://dt8ocs65hig4d" path="res://Assets/plantgjmap.png" id="2_v158k"]
@@ -38,6 +38,7 @@
 [ext_resource type="Script" uid="uid://bdv1hqub8ah03" path="res://Scenes/game_over_maker.gd" id="36_i26dy"]
 [ext_resource type="AudioStream" uid="uid://crk61niwfdq1f" path="res://Assets/death.wav" id="37_lmoi6"]
 [ext_resource type="AudioStream" uid="uid://c563njfw2awkv" path="res://Assets/MAINTHEME.wav" id="38_6uxt2"]
+[ext_resource type="FontFile" uid="uid://byj2p0422aock" path="res://Assets/RocketDoodleRegular-lxRYd.ttf" id="39_ym3tv"]
 
 [sub_resource type="Environment" id="Environment_nb51f"]
 background_mode = 3
@@ -80,19 +81,21 @@ position = Vector2(-534, -1081)
 
 [node name="PlantDrops" type="Node2D" parent="."]
 
-[node name="PlantSpawner" type="Node2D" parent="."]
+[node name="PlantSpawner" type="Node2D" parent="." node_paths=PackedStringArray("wave_label")]
 y_sort_enabled = true
 script = ExtResource("5_ldgsr")
 onion_scene = ExtResource("8_ese38")
 chili_scene = ExtResource("7_h4fw4")
 rice_scene = ExtResource("14_ewbju")
 bok_choi_scene = ExtResource("22_cwurv")
-spawn_interval = 6.0
-spawn_interval_variance = 3.0
-max_plants = 5
-min_distance_between_plants = 100.0
 spawn_bounds_top_left = Vector2(274, -1001)
 spawn_bounds_bottom_right = Vector2(1626, 871)
+initial_delay = 5.0
+break_duration = 10.0
+base_plants_per_wave = 2
+plant_increase_per_wave = 1
+min_distance_between_plants = 100.0
+wave_label = NodePath("../CanvasLayer2/WaveLabel")
 metadata/_edit_lock_ = true
 
 [node name="Grenades" type="Node2D" parent="."]
@@ -321,6 +324,16 @@ stream = ExtResource("38_6uxt2")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="WaveLabel" type="Label" parent="CanvasLayer2"]
+offset_left = 39.0
+offset_top = 34.0
+offset_right = 581.0
+offset_bottom = 145.0
+theme_override_fonts/font = ExtResource("39_ym3tv")
+theme_override_font_sizes/font_size = 100
 
 [connection signal="grenade_thrown" from="Player" to="." method="_on_player_grenade_thrown"]
 [connection signal="shoot_fired" from="Player" to="." method="_on_player_shoot_fired"]
